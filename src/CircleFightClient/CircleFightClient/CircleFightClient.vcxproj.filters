@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{99507316-3a1b-45d5-93c4-70439f7b1f6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Common">
+      <UniqueIdentifier>{b9535616-9ae1-4fda-8a10-f079216e02b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\KIN Window Manager">
+      <UniqueIdentifier>{ebaa450c-b3ef-4559-94ce-bb0fa533439e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\KIN Render Manager">
+      <UniqueIdentifier>{539be6d6-56e6-4953-99c9-6847f7ad4d0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\KIN Render Manager\Texture">
+      <UniqueIdentifier>{d2ce0d4d-6ca6-4b33-b563-465a5abbe962}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\KIN Render Manager\Font">
+      <UniqueIdentifier>{22c69677-6193-47cf-9598-bc79db391b40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\KIN Render Manager\Animation">
+      <UniqueIdentifier>{6ef74c93-73d4-4ab9-a4f9-02f5513e7c96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\KIN Time Manager">
+      <UniqueIdentifier>{c02906fd-5b67-4734-b91a-f37e70616679}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\KIN Input Manager">
+      <UniqueIdentifier>{5b8977c9-8497-4345-b97d-c2c04b2c46a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\KIN UI Manager">
+      <UniqueIdentifier>{edc52e41-398a-48c8-9e19-8e0e918258fb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KINWM.cpp">
+      <Filter>Engine\KIN Window Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="KINRM.cpp">
+      <Filter>Engine\KIN Render Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="KINTM.cpp">
+      <Filter>Engine\KIN Time Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Engine\KIN Render Manager\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>Engine\KIN Render Manager\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Engine\KIN Render Manager\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="KINIM.cpp">
+      <Filter>Engine\KIN Input Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="KINUIM.cpp">
+      <Filter>Engine\KIN UI Manager</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="KINCommon.h">
+      <Filter>Engine\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="KINWM.h">
+      <Filter>Engine\KIN Window Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="KINRM.h">
+      <Filter>Engine\KIN Render Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="KINTM.h">
+      <Filter>Engine\KIN Time Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="KINIM.h">
+      <Filter>Engine\KIN Input Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="KINEngine.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="KINUIM.h">
+      <Filter>Engine\KIN UI Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Engine\KIN Render Manager\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Engine\KIN Render Manager\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>Engine\KIN Render Manager\Font</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
