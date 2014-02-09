@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Core">
+      <UniqueIdentifier>{844822a3-aef8-450c-b857-aba56cb29fa2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client">
+      <UniqueIdentifier>{fdbc2fd0-2eb6-4998-9b19-127a592f91c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Util">
+      <UniqueIdentifier>{48fab7bb-623a-41e3-812a-030e96e7b491}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Main">
+      <UniqueIdentifier>{f77c60d5-4aad-4017-b4e3-87108d2470df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\ClientSession">
+      <UniqueIdentifier>{49599cf7-5e26-405e-850b-39d8b51fd837}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\ClientManager">
+      <UniqueIdentifier>{8d13f9b4-8196-4ddd-909a-cc9193f8918b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Util\CircularBuffer">
+      <UniqueIdentifier>{1ef6af47-3d45-4234-ab33-ed921851613b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Util\Exception">
+      <UniqueIdentifier>{5e29bd64-660d-4343-9a3b-893f34b0fb58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PreCompile">
+      <UniqueIdentifier>{031df1aa-db36-4340-b02f-5d2a00ea9b24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{8d5e31d6-5f3a-472b-a3f9-193d5c3f6b4c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Main.h">
+      <Filter>Core\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientSession.h">
+      <Filter>Core\Client\ClientSession</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientManager.h">
+      <Filter>Core\Client\ClientManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CircularBuffer.h">
+      <Filter>Core\Util\CircularBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Exception.h">
+      <Filter>Core\Util\Exception</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>PreCompile</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>PreCompile</Filter>
+    </ClInclude>
+    <ClInclude Include="Config.h">
+      <Filter>Core\Util</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Core\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientSession.cpp">
+      <Filter>Core\Client\ClientSession</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientManager.cpp">
+      <Filter>Core\Client\ClientManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CircularBuffer.cpp">
+      <Filter>Core\Util\CircularBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Exception.cpp">
+      <Filter>Core\Util\Exception</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>PreCompile</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
