@@ -27,6 +27,8 @@ namespace KIN
 			
 		void KINUIItem::EventHandler(Input::KINIM* pInput)
 		{
+			mUIStatus = UIStatus::NORMAL;
+
 			for(int i = 0; i < 256; ++i)
 			{
 				if(mEvent.mKeyCodeDown[i] && pInput->mKeyboard.IsKeyDown(i, 0.5f))
@@ -113,12 +115,15 @@ namespace KIN
 
 		void KINUIItem::OnMouseOver(Common::KINPoint pPoint, void* pData)
 		{
+			mUIStatus = UIStatus::OVER;
 		}
 		void KINUIItem::OnLButtonDown(Common::KINPoint pPoint, void* pData)
 		{
+			mUIStatus = UIStatus::DOWN;
 		}
 		void KINUIItem::OnLButtonUp(Common::KINPoint pPoint, void* pData)
 		{
+			mUIStatus = UIStatus::SELECT;
 		}
 		void KINUIItem::OnMButtonDown(Common::KINPoint pPoint, void* pData)
 		{
