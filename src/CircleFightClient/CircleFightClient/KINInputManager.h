@@ -1,7 +1,7 @@
 #pragma once
 
 #include "KINCommon.h"
-#include "KINTM.h"
+#include "KINTimeManager.h"
 
 namespace KIN
 {
@@ -14,7 +14,7 @@ namespace KIN
 	{
 		class KINUIEvent;
 		class KINUIItem;
-		class KINUIM;
+		class KINUserInterfaceManager;
 	}
 
 	namespace Input
@@ -159,7 +159,7 @@ namespace KIN
 			BYTE mKeyState[256];
 			bool mKeyDownFlag[256];
 			double mKeyTime[256];
-			Time::KINTM mTimer;
+			Time::KINTimeManager mTimer;
 
 			Keyboard(void);
 			~Keyboard(void);
@@ -169,7 +169,7 @@ namespace KIN
 			bool IsKeyUp(const BYTE pKeyCode);
 		};
 
-		class KINIM
+		class KINInputManager
 		{
 		private:
 			Window::KINWM* mWM;
@@ -180,9 +180,9 @@ namespace KIN
 			Keyboard mKeyboard;
 
 		public:
-			KINIM(void);
-			KINIM(Window::KINWM* pWM);
-			~KINIM(void);
+			KINInputManager(void);
+			KINInputManager(Window::KINWM* pWM);
+			~KINInputManager(void);
 
 		public:
 			void Init(Window::KINWM* pWM);

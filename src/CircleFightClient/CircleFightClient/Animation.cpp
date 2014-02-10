@@ -1,4 +1,4 @@
-#include "KINRM.h"
+#include "KINRenderManager.h"
 #include "KINWM.h"
 
 namespace KIN
@@ -24,7 +24,7 @@ namespace KIN
 		{
 		}
 		
-		bool KINRM::DrawAnimation(Animation& pAnimation, const Common::KINPoint& pPoint, int pAlpha)
+		bool KINRenderManager::DrawAnimation(Animation& pAnimation, const Common::KINPoint& pPoint, int pAlpha)
 		{
 			if(mpD3D == NULL || mpD3D_Device == NULL ||
 			   mpD3D_Sprite == NULL || pAnimation.mFrame.size() == 0)

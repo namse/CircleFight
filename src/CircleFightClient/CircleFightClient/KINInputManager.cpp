@@ -1,4 +1,4 @@
-#include "KINIM.h"
+#include "KINInputManager.h"
 #include "KINWM.h"
 
 namespace KIN
@@ -55,18 +55,18 @@ namespace KIN
 			return false;
 		}
 		
-		KINIM::KINIM(void)
+		KINInputManager::KINInputManager(void)
 		{
 		}
-		KINIM::KINIM(Window::KINWM* pWM)
+		KINInputManager::KINInputManager(Window::KINWM* pWM)
 		{
 			Init(pWM);
 		}
-		KINIM::~KINIM(void)
+		KINInputManager::~KINInputManager(void)
 		{
 		}
 
-		void KINIM::Init(Window::KINWM* pWM)
+		void KINInputManager::Init(Window::KINWM* pWM)
 		{
 			mWM = pWM;
 
@@ -82,7 +82,7 @@ namespace KIN
 			mMouse.mDXInput_Mouse->SetCooperativeLevel(mWM->GetHWND(), DISCL_NONEXCLUSIVE | DISCL_FOREGROUND);
 		}
 
-		void KINIM::Detect(void)
+		void KINInputManager::Detect(void)
 		{
 			mKeyboard.mDXInput_Keyboard->Acquire();
 			mMouse.mDXInput_Mouse->Acquire();
@@ -130,7 +130,7 @@ namespace KIN
 			}
 		}
 
-		void KINIM::Release(void)
+		void KINInputManager::Release(void)
 		{
 			mKeyboard.mDXInput_Keyboard->Unacquire();
 			mKeyboard.mDXInput_Keyboard->Release();

@@ -7,7 +7,7 @@ namespace KIN
 {
 	namespace Input
 	{
-		class KINIM;
+		class KINInputManager;
 	}
 
 	namespace UserInterface
@@ -62,7 +62,7 @@ namespace KIN
 			~KINUIItem(void);
 			
 		public:
-			virtual void EventHandler(Input::KINIM* pInput);
+			virtual void EventHandler(Input::KINInputManager* pInput);
 		private:
 			virtual void OnMouseOver(Common::KINPoint pPoint, void* pData=NULL);
 			virtual void OnLButtonDown(Common::KINPoint pPoint, void* pData=NULL);
@@ -75,14 +75,14 @@ namespace KIN
 			virtual void OnKeyUp(unsigned char pKeyCode, void* pData=NULL);
 		};
 
-		class KINUIM
+		class KINUserInterfaceManager
 		{
 		private:
 			list<KINUIItem*> mListUIItem;
 
 		public:
-			KINUIM(void);
-			~KINUIM(void);
+			KINUserInterfaceManager(void);
+			~KINUserInterfaceManager(void);
 		};
 	}
 }

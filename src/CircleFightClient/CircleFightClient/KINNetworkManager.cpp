@@ -1,19 +1,19 @@
-#include "KINNM.h"
+#include "KINNetworkManager.h"
 #include "ProcessPacket.h"
 
 namespace KIN
 {
 	namespace Network
 	{
-		KINNM::KINNM(string pServerIP, unsigned int pServerPort)
+		KINNetworkManager::KINNetworkManager(string pServerIP, unsigned int pServerPort)
 		{
 			assert(Init(pServerIP, pServerPort));
 		}
-		KINNM::~KINNM(void)
+		KINNetworkManager::~KINNetworkManager(void)
 		{
 		}
 
-		bool KINNM::Init(string pServerIP, unsigned int pServerPort)
+		bool KINNetworkManager::Init(string pServerIP, unsigned int pServerPort)
 		{
 			int nReturn = 0;
 
@@ -57,7 +57,7 @@ namespace KIN
 			return true;
 		}
 
-		bool KINNM::SendPacket(CircularBuffer* pSendBuffer)
+		bool KINNetworkManager::SendPacket(CircularBuffer* pSendBuffer)
 		{
 			int size = pSendBuffer->GetStoredSize();
 			if(size > 0)
@@ -82,7 +82,7 @@ namespace KIN
 			return false;
 		}
 
-		bool KINNM::RecvPacket(CircularBuffer* pRecvBuffer)
+		bool KINNetworkManager::RecvPacket(CircularBuffer* pRecvBuffer)
 		{
 			char inBuf[MAX_BUFFER] = {0, } ;
 					

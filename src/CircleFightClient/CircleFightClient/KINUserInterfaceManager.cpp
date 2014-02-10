@@ -1,5 +1,5 @@
-#include "KINUIM.h"
-#include "KINIM.h"
+#include "KINUserInterfaceManager.h"
+#include "KINInputManager.h"
 
 namespace KIN
 {
@@ -25,7 +25,7 @@ namespace KIN
 		{
 		}
 			
-		void KINUIItem::EventHandler(Input::KINIM* pInput)
+		void KINUIItem::EventHandler(Input::KINInputManager* pInput)
 		{
 			mUIStatus = UIStatus::NORMAL;
 

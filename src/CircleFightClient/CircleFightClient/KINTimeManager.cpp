@@ -1,21 +1,21 @@
-#include "KINTM.h"
+#include "KINTimeManager.h"
 
 namespace KIN
 {
 	namespace Time
 	{
-		KINTM::KINTM(void)
+		KINTimeManager::KINTimeManager(void)
 		{
 			Init();
 		}
 
-		void KINTM::Init(void)
+		void KINTimeManager::Init(void)
 		{
 			mOldmask = SetThreadAffinityMask(::GetCurrentThread(), 1);
 			QueryPerformanceCounter(&mTime);
 		}
 		
-		double KINTM::GetTime(void)
+		double KINTimeManager::GetTime(void)
 		{
 			LARGE_INTEGER performance_frequency, t_time;
 			QueryPerformanceFrequency(&performance_frequency);
@@ -25,7 +25,7 @@ namespace KIN
 			return ((double)(t_time.QuadPart - mTime.QuadPart)/performance_frequency.QuadPart);
 		}
 
-		bool KINTM::CheckFrame(unsigned int pFPS)
+		bool KINTimeManager::CheckFrame(unsigned int pFPS)
 		{
 			static double elapsed = 0.f, elapsed2 = 0.f;
 			double nFPS = 1.0f/(double)pFPS;

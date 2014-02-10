@@ -1,7 +1,7 @@
 #pragma once
 
 #include "KINCommon.h"
-#include "KINTM.h"
+#include "KINTimeManager.h"
 #include "Texture.h"
 #include "Animation.h"
 #include "Font.h"
@@ -15,7 +15,7 @@ namespace KIN
 
 	namespace Render
 	{
-		class KINRM
+		class KINRenderManager
 		{
 			private:
 				Window::KINWM*		mWM;
@@ -30,9 +30,9 @@ namespace KIN
 				WINDOWPLACEMENT			mWindowPlacement;
 
 			public:
-				KINRM(void);
-				KINRM(const Window::KINWM& pWM, const bool& pIsWindowMode=true);
-				~KINRM(void);
+				KINRenderManager(void);
+				KINRenderManager(const Window::KINWM& pWM, const bool& pIsWindowMode=true);
+				~KINRenderManager(void);
 
 			private:
 				bool Init_Present_Parameters(void);

@@ -9,7 +9,7 @@ namespace KIN
 	{
 		const unsigned int MAX_BUFFER = 1024 * 10;
 
-		class KINNM
+		class KINNetworkManager
 		{
 		private:
 			SOCKET mSocket;
@@ -17,8 +17,8 @@ namespace KIN
 			unsigned int mServerPort;
 
 		public:
-			KINNM(string pServerIP, unsigned int pServerPort);
-			~KINNM(void);
+			KINNetworkManager(string pServerIP, unsigned int pServerPort);
+			~KINNetworkManager(void);
 
 			bool Init(string pServerIP, unsigned int pServerPort);
 			bool SendPacket(CircularBuffer* pSendBuffer);

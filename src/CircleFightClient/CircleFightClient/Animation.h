@@ -1,7 +1,7 @@
 #pragma once
 
 #include "KINCommon.h"
-#include "KINTM.h"
+#include "KINTimeManager.h"
 #include "Texture.h"
 
 namespace KIN
@@ -32,7 +32,7 @@ namespace KIN
 		public:
 			bool mbIsDraw;
 			double mfTime;
-			Time::KINTM mTimer;
+			Time::KINTimeManager mTimer;
 			vector<Frame> mFrame;
 			vector<Frame> ::iterator mit;
 

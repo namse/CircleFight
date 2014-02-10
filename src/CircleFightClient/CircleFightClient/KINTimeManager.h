@@ -6,14 +6,14 @@ namespace KIN
 {
 	namespace Time
 	{
-		class KINTM
+		class KINTimeManager
 		{
 		private:
 			DWORD_PTR mOldmask;
 			LARGE_INTEGER mTime;
 
 		public:
-			KINTM(void);
+			KINTimeManager(void);
 
 			void Init(void);
 			double GetTime(void);

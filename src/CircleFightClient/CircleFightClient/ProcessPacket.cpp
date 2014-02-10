@@ -1,4 +1,4 @@
-#include "KINNM.h"
+#include "KINNetworkManager.h"
 #include "ProcessPacket.h"
 #include "CircularBuffer.h"
 #include "..\..\PacketType.h"
@@ -7,7 +7,7 @@ using namespace KIN::Network;
 
 DWORD WINAPI ProcessPacket(void* param)
 {
-	KINNM* Server =(KINNM*)param;
+	KINNetworkManager* Server =(KINNetworkManager*)param;
 
 	printf("ProcessPacket Start.\n");
 

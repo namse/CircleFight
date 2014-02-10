@@ -1,4 +1,4 @@
-#include "KINRM.h"
+#include "KINRenderManager.h"
 #include "KINWM.h"
 
 namespace KIN
@@ -7,7 +7,7 @@ namespace KIN
 	{
 		map<wstring, ID3DXFont*> mFont;
 
-		bool KINRM::DrawString(const std::wstring& pFont, const Common::KINPoint& pPoint, const std::wstring& pText, const unsigned int pSize, const unsigned int pBold, const unsigned int pStyle, const unsigned int pColor)
+		bool KINRenderManager::DrawString(const std::wstring& pFont, const Common::KINPoint& pPoint, const std::wstring& pText, const unsigned int pSize, const unsigned int pBold, const unsigned int pStyle, const unsigned int pColor)
 		{
 			if(mpD3D == NULL || mpD3D_Device == NULL ||
 			   mpD3D_Sprite == NULL || mpD3D_Font_Sprite == NULL)
@@ -32,7 +32,7 @@ namespace KIN
 
 			return true;
 		}
-		bool KINRM::DrawString(const std::wstring& pFont, const Common::KINPoint& pPoint, const std::wstring& pText, const unsigned int pSize, const unsigned int pBold, const unsigned int pStyle, const unsigned int pColor, float pAngle, float pCenter_X, float pCenter_Y)
+		bool KINRenderManager::DrawString(const std::wstring& pFont, const Common::KINPoint& pPoint, const std::wstring& pText, const unsigned int pSize, const unsigned int pBold, const unsigned int pStyle, const unsigned int pColor, float pAngle, float pCenter_X, float pCenter_Y)
 		{
 			if(mpD3D == NULL || mpD3D_Device == NULL ||
 			   mpD3D_Sprite == NULL || mpD3D_Font_Sprite == NULL)
@@ -68,7 +68,7 @@ namespace KIN
 
 			return true;
 		}
-		bool KINRM::DrawString(const std::wstring& pFont, const Common::KINPoint& pPoint, const std::wstring& pText, const unsigned int pSize, const unsigned int pBold, const unsigned int pStyle, const unsigned int pColor, float pScaling_Width, float pScaling_Height, float pCenter_X, float pCenter_Y)
+		bool KINRenderManager::DrawString(const std::wstring& pFont, const Common::KINPoint& pPoint, const std::wstring& pText, const unsigned int pSize, const unsigned int pBold, const unsigned int pStyle, const unsigned int pColor, float pScaling_Width, float pScaling_Height, float pCenter_X, float pCenter_Y)
 		{
 			if(mpD3D == NULL || mpD3D_Device == NULL ||
 			   mpD3D_Sprite == NULL || mpD3D_Font_Sprite == NULL)
@@ -102,7 +102,7 @@ namespace KIN
 
 			return true;
 		}
-		bool KINRM::DrawString(const std::wstring& pFont, const Common::KINPoint& pPoint, const std::wstring& pText, const unsigned int pSize, const unsigned int pBold, const unsigned int pStyle, const unsigned int pColor, float pAngle, float pScaling_Width, float pScaling_Height, float pCenter_X, float pCenter_Y)
+		bool KINRenderManager::DrawString(const std::wstring& pFont, const Common::KINPoint& pPoint, const std::wstring& pText, const unsigned int pSize, const unsigned int pBold, const unsigned int pStyle, const unsigned int pColor, float pAngle, float pScaling_Width, float pScaling_Height, float pCenter_X, float pCenter_Y)
 		{
 			if(mpD3D == NULL || mpD3D_Device == NULL ||
 			   mpD3D_Sprite == NULL || mpD3D_Font_Sprite == NULL)
@@ -142,7 +142,7 @@ namespace KIN
 
 			return true;
 		}
-		bool KINRM::DrawString(const std::wstring& pFont, const Common::KINRect& pRect, const std::wstring& pText, const unsigned int pSize, const unsigned int pBold, const unsigned int pStyle, const unsigned int pColor)
+		bool KINRenderManager::DrawString(const std::wstring& pFont, const Common::KINRect& pRect, const std::wstring& pText, const unsigned int pSize, const unsigned int pBold, const unsigned int pStyle, const unsigned int pColor)
 		{
 			if(mpD3D == NULL || mpD3D_Device == NULL ||
 			   mpD3D_Sprite == NULL || mpD3D_Font_Sprite == NULL)
@@ -167,7 +167,7 @@ namespace KIN
 
 			return true;
 		}
-		bool KINRM::DrawString(const std::wstring& pFont, const Common::KINRect& pRect, const std::wstring& pText, const unsigned int pSize, const unsigned int pBold, const unsigned int pStyle, const unsigned int pColor, float pAngle, float pCenter_X, float pCenter_Y)
+		bool KINRenderManager::DrawString(const std::wstring& pFont, const Common::KINRect& pRect, const std::wstring& pText, const unsigned int pSize, const unsigned int pBold, const unsigned int pStyle, const unsigned int pColor, float pAngle, float pCenter_X, float pCenter_Y)
 		{
 			if(mpD3D == NULL || mpD3D_Device == NULL ||
 			   mpD3D_Sprite == NULL || mpD3D_Font_Sprite == NULL)
@@ -203,7 +203,7 @@ namespace KIN
 
 			return true;
 		}
-		bool KINRM::DrawString(const std::wstring& pFont, const Common::KINRect& pRect, const std::wstring& pText, const unsigned int pSize, const unsigned int pBold, const unsigned int pStyle, const unsigned int pColor, float pScaling_Width, float pScaling_Height, float pCenter_X, float pCenter_Y)
+		bool KINRenderManager::DrawString(const std::wstring& pFont, const Common::KINRect& pRect, const std::wstring& pText, const unsigned int pSize, const unsigned int pBold, const unsigned int pStyle, const unsigned int pColor, float pScaling_Width, float pScaling_Height, float pCenter_X, float pCenter_Y)
 		{
 			if(mpD3D == NULL || mpD3D_Device == NULL ||
 			   mpD3D_Sprite == NULL || mpD3D_Font_Sprite == NULL)
@@ -237,7 +237,7 @@ namespace KIN
 
 			return true;
 		}
-		bool KINRM::DrawString(const std::wstring& pFont, const Common::KINRect& pRect, const std::wstring& pText, const unsigned int pSize, const unsigned int pBold, const unsigned int pStyle, const unsigned int pColor, float pAngle, float pScaling_Width, float pScaling_Height, float pCenter_X, float pCenter_Y)
+		bool KINRenderManager::DrawString(const std::wstring& pFont, const Common::KINRect& pRect, const std::wstring& pText, const unsigned int pSize, const unsigned int pBold, const unsigned int pStyle, const unsigned int pColor, float pAngle, float pScaling_Width, float pScaling_Height, float pCenter_X, float pCenter_Y)
 		{
 			if(mpD3D == NULL || mpD3D_Device == NULL ||
 			   mpD3D_Sprite == NULL || mpD3D_Font_Sprite == NULL)
@@ -278,7 +278,7 @@ namespace KIN
 			return true;
 		}
 		
-		Common::KINRect KINRM::CalcStringRect(const std::wstring& pFont, const Common::KINPoint& pPoint, const std::wstring& pText, const unsigned int pSize, const unsigned int pBold, const unsigned int pStyle)
+		Common::KINRect KINRenderManager::CalcStringRect(const std::wstring& pFont, const Common::KINPoint& pPoint, const std::wstring& pText, const unsigned int pSize, const unsigned int pBold, const unsigned int pStyle)
 		{
 			if(mpD3D == NULL || mpD3D_Device == NULL ||
 			   mpD3D_Sprite == NULL || mpD3D_Font_Sprite == NULL)
@@ -296,7 +296,7 @@ namespace KIN
 			
 			return Common::KINRect(rt.left,rt.right,rt.right-rt.left,rt.bottom-rt.top);
 		}
-		Common::KINRect KINRM::CalcStringRect(const std::wstring& pFont, const Common::KINRect& pRect, const std::wstring& pText, const unsigned int pSize, const unsigned int pBold, const unsigned int pStyle)
+		Common::KINRect KINRenderManager::CalcStringRect(const std::wstring& pFont, const Common::KINRect& pRect, const std::wstring& pText, const unsigned int pSize, const unsigned int pBold, const unsigned int pStyle)
 		{
 			if(mpD3D == NULL || mpD3D_Device == NULL ||
 			   mpD3D_Sprite == NULL || mpD3D_Font_Sprite == NULL)

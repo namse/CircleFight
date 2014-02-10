@@ -1,11 +1,11 @@
-#include "KINRM.h"
+#include "KINRenderManager.h"
 #include "KINWM.h"
 
 namespace KIN
 {
 	namespace Render
 	{
-		KINRM::KINRM(void)
+		KINRenderManager::KINRenderManager(void)
 		: mWM(NULL), mpD3D(NULL), mpD3D_Device(NULL), mpD3D_Sprite(NULL), mpD3D_Font_Sprite(NULL), mIsWindowMode(true)
 		{
 			::ZeroMemory(&mD3D_Present_Parameters, sizeof(mD3D_Present_Parameters));
@@ -13,7 +13,7 @@ namespace KIN
 			::ZeroMemory(&mWindowPlacement, sizeof(WINDOWPLACEMENT));
 		}
 
-		KINRM::KINRM(const Window::KINWM& pWM, const bool& pIsWindowMode)
+		KINRenderManager::KINRenderManager(const Window::KINWM& pWM, const bool& pIsWindowMode)
 		: mWM(NULL), mpD3D(NULL), mpD3D_Device(NULL), mpD3D_Sprite(NULL), mpD3D_Font_Sprite(NULL), mIsWindowMode(true)
 		{
 			::ZeroMemory(&mD3D_Present_Parameters, sizeof(mD3D_Present_Parameters));
@@ -23,12 +23,12 @@ namespace KIN
 			Init(pWM, pIsWindowMode);
 		}
 
-		KINRM::~KINRM(void)
+		KINRenderManager::~KINRenderManager(void)
 		{
 			Destroy();
 		}
 
-		bool KINRM::Init_Present_Parameters(void)
+		bool KINRenderManager::Init_Present_Parameters(void)
 		{
 			::ZeroMemory(&mD3D_Present_Parameters, sizeof(mD3D_Present_Parameters));
 
@@ -69,7 +69,7 @@ namespace KIN
 			return true;
 		}
 
-		bool KINRM::Init(const Window::KINWM &pWM, const bool &pIsWindowMode)
+		bool KINRenderManager::Init(const Window::KINWM &pWM, const bool &pIsWindowMode)
 		{
 			Destroy();
 
@@ -145,7 +145,7 @@ namespace KIN
 			return true;
 		}
 
-		void KINRM::Destroy(void)
+		void KINRenderManager::Destroy(void)
 		{
 			if(mpD3D)
 			{
@@ -176,7 +176,7 @@ namespace KIN
 			::ZeroMemory(&mWindowPlacement, sizeof(WINDOWPLACEMENT));
 		}
 
-		bool KINRM::ResetDevice(void)
+		bool KINRenderManager::ResetDevice(void)
 		{
 			if(Init_Present_Parameters())
 			{
@@ -201,7 +201,7 @@ namespace KIN
 			return false;
 		}
 
-		void KINRM::BeginDrawing(unsigned int pColor)
+		void KINRenderManager::BeginDrawing(unsigned int pColor)
 		{
 			HRESULT hr = mpD3D_Device->TestCooperativeLevel();
 
@@ -242,7 +242,7 @@ namespace KIN
 			mpD3D_Sprite->Begin(D3DXSPRITE_ALPHABLEND);
 		}
 
-		void KINRM::EndDrawing(void)
+		void KINRenderManager::EndDrawing(void)
 		{
 			mpD3D_Sprite->End();
 
@@ -253,7 +253,7 @@ namespace KIN
 			// 여기에 디바이스 소실 부분 추가
 		}
 
-		bool KINRM::Capture(const std::wstring& pPath, const Common::KINRect& pRect)
+		bool KINRenderManager::Capture(const std::wstring& pPath, const Common::KINRect& pRect)
 		{
 			IDirect3DSurface9* pBackBuffer;
 			HRESULT hr = mpD3D_Device->GetBackBuffer(0, 0, D3DBACKBUFFER_TYPE_MONO, &pBackBuffer);

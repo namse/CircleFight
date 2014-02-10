@@ -2,11 +2,11 @@
 
 #include "KINCommon.h"
 #include "KINWM.h"
-#include "KINRM.h"
-#include "KINTM.h"
-#include "KINIM.h"
-#include "KINUIM.h"
-#include "KINNM.h"
+#include "KINRenderManager.h"
+#include "KINTimeManager.h"
+#include "KINInputManager.h"
+#include "KINUserInterfaceManager.h"
+#include "KINNetworkManager.h"
 
 using namespace KIN;
 using namespace Common;

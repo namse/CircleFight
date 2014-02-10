@@ -3,15 +3,15 @@
 int main(void)
 {
 	// Server's IP, Port
-	// KINNM net("localhost", 9001);
+	// KINNetworkManager net("localhost", 9001);
 	// Window
 	KINWM win(L"윈도우 이름", KINRect(0, 0, 800, 600));
 	// Render
-	KINRM rdr(win);
+	KINRenderManager rdr(win);
 	// Input
-	KINIM input(&win);
+	KINInputManager input(&win);
 	// Timer
-	KINTM tframe;
+	KINTimeManager tframe;
 
 
 	int x=20, y=20;

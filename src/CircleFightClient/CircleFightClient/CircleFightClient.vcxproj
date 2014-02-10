@@ -81,13 +81,13 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="CircleBuffer.cpp" />
     <ClCompile Include="Font.cpp" />
-    <ClCompile Include="KINIM.cpp" />
-    <ClCompile Include="KINNM.cpp" />
-    <ClCompile Include="KINTM.cpp" />
-    <ClCompile Include="KINUIM.cpp" />
+    <ClCompile Include="KINInputManager.cpp" />
+    <ClCompile Include="KINNetworkManager.cpp" />
+    <ClCompile Include="KINTimeManager.cpp" />
+    <ClCompile Include="KINUserInterfaceManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="KINWM.cpp" />
-    <ClCompile Include="KINRM.cpp" />
+    <ClCompile Include="KINRenderManager.cpp" />
     <ClCompile Include="ProcessPacket.cpp" />
     <ClCompile Include="Texture.cpp" />
   </ItemGroup>
@@ -96,11 +96,11 @@
     <ClInclude Include="CircularBuffer.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="KINEngine.h" />
-    <ClInclude Include="KINIM.h" />
-    <ClInclude Include="KINNM.h" />
-    <ClInclude Include="KINRM.h" />
-    <ClInclude Include="KINTM.h" />
-    <ClInclude Include="KINUIM.h" />
+    <ClInclude Include="KINInputManager.h" />
+    <ClInclude Include="KINNetworkManager.h" />
+    <ClInclude Include="KINRenderManager.h" />
+    <ClInclude Include="KINTimeManager.h" />
+    <ClInclude Include="KINUserInterfaceManager.h" />
     <ClInclude Include="KINWM.h" />
     <ClInclude Include="KINCommon.h" />
     <ClInclude Include="ProcessPacket.h" />

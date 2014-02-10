@@ -1,4 +1,4 @@
-#include "KINRM.h"
+#include "KINRenderManager.h"
 #include "KINWM.h"
 
 namespace KIN
@@ -14,7 +14,7 @@ namespace KIN
 		{
 		}
 
-		bool KINRM::CreateTexture(Texture& pTexture, const Common::KINSize pSize)
+		bool KINRenderManager::CreateTexture(Texture& pTexture, const Common::KINSize pSize)
 		{
 			int Width = 0, Height = 0;
 
@@ -59,7 +59,7 @@ namespace KIN
 			return true;
 		}
 
-		bool KINRM::LoadTextureInFile(Texture& pTexture, const std::wstring& pPath)
+		bool KINRenderManager::LoadTextureInFile(Texture& pTexture, const std::wstring& pPath)
 		{
 			D3DXIMAGE_INFO info;
 
@@ -76,7 +76,7 @@ namespace KIN
 
 			return true;
 		}
-		bool KINRM::LoadTextureInBytes(Texture& pTexture, void* pData, unsigned int pLenght, Common::KINSize pSize)
+		bool KINRenderManager::LoadTextureInBytes(Texture& pTexture, void* pData, unsigned int pLenght, Common::KINSize pSize)
 		{
 			D3DXCreateTextureFromFileInMemoryEx(mpD3D_Device, pData, pLenght, pSize.mWidth, pSize.mHeight,
 											1, 0, D3DFMT_A8R8G8B8, D3DPOOL_MANAGED, D3DX_DEFAULT,
@@ -85,13 +85,13 @@ namespace KIN
 
 			return true;
 		}
-		bool KINRM::LoadTextureInBytesInFile(Texture& pTexture, const std::wstring& pPath)
+		bool KINRenderManager::LoadTextureInBytesInFile(Texture& pTexture, const std::wstring& pPath)
 		{
 
 			return true;
 		}
 		
-		bool KINRM::DrawTexture(Texture& pTexture, const Common::KINPoint& pPoint, int pAlpha)
+		bool KINRenderManager::DrawTexture(Texture& pTexture, const Common::KINPoint& pPoint, int pAlpha)
 		{
 			if(mpD3D == NULL || mpD3D_Device == NULL ||
 			   mpD3D_Sprite == NULL || pTexture.mpTexture == NULL)
@@ -111,7 +111,7 @@ namespace KIN
 
 			return true;
 		}
-		bool KINRM::DrawTexture(Texture& pTexture, const Common::KINPoint& pPoint, float pAngle, float pCenter_X, float pCenter_Y, int pAlpha)
+		bool KINRenderManager::DrawTexture(Texture& pTexture, const Common::KINPoint& pPoint, float pAngle, float pCenter_X, float pCenter_Y, int pAlpha)
 		{
 			if(mpD3D == NULL || mpD3D_Device == NULL ||
 			   mpD3D_Sprite == NULL || pTexture.mpTexture == NULL)
@@ -137,7 +137,7 @@ namespace KIN
 
 			return true;
 		}
-		bool KINRM::DrawTexture(Texture& pTexture, const Common::KINPoint& pPoint, float pScaling_Width, float pScaling_Height, float pCenter_X, float pCenter_Y, int pAlpha)
+		bool KINRenderManager::DrawTexture(Texture& pTexture, const Common::KINPoint& pPoint, float pScaling_Width, float pScaling_Height, float pCenter_X, float pCenter_Y, int pAlpha)
 		{
 			if(mpD3D == NULL || mpD3D_Device == NULL ||
 			   mpD3D_Sprite == NULL || pTexture.mpTexture == NULL)
@@ -161,7 +161,7 @@ namespace KIN
 
 			return true;
 		}
-		bool KINRM::DrawTexture(Texture& pTexture, const Common::KINPoint& pPoint, float pAngle, float pScaling_Width, float pScaling_Height, float pCenter_X, float pCenter_Y, int pAlpha)
+		bool KINRenderManager::DrawTexture(Texture& pTexture, const Common::KINPoint& pPoint, float pAngle, float pScaling_Width, float pScaling_Height, float pCenter_X, float pCenter_Y, int pAlpha)
 		{
 			if(mpD3D == NULL || mpD3D_Device == NULL ||
 			   mpD3D_Sprite == NULL || pTexture.mpTexture == NULL)
@@ -191,7 +191,7 @@ namespace KIN
 
 			return true;
 		}
-		bool KINRM::DrawTexture(Texture& pTexture, const Common::KINPoint& pPoint, const Common::KINRect& pRect, int pAlpha)
+		bool KINRenderManager::DrawTexture(Texture& pTexture, const Common::KINPoint& pPoint, const Common::KINRect& pRect, int pAlpha)
 		{
 			if(mpD3D == NULL || mpD3D_Device == NULL ||
 			   mpD3D_Sprite == NULL || pTexture.mpTexture == NULL)
@@ -211,7 +211,7 @@ namespace KIN
 
 			return true;
 		}
-		bool KINRM::DrawTexture(Texture& pTexture, const Common::KINPoint& pPoint, const Common::KINRect& pRect, float pAngle, float pCenter_X, float pCenter_Y, int pAlpha)
+		bool KINRenderManager::DrawTexture(Texture& pTexture, const Common::KINPoint& pPoint, const Common::KINRect& pRect, float pAngle, float pCenter_X, float pCenter_Y, int pAlpha)
 		{
 			if(mpD3D == NULL || mpD3D_Device == NULL ||
 			   mpD3D_Sprite == NULL || pTexture.mpTexture == NULL)
@@ -237,7 +237,7 @@ namespace KIN
 
 			return true;
 		}
-		bool KINRM::DrawTexture(Texture& pTexture, const Common::KINPoint& pPoint, const Common::KINRect& pRect, float pScaling_Width, float pScaling_Height, float pCenter_X, float pCenter_Y, int pAlpha)
+		bool KINRenderManager::DrawTexture(Texture& pTexture, const Common::KINPoint& pPoint, const Common::KINRect& pRect, float pScaling_Width, float pScaling_Height, float pCenter_X, float pCenter_Y, int pAlpha)
 		{
 			if(mpD3D == NULL || mpD3D_Device == NULL ||
 			   mpD3D_Sprite == NULL || pTexture.mpTexture == NULL)
@@ -261,7 +261,7 @@ namespace KIN
 
 			return true;
 		}
-		bool KINRM::DrawTexture(Texture& pTexture, const Common::KINPoint& pPoint, const Common::KINRect& pRect, float pAngle, float pScaling_Width, float pScaling_Height, float pCenter_X, float pCenter_Y, int pAlpha)
+		bool KINRenderManager::DrawTexture(Texture& pTexture, const Common::KINPoint& pPoint, const Common::KINRect& pRect, float pAngle, float pScaling_Width, float pScaling_Height, float pCenter_X, float pCenter_Y, int pAlpha)
 		{
 			if(mpD3D == NULL || mpD3D_Device == NULL ||
 			   mpD3D_Sprite == NULL || pTexture.mpTexture == NULL)
