@@ -5,12 +5,16 @@
 #pragma comment(linker, "/subsystem:\"windows\" /entry:\"mainCRTStartup\"")
 #endif
 
+#include <SDKDDKVer.h>
+
 // Include Windows
+#define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
 #include <Mmsystem.h>
 #pragma comment(lib, "winmm")
 
 // Include C/C++
+#include <assert.h>
 #include <CStdio>
 #include <CStdlib>
 #include <Iostream>
@@ -31,6 +35,10 @@ using namespace std;
 #include <dinput.h>
 #pragma comment(lib, "dinput8.lib")
 #pragma comment(lib, "dxguid.lib")
+
+// Include Networks
+#include <Winsock2.h>
+#pragma comment(lib, "ws2_32.lib")
 
 namespace KIN
 {

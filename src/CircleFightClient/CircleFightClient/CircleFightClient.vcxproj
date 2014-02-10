@@ -79,25 +79,31 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="CircleBuffer.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="KINIM.cpp" />
+    <ClCompile Include="KINNM.cpp" />
     <ClCompile Include="KINTM.cpp" />
     <ClCompile Include="KINUIM.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="KINWM.cpp" />
     <ClCompile Include="KINRM.cpp" />
+    <ClCompile Include="ProcessPacket.cpp" />
     <ClCompile Include="Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="CircularBuffer.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="KINEngine.h" />
     <ClInclude Include="KINIM.h" />
+    <ClInclude Include="KINNM.h" />
     <ClInclude Include="KINRM.h" />
     <ClInclude Include="KINTM.h" />
     <ClInclude Include="KINUIM.h" />
     <ClInclude Include="KINWM.h" />
     <ClInclude Include="KINCommon.h" />
+    <ClInclude Include="ProcessPacket.h" />
     <ClInclude Include="Texture.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

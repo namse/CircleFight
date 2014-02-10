@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="Engine">
       <UniqueIdentifier>{99507316-3a1b-45d5-93c4-70439f7b1f6c}</UniqueIdentifier>
     </Filter>
@@ -35,10 +31,23 @@
     <Filter Include="Engine\KIN UI Manager">
       <UniqueIdentifier>{edc52e41-398a-48c8-9e19-8e0e918258fb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Engine\KIN Network Manager">
+      <UniqueIdentifier>{6319ca92-c92b-4e64-8b4e-9abaea84baa5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\KIN Network Manager\CircularBuffer">
+      <UniqueIdentifier>{8b7fc444-5915-4418-a84e-9fbaf00e7aac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\KIN Network Manager\ProcessPacket">
+      <UniqueIdentifier>{1c5351a0-a75d-4ebe-a2e8-f689fbbcea46}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Main</Filter>
     </ClCompile>
     <ClCompile Include="KINWM.cpp">
       <Filter>Engine\KIN Window Manager</Filter>
@@ -63,6 +72,15 @@
     </ClCompile>
     <ClCompile Include="KINUIM.cpp">
       <Filter>Engine\KIN UI Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="CircleBuffer.cpp">
+      <Filter>Engine\KIN Network Manager\CircularBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="KINNM.cpp">
+      <Filter>Engine\KIN Network Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="ProcessPacket.cpp">
+      <Filter>Engine\KIN Network Manager\ProcessPacket</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -95,6 +113,15 @@
     </ClInclude>
     <ClInclude Include="Font.h">
       <Filter>Engine\KIN Render Manager\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="KINNM.h">
+      <Filter>Engine\KIN Network Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="CircularBuffer.h">
+      <Filter>Engine\KIN Network Manager\CircularBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcessPacket.h">
+      <Filter>Engine\KIN Network Manager\ProcessPacket</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

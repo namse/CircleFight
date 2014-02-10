@@ -6,6 +6,7 @@
 #include "KINTM.h"
 #include "KINIM.h"
 #include "KINUIM.h"
+#include "KINNM.h"
 
 using namespace KIN;
 using namespace Common;
@@ -14,3 +15,4 @@ using namespace Render;
 using namespace Time;
 using namespace Input;
 using namespace UserInterface;
+using namespace Network;
