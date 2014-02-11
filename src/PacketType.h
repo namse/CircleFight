@@ -1,8 +1,8 @@
 #pragma once
 #include <time.h>
 
-#define KEYSTATE_NOTPRESSED 0
-#define KEYSTATE_PRESSED 1
+#define KEYSTATE_NOTPRESSED false
+#define KEYSTATE_PRESSED true
 
 #define MAX_PLAYER_LEN 20
 #define MAX_NAME_LEN 20
@@ -92,23 +92,18 @@ struct GameKeyStates
 		leftDirectKey = KEYSTATE_NOTPRESSED;
 		rightDirectKey = KEYSTATE_NOTPRESSED;
 		attackKey = KEYSTATE_NOTPRESSED;
-		userActiveSkillKey = KEYSTATE_NOTPRESSED;
-		typeActiveSkillKey = KEYSTATE_NOTPRESSED;
 	}
-	short upDirectKey;
-	short downDirectKey;
-	short leftDirectKey;
-	short rightDirectKey;
-	short attackKey;
-	short userActiveSkillKey;
-	short typeActiveSkillKey;
+	bool upDirectKey;
+	bool downDirectKey;
+	bool leftDirectKey;
+	bool rightDirectKey;
+	bool attackKey;
 };
 
 struct PlayerInfo
 {
 	float mX, mY, mAngle;
 	int mPlayerId;
-	GameKeyStates mGameKeyStates;
 	short mPlayerState;
 	int mHP;
 	Point mMoveDirection;
@@ -132,6 +127,9 @@ struct LoginRequest : public PacketHeader
 		mSize = sizeof(LoginRequest);
 		mType = PKT_CS_LOGIN;
 	}
+	wchar_t mName[MAX_NAME_LEN];
+	short mCountry;
+	short mRoomNumber;
 };
 struct LoginResult : public PacketHeader
 {
@@ -140,11 +138,14 @@ struct LoginResult : public PacketHeader
 		mSize = sizeof(LoginResult);
 		mType = PKT_SC_LOGIN;
 	}
-	PlayerInfo mMyPlayerInfo;
-	int mNowPlayersLength;
-	PlayerInfo mPlayerInfo[MAX_PLAYER_LEN];
-	int mKillScore[2];
+	int mMyPlayerId;
 	int mKillLimit;
+	int mNowPlayersLength;
+	int mNowSkillsLength;
+	int mNowBulletsLength;
+	//PlayerInfo mPlayersInfo[];
+	//BulletInfo mBulletInfo[];
+	//SkillInfo mSkillInfo[];
 };
 struct LoginBroadcastResult : public PacketHeader
 {
@@ -153,7 +154,7 @@ struct LoginBroadcastResult : public PacketHeader
 		mSize = sizeof(LoginBroadcastResult);
 		mType = PKT_SC_LOGIN_BROADCAST;
 	}
-	PlayerInfo mMyPlayerInfo;
+	PlayerInfo mPlayerInfo;
 };
 struct GameKeyStatesUpdateRequest : public PacketHeader
 {
@@ -161,10 +162,10 @@ struct GameKeyStatesUpdateRequest : public PacketHeader
 	{
 		mSize = sizeof(GameKeyStatesUpdateRequest) ;
 		mType = PKT_CS_KEYSTATE ;
-		mMyPlayerInfo.mPlayerId = -1 ;
+		mPlayerId = -1 ;
 	}
-
-	PlayerInfo mMyPlayerInfo;
+	int mPlayerId;
+	GameKeyStates mGameKeyStates;
 } ;
 
 struct GameKeyStatesUpdateResult : public PacketHeader
@@ -198,17 +199,6 @@ struct MouseAngleUpdateRequest : public PacketHeader
 	float mAngle;
 };
 
-struct PlayerKillScoreUpdateResult : public PacketHeader
-{
-	PlayerKillScoreUpdateResult()
-	{
-		mSize = sizeof(PlayerKillScoreUpdateResult);
-		mType = PKT_SC_PLAYER_KILLSCORE_UPDATE;
-	}
-	int mPlayerId;
-	int mKillScore;
-};
-
 struct MouseAngleUpdateResult : public PacketHeader
 {
 	MouseAngleUpdateResult()
@@ -218,6 +208,18 @@ struct MouseAngleUpdateResult : public PacketHeader
 	}
 	int mPlayerId;
 	float mAngle;
+};
+
+
+struct PlayerKillScoreUpdateResult : public PacketHeader
+{
+	PlayerKillScoreUpdateResult()
+	{
+		mSize = sizeof(PlayerKillScoreUpdateResult);
+		mType = PKT_SC_PLAYER_KILLSCORE_UPDATE;
+	}
+	int mPlayerId;
+	int mKillScore;
 };
 
 struct HPUpdateResult : public PacketHeader
@@ -231,17 +233,6 @@ struct HPUpdateResult : public PacketHeader
 	int mHP;
 };
 
-struct KillScoreResult : public PacketHeader
-{
-	KillScoreResult()
-	{
-		mSize = sizeof(KillScoreResult);
-		mType = PKT_SC_KILLSCORE;
-	}
-	int mKillScore[2];
-	int mKillLimit;
-};
-
 struct EndOfGameResult : public PacketHeader
 {
 	EndOfGameResult()
@@ -250,126 +241,5 @@ struct EndOfGameResult : public PacketHeader
 		mType = PKT_SC_ENDOFGAME;
 	}
 	int mWinnerTeam;
-};
-struct ATypeSkillShootResult : public PacketHeader
-{
-	ATypeSkillShootResult()
-	{
-		mSize = sizeof(ATypeSkillShootResult);
-		mType = PKT_SC_A_TYPESKILL_SHOOT;
-	}
-	Point mStartPosition;
-	float mAngle;
-};
-struct ATypeAttackShootResult : public PacketHeader
-{
-	ATypeAttackShootResult()
-	{
-		mSize = sizeof(ATypeAttackShootResult);
-		mType = PKT_SC_A_TYPEATTACK_SHOOT;
-	}
-	Point mStartPosition;
-	float mAngle;
-	int mIndex;
-};
-struct ATypeAttackEndResult : public PacketHeader
-{
-	ATypeAttackEndResult()
-	{
-		mSize = sizeof(ATypeAttackEndResult);
-		mType = PKT_SC_A_TYPEATTACK_END;
-	}
-	int mIndex;
-};
-struct BTypeSkillShootResult : public PacketHeader
-{
-	BTypeSkillShootResult()
-	{
-		mSize = sizeof(BTypeSkillShootResult);
-		mType = PKT_SC_B_TYPESKILL_SHOOT;
-	}
-	Point mStartPosition;
-};
-struct BTypeAttackShootResult : public PacketHeader
-{
-	BTypeAttackShootResult()
-	{
-		mSize = sizeof(BTypeAttackShootResult);
-		mType = PKT_SC_B_TYPEATTACK_SHOOT;
-	}
-	Point mStartPosition;
-	float mAngle;
-	int mIndex;
-};
-struct BTypeAttackEndResult : public PacketHeader
-{
-	BTypeAttackEndResult()
-	{
-		mSize = sizeof(BTypeAttackEndResult);
-		mType = PKT_SC_B_TYPEATTACK_END;
-	}
-	int mIndex;
-};
-
-struct CTypeAttackShootResult : public PacketHeader
-{
-	CTypeAttackShootResult()
-	{
-		mSize = sizeof(CTypeAttackShootResult);
-		mType = PKT_SC_C_TYPEATTACK_SHOOT;
-	}
-	Point mStartPosition;
-	float mAngle;
-	int mIndex;
-};
-struct CTypeAttackEndResult : public PacketHeader
-{
-	CTypeAttackEndResult()
-	{
-		mSize = sizeof(CTypeAttackEndResult);
-		mType = PKT_SC_C_TYPEATTACK_END;
-	}
-	int mIndex;
-};
-struct CTypeSkillShootResult : public PacketHeader
-{
-	CTypeSkillShootResult()
-	{
-		mSize = sizeof(CTypeSkillShootResult);
-		mType = PKT_SC_C_TYPESKILL_SHOOT;
-	}
-	Point mStartPosition;
-	float mAngle;
-};
-
-struct DTypeAttackShootResult : public PacketHeader
-{
-	DTypeAttackShootResult()
-	{
-		mSize = sizeof(DTypeAttackShootResult);
-		mType = PKT_SC_D_TYPEATTACK_SHOOT;
-	}
-	Point mStartPosition;
-	float mAngle;
-};
-struct DTypeSkillShootResult : public PacketHeader
-{
-	DTypeSkillShootResult()
-	{
-		mSize = sizeof(DTypeSkillShootResult);
-		mType = PKT_SC_D_TYPESKILL_SHOOT;
-	}
-	Point mStartPosition;
-	float mAngle;
-	int mIndex;
-};
-struct DTypeSkillEndResult : public PacketHeader
-{
-	DTypeSkillEndResult()
-	{
-		mSize = sizeof(DTypeSkillEndResult);
-		mType = PKT_SC_D_TYPESKILL_END;
-	}
-	int mIndex;
 };
 #pragma pack(pop)

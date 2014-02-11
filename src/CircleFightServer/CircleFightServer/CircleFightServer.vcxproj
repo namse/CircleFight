@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\PacketType.h" />
     <ClInclude Include="CircularBuffer.h" />
     <ClInclude Include="ClientManager.h" />
     <ClInclude Include="ClientSession.h" />
