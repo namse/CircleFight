@@ -22,9 +22,6 @@
     <Filter Include="Core\Util\CircularBuffer">
       <UniqueIdentifier>{1ef6af47-3d45-4234-ab33-ed921851613b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\Util\Exception">
-      <UniqueIdentifier>{5e29bd64-660d-4343-9a3b-893f34b0fb58}</UniqueIdentifier>
-    </Filter>
     <Filter Include="PreCompile">
       <UniqueIdentifier>{031df1aa-db36-4340-b02f-5d2a00ea9b24}</UniqueIdentifier>
     </Filter>
@@ -44,9 +41,6 @@
     </ClInclude>
     <ClInclude Include="CircularBuffer.h">
       <Filter>Core\Util\CircularBuffer</Filter>
-    </ClInclude>
-    <ClInclude Include="Exception.h">
-      <Filter>Core\Util\Exception</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>PreCompile</Filter>
@@ -73,9 +67,6 @@
     </ClCompile>
     <ClCompile Include="CircularBuffer.cpp">
       <Filter>Core\Util\CircularBuffer</Filter>
-    </ClCompile>
-    <ClCompile Include="Exception.cpp">
-      <Filter>Core\Util\Exception</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>PreCompile</Filter>

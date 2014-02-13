@@ -19,18 +19,11 @@ __declspec(thread) int LThreadType = -1 ;
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	/// crash 발생시 dump 남기기 위해서
-	SetUnhandledExceptionFilter(ExceptionFilter) ;
 
 	LThreadType = THREAD_MAIN ;
 
 	/// Manager Init
 	GClientManager = new ClientManager ;
-	GDatabaseJobManager = new DatabaseJobManager ;
-
-	/// DB Helper 초기화
-	if ( false == DbHelper::Initialize(DB_CONN_STR) )
-		return -1 ;
 
 	/// 윈속 초기화
 	WSADATA wsa ;
@@ -71,11 +64,6 @@ int _tmain(int argc, _TCHAR* argv[])
 		return -1 ;
 
 
-	/// DB Thread
-	HANDLE hDbThread = (HANDLE)_beginthreadex (NULL, 0, DatabaseHandlingThread, NULL, 0, (unsigned int*)&dwThreadId) ;
-	if (hDbThread == NULL)
-		return -1 ;
-
 	/// accept loop
 	while ( true )
 	{
@@ -96,15 +84,11 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	CloseHandle( hThread ) ;
 	CloseHandle( hEvent ) ;
-	CloseHandle( hDbThread ) ;
 
 	// 윈속 종료
 	WSACleanup() ;
 
-	DbHelper::Finalize() ;
-
 	delete GClientManager ;
-	delete GDatabaseJobManager ;
 	return 0 ;
 }
 
@@ -159,21 +143,6 @@ unsigned int WINAPI ClientHandlingThread( LPVOID lpParam )
 	CloseHandle( hTimer ) ;
 	return 0;
 } 
-
-unsigned int WINAPI DatabaseHandlingThread( LPVOID lpParam )
-{
-	LThreadType = THREAD_DATABASE ;
-
-	while ( true )
-	{
-		/// 기본적으로 polling 하면서 Job이 있다면 처리 하는 방식
-		GDatabaseJobManager->ExecuteDatabaseJobs() ;
-
-		Sleep(1) ;
-	}
-
-	return 0 ;
-}
 
 void CALLBACK TimerProc(LPVOID lpArg, DWORD dwTimerLowValue, DWORD dwTimerHighValue)
 {
