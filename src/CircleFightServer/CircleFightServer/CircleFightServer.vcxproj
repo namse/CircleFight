@@ -12,20 +12,20 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\PacketType\packet_type.pb.h" />
-    <ClInclude Include="CircularBuffer.h" />
-    <ClInclude Include="ClientManager.h" />
-    <ClInclude Include="ClientSession.h" />
-    <ClInclude Include="Config.h" />
-    <ClInclude Include="Main.h" />
+    <ClInclude Include="circular_buffer.h" />
+    <ClInclude Include="client_manager.h" />
+    <ClInclude Include="client_session.h" />
+    <ClInclude Include="config.h" />
+    <ClInclude Include="main.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\PacketType\packet_type.pb.cc" />
-    <ClCompile Include="CircularBuffer.cpp" />
-    <ClCompile Include="ClientManager.cpp" />
-    <ClCompile Include="ClientSession.cpp" />
-    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="circular_buffer.cpp" />
+    <ClCompile Include="client_manager.cpp" />
+    <ClCompile Include="client_session.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "CircularBuffer.h"
+#include "circular_buffer.h"
 #include <assert.h>
 
 

@@ -1,8 +1,8 @@
 #include "stdafx.h"
-#include "Main.h"
+#include "main.h"
 #include "..\..\PacketType\packet_type.pb.h"
-#include "ClientSession.h"
-#include "ClientManager.h"
+#include "client_session.h"
+#include "client_manager.h"
 
 ClientManager* GClientManager = nullptr ;
 

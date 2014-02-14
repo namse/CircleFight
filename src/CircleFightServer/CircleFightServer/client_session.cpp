@@ -1,7 +1,7 @@
 #include "stdafx.h"
-#include "ClientSession.h"
+#include "client_session.h"
 #include "..\..\PacketType\packet_type.pb.h"
-#include "ClientManager.h"
+#include "client_manager.h"
 
 bool ClientSession::OnConnect(SOCKADDR_IN* addr)
 {

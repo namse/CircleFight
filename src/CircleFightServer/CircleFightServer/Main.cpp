@@ -1,12 +1,12 @@
 #include "stdafx.h"
-#include "Main.h"
+#include "main.h"
 
 #include "Config.h"	
 #include "..\..\PacketType\packet_type.pb.h"
 
 #include "Exception.h"
-#include "ClientSession.h"
-#include "ClientManager.h"
+#include "client_session.h"
+#include "client_manager.h"
 
 #pragma comment(lib,"ws2_32.lib")
 

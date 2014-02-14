@@ -2,7 +2,7 @@
 
 #include "Config.h"
 #include "..\..\PacketType\packet_type.pb.h"
-#include "CircularBuffer.h"
+#include "circular_buffer.h"
 #include <map>
 #include <WinSock2.h>
 
