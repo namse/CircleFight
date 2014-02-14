@@ -2,7 +2,7 @@
 #include "Main.h"
 
 #include "Config.h"	
-#include "..\..\PacketType.h"
+#include "..\..\PacketType\PacketType.h"
 
 #include "Exception.h"
 #include "ClientSession.h"

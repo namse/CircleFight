@@ -51,7 +51,7 @@
     <ClInclude Include="Config.h">
       <Filter>Core\Util</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\PacketType.h">
+    <ClInclude Include="..\..\PacketType\PacketType.pb.h">
       <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
@@ -70,6 +70,9 @@
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>PreCompile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\PacketType\PacketType.pb.cc">
+      <Filter>Core</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

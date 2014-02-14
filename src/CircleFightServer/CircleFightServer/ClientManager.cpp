@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Main.h"
-#include "..\..\PacketType.h"
+#include "..\..\PacketType\PacketType.h"
 #include "ClientSession.h"
 #include "ClientManager.h"
 

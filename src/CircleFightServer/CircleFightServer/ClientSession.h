@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Config.h"
-#include "..\..\PacketType.h"
+#include "..\..\PacketType\PacketType.h"
 #include "CircularBuffer.h"
 #include <map>
 #include <WinSock2.h>

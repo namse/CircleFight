@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "ClientSession.h"
-#include "..\..\PacketType.h"
+#include "..\..\PacketType\PacketType.h"
 #include "ClientManager.h"
 
 bool ClientSession::OnConnect(SOCKADDR_IN* addr)
