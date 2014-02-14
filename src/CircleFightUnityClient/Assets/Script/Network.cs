@@ -1,0 +1,46 @@
+using UnityEngine;
+using System.Collections;
+using System;
+using System.IO;
+using System.Net;
+using System.Net.Sockets;
+using System.Runtime.InteropServices;
+
+[StructLayout(LayoutKind.Sequential,Pack=1)]
+struct PacketHeader
+{
+	public short mSize;
+	public short mType;
+};
+
+public class Network : MonoBehaviour {
+	public TcpClient socket;
+	public NetworkStream stream;
+	public BinaryWriter writer;
+	public BinaryReader reader;
+
+	// Use this for initialization
+	void Start () {
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
+
+	public void Init()
+	{
+		try
+		{
+			socket = new TcpClient ("127.0.0.1", 9001);
+			stream = socket.GetStream ();
+			writer = new BinaryWriter (stream);
+			reader = new BinaryReader (stream);
+			Debug.Log ("소켓 연결");
+		}
+		catch (Exception e)
+		{
+			Debug.Log("Socket error : " + e);
+		}
+	}
+}

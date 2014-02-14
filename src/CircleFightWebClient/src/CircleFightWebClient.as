@@ -8,6 +8,8 @@ package
 	import flash.events.MouseEvent;
 	import flash.utils.ByteArray;
 	
+	import CircularBuffer;
+	
 	import kcBitmap;
 	
 	import kcSocket;
@@ -18,7 +20,7 @@ package
 		public static var STAGE:Stage;
 		public function CircleFightWebClient()
 		{
-			socket.connectTo("localhost", 9555);
+			socket.connectTo("localhost", 9001);
 			
 			if(stage)
 				init();
@@ -46,21 +48,17 @@ package
 			{
 				// changeStageColor(0xFF0000);
 				// bit.DrawBitmap(800, 600);
-				var bytes:ByteArray = new ByteArray();
-				bytes.endian = "littleEndian";
-				bytes.writeInt(4);
-				bytes.writeInt(1000);
-				bytes.writeInt(2);
-				bytes.writeUTFBytes("HI");
-				bytes.writeUTFBytes("");
-				socket.sendData(bytes);
+				var sizeof:ByteArray = new ByteArray();
+				var cb:CircularBuffer = new CircularBuffer();
+				sizeof.writeObject(cb);
 				var bytes2:ByteArray = new ByteArray();
 				bytes2.endian = "littleEndian";
-				bytes2.writeInt(4);
-				bytes2.writeInt(2000);
-				bytes2.writeInt(3);
-				bytes2.writeUTFBytes("HI2");
-				bytes2.writeUTFBytes("");
+				cb.size = sizeof.length;
+				cb.type = 1;
+				cb.x = 100;
+				cb.y = 200;
+				bytes2.writeObject(cb);				
+				trace(bytes2);
 				socket.sendData(bytes2);
 				trace("Sended");
 			}

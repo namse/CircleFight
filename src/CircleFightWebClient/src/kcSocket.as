@@ -28,7 +28,7 @@ package
 			socket.connect(addr, port);
 		}
 		
-		public function sendData(bytes:ByteArray)
+		public function sendData(bytes:ByteArray):void
 		{
 			trace("Socket Send Data");
 			socket.writeBytes(bytes);
