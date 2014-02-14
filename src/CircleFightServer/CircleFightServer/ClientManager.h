@@ -9,7 +9,7 @@ class PacketHeader ;
 class ClientManager
 {
 public:
-	ClientManager() : mLastGCTick(0), mLastClientWorkTick(0)
+	ClientManager() : last_garbage_collect_clock_tick_(0), last_client_work_tick_(0)
 	{}
 
 	ClientSession* CreateClient(SOCKET sock) ;
@@ -24,10 +24,10 @@ private:
 
 private:
 	typedef std::map<SOCKET, ClientSession*> ClientList ;
-	ClientList	mClientList ;
+	ClientList	client_list_ ;
 
-	DWORD		mLastGCTick ;
-	DWORD		mLastClientWorkTick ;
+	DWORD		last_garbage_collect_clock_tick_ ;
+	DWORD		last_client_work_tick_ ;
 } ;
 
 extern ClientManager* GClientManager ;

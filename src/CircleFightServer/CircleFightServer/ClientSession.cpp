@@ -82,8 +82,8 @@ void ClientSession::OnRead(size_t len)
 		{
 		case PKT_CS_LOGIN:
 			{
-				LoginRequest inPacket ;
-				recv_buffer_.Read((char*)&inPacket, header.size()) ;
+				LoginRequest in_packet ;
+				recv_buffer_.Read((char*)&in_packet, header.size()) ;
 			
 			}
 			break ;
@@ -185,27 +185,27 @@ void ClientSession::UpdateDone()
 
 void CALLBACK RecvCompletion(DWORD dwError, DWORD cbTransferred, LPWSAOVERLAPPED lpOverlapped, DWORD dwFlags)
 {
-	ClientSession* fromClient = static_cast<OverlappedIO*>(lpOverlapped)->object_ ;
+	ClientSession* from_client = static_cast<OverlappedIO*>(lpOverlapped)->object_ ;
 	
-	fromClient->DecOverlappedRequest() ;
+	from_client->DecOverlappedRequest() ;
 
-	if ( !fromClient->IsConnected() )
+	if ( !from_client->IsConnected() )
 		return ;
 
 	/// 에러 발생시 해당 세션 종료
 	if ( dwError || cbTransferred == 0 )
 	{
-		fromClient->Disconnect() ;
+		from_client->Disconnect() ;
 		return ;
 	}
 
 	/// 받은 데이터 처리
-	fromClient->OnRead(cbTransferred) ;
+	from_client->OnRead(cbTransferred) ;
 
 	/// 다시 받기
-	if ( false == fromClient->PostRecv() )
+	if ( false == from_client->PostRecv() )
 	{
-		fromClient->Disconnect() ;
+		from_client->Disconnect() ;
 		return ;
 	}
 }
@@ -213,21 +213,21 @@ void CALLBACK RecvCompletion(DWORD dwError, DWORD cbTransferred, LPWSAOVERLAPPED
 
 void CALLBACK SendCompletion(DWORD dwError, DWORD cbTransferred, LPWSAOVERLAPPED lpOverlapped, DWORD dwFlags)
 {
-	ClientSession* fromClient = static_cast<OverlappedIO*>(lpOverlapped)->object_ ;
+	ClientSession* from_client = static_cast<OverlappedIO*>(lpOverlapped)->object_ ;
 
-	fromClient->DecOverlappedRequest() ;
+	from_client->DecOverlappedRequest() ;
 
-	if ( !fromClient->IsConnected() )
+	if ( !from_client->IsConnected() )
 		return ;
 
 	/// 에러 발생시 해당 세션 종료
 	if ( dwError || cbTransferred == 0 )
 	{
-		fromClient->Disconnect() ;
+		from_client->Disconnect() ;
 		return ;
 	}
 
-	fromClient->OnWriteComplete(cbTransferred) ;
+	from_client->OnWriteComplete(cbTransferred) ;
 
 }
 

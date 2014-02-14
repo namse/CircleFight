@@ -9,7 +9,7 @@ ClientManager* GClientManager = nullptr ;
 ClientSession* ClientManager::CreateClient(SOCKET sock)
 {
 	ClientSession* client = new ClientSession(sock) ;
-	mClientList.insert(ClientList::value_type(sock, client)) ;
+	client_list_.insert(ClientList::value_type(sock, client)) ;
 
 	return client ;
 }
@@ -19,7 +19,7 @@ ClientSession* ClientManager::CreateClient(SOCKET sock)
 void ClientManager::BroadcastPacket(ClientSession* from, PacketHeader* pkt)
 {
 	///FYI: C++ STL iterator 스타일의 루프
-	for (ClientList::const_iterator it=mClientList.begin() ; it!=mClientList.end() ; ++it)
+	for (ClientList::const_iterator it=client_list_.begin() ; it!=client_list_.end() ; ++it)
 	{
 		ClientSession* client = it->second ;
 		
@@ -33,18 +33,18 @@ void ClientManager::BroadcastPacket(ClientSession* from, PacketHeader* pkt)
 void ClientManager::OnPeriodWork()
 {
 	/// 접속이 끊긴 세션들 주기적으로 정리 (1초 정도 마다 해주자)
-	DWORD currTick = GetTickCount() ;
-	if ( currTick - mLastGCTick >= 1000 )
+	DWORD current_tick = GetTickCount() ;
+	if ( current_tick - last_garbage_collect_clock_tick_ >= 1000 )
 	{
 		CollectGarbageSessions() ;
-		mLastGCTick = currTick ;
+		last_garbage_collect_clock_tick_ = current_tick ;
 	}
 
 	/// 접속된 클라이언트 세션별로 주기적으로 해줘야 하는 일 (주기는 알아서 정하면 됨 - 지금은 1초로 ㅎㅎ)
-	if ( currTick - mLastClientWorkTick >= 1000 )
+	if ( current_tick - last_client_work_tick_ >= 1000 )
 	{
 		ClientPeriodWork() ;
-		mLastClientWorkTick = currTick ;
+		last_client_work_tick_ = current_tick ;
 	}
 		
 }
@@ -54,7 +54,7 @@ void ClientManager::CollectGarbageSessions()
 	std::vector<ClientSession*> disconnectedSessions ;
 	
 	///FYI: C++ 11 람다를 이용한 스타일
-	std::for_each(mClientList.begin(), mClientList.end(),
+	std::for_each(client_list_.begin(), client_list_.end(),
 		[&](ClientList::const_reference it)
 		{
 			ClientSession* client = it.second ;
@@ -69,7 +69,7 @@ void ClientManager::CollectGarbageSessions()
 	for (size_t i=0 ; i<disconnectedSessions.size() ; ++i)
 	{
 		ClientSession* client = disconnectedSessions[i] ;
-		mClientList.erase(client->socket_) ;
+		client_list_.erase(client->socket_) ;
 		delete client ;
 	}
 
@@ -78,7 +78,7 @@ void ClientManager::CollectGarbageSessions()
 void ClientManager::ClientPeriodWork()
 {
 	/// FYI: C++ 11 스타일의 루프
-	for (auto& it : mClientList)
+	for (auto& it : client_list_)
 	{
 		ClientSession* client = it.second ;
 		client->OnTick() ;
