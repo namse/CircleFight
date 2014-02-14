@@ -18,14 +18,21 @@ public class Network : MonoBehaviour {
 	public NetworkStream stream;
 	public BinaryWriter writer;
 	public BinaryReader reader;
+	
+	public GameObject prefPlayer;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+	{
+		if (Input.GetMouseButtonDown (0))
+		{
+			Instantiate (prefPlayer, Vector3.zero, Quaternion.identity);
+		}
 	}
 
 	public void Init()
