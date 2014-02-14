@@ -2,74 +2,68 @@
 using System.Collections;
 
 public class Player : MonoBehaviour {
-	private float mX;
-	private float mY;
-	private float mVelocityX;
-	private float mVelocityY;
-	private float mAcceleration;
-	private float mAngle;
+	private float x_;
+	private float y_;
+	private float velocity_x_;
+	private float velocity_y_;
+	private float acceleration_;
+	private float angle_;
 	
 	// Use this for initialization
 	void Start ()
 	{
-		mX = mY = mVelocityX = mVelocityY = mAcceleration = mAngle = 0;
+		Init (0, 0, 0, 0, 0, 0);
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		transform.Translate (Vector3.right * mVelocityX * Time.deltaTime);
-		transform.Translate (Vector3.right * mVelocityY * Time.deltaTime);
+		transform.Translate (Vector3.right * velocity_x_ * Time.deltaTime);
+		transform.Translate (Vector3.right * velocity_y_ * Time.deltaTime);
 		
-		mVelocityX = mVelocityX + mAcceleration * Time.deltaTime;
-		mVelocityY = mVelocityY + mAcceleration * Time.deltaTime;
+		velocity_x_ = velocity_x_ + acceleration_ * Time.deltaTime;
+		velocity_y_ = velocity_y_ + acceleration_ * Time.deltaTime;
 	}
 	
-	public void Init(float pX, float pY, float pVelocityX, float pVelocityY, float pAcceleration, float pAngle)
+	public void Init(float x, float y, float velocity_x, float velocity_y, float acceleration, float angle)
 	{
-		mX = pX;
-		mY = pY;
-		mVelocityX = pVelocityX;
-		mVelocityY = pVelocityY;
-		mAcceleration = pAcceleration;
-		mAngle = pAngle;
-		
-		SetPosition (mX, mY);
-		SetVelocity (mVelocityX, mVelocityY);
-		SetAcceleration (mAcceleration);
-		SetAngle (mAngle);
+		SetPosition (x, y);
+		SetVelocity (velocity_x, velocity_y);
+		SetAcceleration (acceleration);
+		SetAngle (angle);
 	}
 	
-	public void SetPosition (float pX, float pY)
+	public void SetPosition (float x, float y)
 	{
-		mX = pX;
-		mY = pY;
+		x_ = x;
+		y_ = y;
+		transform.position = new Vector3(x_, y_);
 	}
-	public void SetVelocity(float pVelocityX, float pVelocityY)
+	public void SetVelocity(float velocity_x, float velocity_y)
 	{
-		mVelocityX = pVelocityX;
-		mVelocityY = pVelocityY;
+		velocity_x_ = velocity_x;
+		velocity_y_ = velocity_y;
 	}
-	public void SetVelocityX(float pVelocityX)
+	public void SetVelocity_x(float velocity_x)
 	{
-		mVelocityX = pVelocityX;
+		velocity_x_ = velocity_x;
 	}
-	public void SetVelocityY(float pVelocityY)
+	public void SetVelocity_y(float velocity_y)
 	{
-		mVelocityY = pVelocityY;
+		velocity_y_ = velocity_y;
 	}
-	public void SetAcceleration(float pAcceleration)
+	public void SetAcceleration(float acceleration)
 	{
-		mAcceleration = pAcceleration;
+		acceleration_ = acceleration;
 	}
-	public void SetAngle(float pAngle)
+	public void SetAngle(float angle)
 	{
-		mAngle = pAngle;
-		transform.rotation = Quaternion.AngleAxis (mAngle, Vector3.right);
+		angle_ = angle;
+		transform.rotation = Quaternion.AngleAxis (angle_, Vector3.right);
 	}
 	
 	public float GetAngle()
 	{
-		return mAngle;
+		return angle_;
 	}
 }
