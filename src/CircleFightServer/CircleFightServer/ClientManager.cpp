@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Main.h"
-#include "..\..\PacketType\PacketType.h"
+#include "..\..\PacketType\packet_type.pb.h"
 #include "ClientSession.h"
 #include "ClientManager.h"
 
@@ -69,7 +69,7 @@ void ClientManager::CollectGarbageSessions()
 	for (size_t i=0 ; i<disconnectedSessions.size() ; ++i)
 	{
 		ClientSession* client = disconnectedSessions[i] ;
-		mClientList.erase(client->mSocket) ;
+		mClientList.erase(client->socket_) ;
 		delete client ;
 	}
 

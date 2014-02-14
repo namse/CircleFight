@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Config.h"
-#include "..\..\PacketType\PacketType.h"
+#include "..\..\PacketType\packet_type.pb.h"
 #include "CircularBuffer.h"
 #include <map>
 #include <WinSock2.h>
@@ -12,20 +12,20 @@ class ClientManager ;
 
 struct OverlappedIO : public OVERLAPPED
 {
-	OverlappedIO() :mObject(nullptr)
+	OverlappedIO() :object_(nullptr)
 	{}
 
-	ClientSession* mObject ;
+	ClientSession* object_ ;
 } ;
 
 class ClientSession
 {
 public:
 	ClientSession(SOCKET sock)
-		: mConnected(false), mLogon(false), mSocket(sock), mPlayerId(-1), mSendBuffer(BUFSIZE), mRecvBuffer(BUFSIZE), mOverlappedRequested(0)
+		: is_connected_(false), is_log_on_(false), socket_(sock), player_id_(-1), send_buffer_(BUFSIZE), recv_buffer_(BUFSIZE), is_overlapped_requested_(0)
 		
 	{
-		memset(&mClientAddr, 0, sizeof(SOCKADDR_IN)) ;
+		memset(&client_address_, 0, sizeof(SOCKADDR_IN)) ;
 	}
 	~ClientSession() {}
 
@@ -43,35 +43,34 @@ public:
 
 	void	Disconnect() ;
 
-	bool	IsConnected() const { return mConnected ; }
+	bool	IsConnected() const { return is_connected_ ; }
 
 
 	/// 현재 Send/Recv 요청 중인 상태인지 검사하기 위함
-	void	IncOverlappedRequest()		{ ++mOverlappedRequested ; }
-	void	DecOverlappedRequest()		{ --mOverlappedRequested ; }
-	bool	DoingOverlappedOperation() const { return mOverlappedRequested > 0 ; }
+	void	IncOverlappedRequest()		{ ++is_overlapped_requested_ ; }
+	void	DecOverlappedRequest()		{ --is_overlapped_requested_ ; }
+	bool	DoingOverlappedOperation() const { return is_overlapped_requested_ > 0 ; }
 
 private:
 	void	OnTick() ;
 
-	void	LoginDone(int pid, double x, double y, double z, const char* name) ;
 	void	UpdateDone() ;
 
 
 private:
-	bool			mConnected ;
-	bool			mLogon ;
-	SOCKET			mSocket ;
+	bool			is_connected_ ;
+	bool			is_log_on_ ;
+	SOCKET			socket_ ;
 
-	int				mPlayerId ;
-	SOCKADDR_IN		mClientAddr ;
+	int				player_id_ ;
+	SOCKADDR_IN		client_address_ ;
 
-	CircularBuffer	mSendBuffer ;
-	CircularBuffer	mRecvBuffer ;
+	CircularBuffer	send_buffer_ ;
+	CircularBuffer	recv_buffer_ ;
 
-	OverlappedIO	mOverlappedSend ;
-	OverlappedIO	mOverlappedRecv ;
-	int				mOverlappedRequested ;
+	OverlappedIO	overlapped_send_ ;
+	OverlappedIO	overlapped_recv_ ;
+	int				is_overlapped_requested_ ;
 
 	friend class ClientManager ;
 } ;
