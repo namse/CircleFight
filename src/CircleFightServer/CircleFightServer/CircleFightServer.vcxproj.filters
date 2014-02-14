@@ -36,9 +36,6 @@
     <ClInclude Include="targetver.h">
       <Filter>PreCompile</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\PacketType\packet_type.pb.h">
-      <Filter>Core</Filter>
-    </ClInclude>
     <ClInclude Include="client_manager.h">
       <Filter>Core\Client\ClientManager</Filter>
     </ClInclude>
@@ -54,13 +51,13 @@
     <ClInclude Include="config.h">
       <Filter>Core\Util</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\PacketType\packet_type.pb.h">
+      <Filter>Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>PreCompile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\PacketType\packet_type.pb.cc">
-      <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="client_manager.cpp">
       <Filter>Core\Client\ClientManager</Filter>
@@ -73,6 +70,9 @@
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Core\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\PacketType\packet_type.pb.cc">
+      <Filter>Core</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
