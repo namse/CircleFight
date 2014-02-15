@@ -49,6 +49,10 @@
      <Compile Include="Assets\Script\Network.cs" />
      <Compile Include="Assets\Script\Player.cs" />
      <Compile Include="Assets\Script\Player_I.cs" />
+     <Compile Include="Assets\Script\packet_type.cs" />
+ <Reference Include="protobuf-net">
+ <HintPath>Assets\Script\protobuf-net.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

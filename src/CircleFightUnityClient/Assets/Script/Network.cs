@@ -1,17 +1,10 @@
 using UnityEngine;
 using System.Collections;
+using System.Runtime.InteropServices;
 using System;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
-using System.Runtime.InteropServices;
-
-[StructLayout(LayoutKind.Sequential,Pack=1)]
-struct PacketHeader
-{
-	public short mSize;
-	public short mType;
-};
 
 public class Network : MonoBehaviour {
 	public TcpClient socket;
@@ -31,7 +24,7 @@ public class Network : MonoBehaviour {
 	{
 		if (Input.GetMouseButtonDown (0))
 		{
-			Instantiate (prefPlayer, Vector3.zero, Quaternion.identity);
+			//Instantiate (prefPlayer, Vector3.zero, Quaternion.identity);
 		}
 	}
 

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using PacketType;
 
 public class Player : MonoBehaviour {
 	[System.Serializable]
@@ -14,30 +15,36 @@ public class Player : MonoBehaviour {
 		public float acceleration_;
 		public float angle_;
 	}
-
-	Player_Info pi_ = new Player_Info ();
+	Player_Info player_info_ = new Player_Info ();
+	Network client = new Network();
 	
 	// Use this for initialization
 	void Start ()
 	{
+		client.Init ();
 		Init (0, 0, 0, 0, 0, 0);
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		transform.Translate (Vector3.right * pi_.velocity_x_ * Time.deltaTime);
-		transform.Translate (Vector3.right * pi_.velocity_y_ * Time.deltaTime);
+		transform.Translate (Vector3.right * player_info_.velocity_x_ * Time.deltaTime);
+		transform.Translate (Vector3.right * player_info_.velocity_y_ * Time.deltaTime);
 		
-		pi_.velocity_x_ = pi_.velocity_x_ + pi_.acceleration_ * Time.deltaTime;
-		pi_.velocity_y_ = pi_.velocity_y_ + pi_.acceleration_ * Time.deltaTime;
+		player_info_.velocity_x_ = player_info_.velocity_x_ + player_info_.acceleration_ * Time.deltaTime;
+		player_info_.velocity_y_ = player_info_.velocity_y_ + player_info_.acceleration_ * Time.deltaTime;
 
-		if (Input.GetMouseButtonDown (0))
+		if (Input.GetMouseButtonUp (0))
 		{
 			SetPosition(0.5f, -0.5f);
 			BinaryFormatter bf = new BinaryFormatter();
 			MemoryStream ms = new MemoryStream();
-			bf.Serialize(ms, pi_);
+			bf.Serialize(ms, player_info_);
+			Debug.Log(ms.Length);
+			client.writer.Write ((short)(4+ms.Length));
+			client.writer.Write ((short)(1));
+			client.writer.Write (ms.ToArray ());
+			client.writer.Flush();
 		}
 	}
 	
@@ -51,35 +58,35 @@ public class Player : MonoBehaviour {
 	
 	public void SetPosition (float x, float y)
 	{
-		pi_.x_ = x;
-		pi_.y_ = y;
-		transform.position = new Vector3(pi_.x_, pi_.y_);
+		player_info_.x_ = x;
+		player_info_.y_ = y;
+		transform.position = new Vector3(player_info_.x_, player_info_.y_);
 	}
 	public void SetVelocity(float velocity_x, float velocity_y)
 	{
-		pi_.velocity_x_ = velocity_x;
-		pi_.velocity_y_ = velocity_y;
+		player_info_.velocity_x_ = velocity_x;
+		player_info_.velocity_y_ = velocity_y;
 	}
 	public void SetVelocity_x(float velocity_x)
 	{
-		pi_.velocity_x_ = velocity_x;
+		player_info_.velocity_x_ = velocity_x;
 	}
 	public void SetVelocity_y(float velocity_y)
 	{
-		pi_.velocity_y_ = velocity_y;
+		player_info_.velocity_y_ = velocity_y;
 	}
 	public void SetAcceleration(float acceleration)
 	{
-		pi_.acceleration_ = acceleration;
+		player_info_.acceleration_ = acceleration;
 	}
 	public void SetAngle(float angle)
 	{
-		pi_.angle_ = angle;
-		transform.rotation = Quaternion.AngleAxis (pi_.angle_, Vector3.right);
+		player_info_.angle_ = angle;
+		transform.rotation = Quaternion.AngleAxis (player_info_.angle_, Vector3.right);
 	}
 	
 	public float GetAngle()
 	{
-		return pi_.angle_;
+		return player_info_.angle_;
 	}
 }

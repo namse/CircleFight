@@ -1,11 +1,6 @@
 using UnityEngine;
 using System.Collections;
 
-public struct data{
-	public int size_;
-	public short type_;
-};
-
 public class Player_I : MonoBehaviour {
 	private float x_;
 	private float y_;
