@@ -6,6 +6,8 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 
+using PacketType;
+
 public class Network : MonoBehaviour {
 	public TcpClient socket;
 	public NetworkStream stream;
@@ -36,6 +38,22 @@ public class Network : MonoBehaviour {
 			stream = socket.GetStream ();
 			writer = new BinaryWriter (stream);
 			reader = new BinaryReader (stream);
+
+			PacketHeader ph = new PacketHeader();
+			ph.size = 8;
+			ph.type = PacketType.PacketType.PKT_CS_LOGIN;
+
+			LoginRequest a = new LoginRequest();
+			a.header = ph;
+
+			byte[] bt;
+			MemoryStream ms = new MemoryStream();
+			ProtoBuf.Serializer.Serialize(ms, a);
+			bt = ms.ToArray ();
+
+			writer.Write(bt);
+			writer.Flush ();
+
 			Debug.Log ("소켓 연결");
 		}
 		catch (Exception e)
