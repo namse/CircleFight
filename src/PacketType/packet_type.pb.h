@@ -23,7 +23,6 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
-#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 
@@ -32,125 +31,11 @@ void  protobuf_AddDesc_packet_5ftype_2eproto();
 void protobuf_AssignDesc_packet_5ftype_2eproto();
 void protobuf_ShutdownFile_packet_5ftype_2eproto();
 
-class PacketHeader;
 class LoginRequest;
 class LoginResult;
 class LoginBroadcastResult;
 
-enum PacketType {
-  PKT_NONE = 0,
-  PKT_CS_LOGIN = 1,
-  PKT_SC_LOGIN = 2,
-  PKT_SC_LOGIN_BROADCAST = 3
-};
-bool PacketType_IsValid(int value);
-const PacketType PacketType_MIN = PKT_NONE;
-const PacketType PacketType_MAX = PKT_SC_LOGIN_BROADCAST;
-const int PacketType_ARRAYSIZE = PacketType_MAX + 1;
-
-const ::google::protobuf::EnumDescriptor* PacketType_descriptor();
-inline const ::std::string& PacketType_Name(PacketType value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    PacketType_descriptor(), value);
-}
-inline bool PacketType_Parse(
-    const ::std::string& name, PacketType* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<PacketType>(
-    PacketType_descriptor(), name, value);
-}
 // ===================================================================
-
-class PacketHeader : public ::google::protobuf::Message {
- public:
-  PacketHeader();
-  virtual ~PacketHeader();
-
-  PacketHeader(const PacketHeader& from);
-
-  inline PacketHeader& operator=(const PacketHeader& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const PacketHeader& default_instance();
-
-  void Swap(PacketHeader* other);
-
-  // implements Message ----------------------------------------------
-
-  PacketHeader* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const PacketHeader& from);
-  void MergeFrom(const PacketHeader& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // required int32 size = 1;
-  inline bool has_size() const;
-  inline void clear_size();
-  static const int kSizeFieldNumber = 1;
-  inline ::google::protobuf::int32 size() const;
-  inline void set_size(::google::protobuf::int32 value);
-
-  // required .PacketType type = 2;
-  inline bool has_type() const;
-  inline void clear_type();
-  static const int kTypeFieldNumber = 2;
-  inline ::PacketType type() const;
-  inline void set_type(::PacketType value);
-
-  // @@protoc_insertion_point(class_scope:PacketHeader)
- private:
-  inline void set_has_size();
-  inline void clear_has_size();
-  inline void set_has_type();
-  inline void clear_has_type();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::int32 size_;
-  int type_;
-
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
-
-  friend void  protobuf_AddDesc_packet_5ftype_2eproto();
-  friend void protobuf_AssignDesc_packet_5ftype_2eproto();
-  friend void protobuf_ShutdownFile_packet_5ftype_2eproto();
-
-  void InitAsDefaultInstance();
-  static PacketHeader* default_instance_;
-};
-// -------------------------------------------------------------------
 
 class LoginRequest : public ::google::protobuf::Message {
  public:
@@ -206,26 +91,14 @@ class LoginRequest : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required .PacketHeader header = 1;
-  inline bool has_header() const;
-  inline void clear_header();
-  static const int kHeaderFieldNumber = 1;
-  inline const ::PacketHeader& header() const;
-  inline ::PacketHeader* mutable_header();
-  inline ::PacketHeader* release_header();
-  inline void set_allocated_header(::PacketHeader* header);
-
   // @@protoc_insertion_point(class_scope:LoginRequest)
  private:
-  inline void set_has_header();
-  inline void clear_has_header();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::PacketHeader* header_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[1];
 
   friend void  protobuf_AddDesc_packet_5ftype_2eproto();
   friend void protobuf_AssignDesc_packet_5ftype_2eproto();
@@ -290,15 +163,6 @@ class LoginResult : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required .PacketHeader header = 1;
-  inline bool has_header() const;
-  inline void clear_header();
-  static const int kHeaderFieldNumber = 1;
-  inline const ::PacketHeader& header() const;
-  inline ::PacketHeader* mutable_header();
-  inline ::PacketHeader* release_header();
-  inline void set_allocated_header(::PacketHeader* header);
-
   // required int32 player_id = 2;
   inline bool has_player_id() const;
   inline void clear_player_id();
@@ -308,18 +172,15 @@ class LoginResult : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:LoginResult)
  private:
-  inline void set_has_header();
-  inline void clear_has_header();
   inline void set_has_player_id();
   inline void clear_has_player_id();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::PacketHeader* header_;
   ::google::protobuf::int32 player_id_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
 
   friend void  protobuf_AddDesc_packet_5ftype_2eproto();
   friend void protobuf_AssignDesc_packet_5ftype_2eproto();
@@ -384,15 +245,6 @@ class LoginBroadcastResult : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required .PacketHeader mHeader = 1;
-  inline bool has_mheader() const;
-  inline void clear_mheader();
-  static const int kMHeaderFieldNumber = 1;
-  inline const ::PacketHeader& mheader() const;
-  inline ::PacketHeader* mutable_mheader();
-  inline ::PacketHeader* release_mheader();
-  inline void set_allocated_mheader(::PacketHeader* mheader);
-
   // required int32 player_id = 2;
   inline bool has_player_id() const;
   inline void clear_player_id();
@@ -402,18 +254,15 @@ class LoginBroadcastResult : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:LoginBroadcastResult)
  private:
-  inline void set_has_mheader();
-  inline void clear_has_mheader();
   inline void set_has_player_id();
   inline void clear_has_player_id();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::PacketHeader* mheader_;
   ::google::protobuf::int32 player_id_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
 
   friend void  protobuf_AddDesc_packet_5ftype_2eproto();
   friend void protobuf_AssignDesc_packet_5ftype_2eproto();
@@ -427,146 +276,21 @@ class LoginBroadcastResult : public ::google::protobuf::Message {
 
 // ===================================================================
 
-// PacketHeader
-
-// required int32 size = 1;
-inline bool PacketHeader::has_size() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void PacketHeader::set_has_size() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void PacketHeader::clear_has_size() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void PacketHeader::clear_size() {
-  size_ = 0;
-  clear_has_size();
-}
-inline ::google::protobuf::int32 PacketHeader::size() const {
-  return size_;
-}
-inline void PacketHeader::set_size(::google::protobuf::int32 value) {
-  set_has_size();
-  size_ = value;
-}
-
-// required .PacketType type = 2;
-inline bool PacketHeader::has_type() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void PacketHeader::set_has_type() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void PacketHeader::clear_has_type() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void PacketHeader::clear_type() {
-  type_ = 0;
-  clear_has_type();
-}
-inline ::PacketType PacketHeader::type() const {
-  return static_cast< ::PacketType >(type_);
-}
-inline void PacketHeader::set_type(::PacketType value) {
-  assert(::PacketType_IsValid(value));
-  set_has_type();
-  type_ = value;
-}
-
-// -------------------------------------------------------------------
-
 // LoginRequest
-
-// required .PacketHeader header = 1;
-inline bool LoginRequest::has_header() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void LoginRequest::set_has_header() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void LoginRequest::clear_has_header() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void LoginRequest::clear_header() {
-  if (header_ != NULL) header_->::PacketHeader::Clear();
-  clear_has_header();
-}
-inline const ::PacketHeader& LoginRequest::header() const {
-  return header_ != NULL ? *header_ : *default_instance_->header_;
-}
-inline ::PacketHeader* LoginRequest::mutable_header() {
-  set_has_header();
-  if (header_ == NULL) header_ = new ::PacketHeader;
-  return header_;
-}
-inline ::PacketHeader* LoginRequest::release_header() {
-  clear_has_header();
-  ::PacketHeader* temp = header_;
-  header_ = NULL;
-  return temp;
-}
-inline void LoginRequest::set_allocated_header(::PacketHeader* header) {
-  delete header_;
-  header_ = header;
-  if (header) {
-    set_has_header();
-  } else {
-    clear_has_header();
-  }
-}
 
 // -------------------------------------------------------------------
 
 // LoginResult
 
-// required .PacketHeader header = 1;
-inline bool LoginResult::has_header() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void LoginResult::set_has_header() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void LoginResult::clear_has_header() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void LoginResult::clear_header() {
-  if (header_ != NULL) header_->::PacketHeader::Clear();
-  clear_has_header();
-}
-inline const ::PacketHeader& LoginResult::header() const {
-  return header_ != NULL ? *header_ : *default_instance_->header_;
-}
-inline ::PacketHeader* LoginResult::mutable_header() {
-  set_has_header();
-  if (header_ == NULL) header_ = new ::PacketHeader;
-  return header_;
-}
-inline ::PacketHeader* LoginResult::release_header() {
-  clear_has_header();
-  ::PacketHeader* temp = header_;
-  header_ = NULL;
-  return temp;
-}
-inline void LoginResult::set_allocated_header(::PacketHeader* header) {
-  delete header_;
-  header_ = header;
-  if (header) {
-    set_has_header();
-  } else {
-    clear_has_header();
-  }
-}
-
 // required int32 player_id = 2;
 inline bool LoginResult::has_player_id() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+  return (_has_bits_[0] & 0x00000001u) != 0;
 }
 inline void LoginResult::set_has_player_id() {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000001u;
 }
 inline void LoginResult::clear_has_player_id() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 inline void LoginResult::clear_player_id() {
   player_id_ = 0;
@@ -584,53 +308,15 @@ inline void LoginResult::set_player_id(::google::protobuf::int32 value) {
 
 // LoginBroadcastResult
 
-// required .PacketHeader mHeader = 1;
-inline bool LoginBroadcastResult::has_mheader() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void LoginBroadcastResult::set_has_mheader() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void LoginBroadcastResult::clear_has_mheader() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void LoginBroadcastResult::clear_mheader() {
-  if (mheader_ != NULL) mheader_->::PacketHeader::Clear();
-  clear_has_mheader();
-}
-inline const ::PacketHeader& LoginBroadcastResult::mheader() const {
-  return mheader_ != NULL ? *mheader_ : *default_instance_->mheader_;
-}
-inline ::PacketHeader* LoginBroadcastResult::mutable_mheader() {
-  set_has_mheader();
-  if (mheader_ == NULL) mheader_ = new ::PacketHeader;
-  return mheader_;
-}
-inline ::PacketHeader* LoginBroadcastResult::release_mheader() {
-  clear_has_mheader();
-  ::PacketHeader* temp = mheader_;
-  mheader_ = NULL;
-  return temp;
-}
-inline void LoginBroadcastResult::set_allocated_mheader(::PacketHeader* mheader) {
-  delete mheader_;
-  mheader_ = mheader;
-  if (mheader) {
-    set_has_mheader();
-  } else {
-    clear_has_mheader();
-  }
-}
-
 // required int32 player_id = 2;
 inline bool LoginBroadcastResult::has_player_id() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+  return (_has_bits_[0] & 0x00000001u) != 0;
 }
 inline void LoginBroadcastResult::set_has_player_id() {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000001u;
 }
 inline void LoginBroadcastResult::clear_has_player_id() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 inline void LoginBroadcastResult::clear_player_id() {
   player_id_ = 0;
@@ -651,10 +337,6 @@ inline void LoginBroadcastResult::set_player_id(::google::protobuf::int32 value)
 namespace google {
 namespace protobuf {
 
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::PacketType>() {
-  return ::PacketType_descriptor();
-}
 
 }  // namespace google
 }  // namespace protobuf

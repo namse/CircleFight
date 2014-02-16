@@ -2,7 +2,6 @@
 using System.Collections;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using PacketType;
 
 public class Player : MonoBehaviour {
 	[System.Serializable]

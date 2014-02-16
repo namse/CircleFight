@@ -7,50 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from: PacketType.proto
-using UnityEngine;
-using System.Collections;
-using System.Runtime.InteropServices;
-
-
-namespace PacketType
+// Generated from: packet_type.proto
+namespace packet_type
 {
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"PacketHeader")]
-  public partial class PacketHeader : global::ProtoBuf.IExtensible
-  {
-    public PacketHeader() {}
-    
-    private int _size;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"size", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int size
-    {
-      get { return _size; }
-      set { _size = value; }
-    }
-    private PacketType _type;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public PacketType type
-    {
-      get { return _type; }
-      set { _type = value; }
-    }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"LoginRequest")]
   public partial class LoginRequest : global::ProtoBuf.IExtensible
   {
     public LoginRequest() {}
     
-    private PacketHeader _header;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"header", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public PacketHeader header
-    {
-      get { return _header; }
-      set { _header = value; }
-    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -61,13 +25,6 @@ namespace PacketType
   {
     public LoginResult() {}
     
-    private PacketHeader _header;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"header", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public PacketHeader header
-    {
-      get { return _header; }
-      set { _header = value; }
-    }
     private int _player_id;
     [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"player_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int player_id
@@ -85,13 +42,6 @@ namespace PacketType
   {
     public LoginBroadcastResult() {}
     
-    private PacketHeader _mHeader;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"mHeader", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public PacketHeader mHeader
-    {
-      get { return _mHeader; }
-      set { _mHeader = value; }
-    }
     private int _player_id;
     [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"player_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int player_id
@@ -103,22 +53,5 @@ namespace PacketType
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
-  
-    [global::ProtoBuf.ProtoContract(Name=@"PacketType")]
-    public enum PacketType
-    {
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"PKT_NONE", Value=0)]
-      PKT_NONE = 0,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"PKT_CS_LOGIN", Value=1)]
-      PKT_CS_LOGIN = 1,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"PKT_SC_LOGIN", Value=2)]
-      PKT_SC_LOGIN = 2,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"PKT_SC_LOGIN_BROADCAST", Value=3)]
-      PKT_SC_LOGIN_BROADCAST = 3
-    }
   
 }

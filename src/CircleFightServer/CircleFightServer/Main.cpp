@@ -23,7 +23,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	STARTUPINFO si = {0,};
 	PROCESS_INFORMATION pi = {0,};
 	si.cb = sizeof(si);
-	wchar_t params[255] = L"sockpol.exe";
+	wchar_t params[255] = L"sockpol.exe --all";
 	if( false == CreateProcess(NULL,params,NULL,NULL,false,0,NULL,NULL,&si,&pi) )
 		return -1;
 

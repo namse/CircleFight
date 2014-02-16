@@ -16,7 +16,7 @@ bool ClientSession::OnConnect(SOCKADDR_IN* addr)
 	::setsockopt(socket_, IPPROTO_TCP, TCP_NODELAY, (const char*)&opt, sizeof(int)) ;
 
 	printf("[DEBUG] Client Connected: IP=%s, PORT=%d\n", inet_ntoa(client_address_.sin_addr), ntohs(client_address_.sin_port)) ;
-	
+
 	is_connected_ = true ;
 
 	return PostRecv() ;
@@ -69,22 +69,24 @@ void ClientSession::OnRead(size_t len)
 	/// 패킷 파싱하고 처리
 	while ( true )
 	{
+		char packet_data[MAX_PKT_SIZE];
 		/// 패킷 헤더 크기 만큼 읽어와보기
-		PacketHeader header;
-		if ( false == recv_buffer_.Peek((char*)&header, sizeof(PacketHeader)) )
+		PacketHeader packet_header = {0,};
+		if ( false == recv_buffer_.Peek((char*)&packet_header, sizeof(packet_header) ) )
 			return ;
 
-		/// 패킷 완성이 되는가? 
-		if ( recv_buffer_.GetStoredSize() < (header.size() - sizeof(PacketHeader)) )
-			return ;
+
 		/// 패킷 핸들링
-		switch ( header.type() )
+		switch ( packet_header.type )
 		{
 		case PKT_CS_LOGIN:
 			{
-				LoginRequest in_packet ;
-				recv_buffer_.Read((char*)&in_packet, header.size()) ;
-			
+				LoginRequest in_packet;
+				/// 패킷 완성이 되는가? 
+				if ( recv_buffer_.GetStoredSize() < (packet_header.size) )
+					return ;
+				recv_buffer_.Read(packet_data, packet_header.size);
+				in_packet.ParseFromArray(packet_data, packet_header.size);
 			}
 			break ;
 
@@ -105,7 +107,7 @@ bool ClientSession::Send(PacketHeader* pkt)
 		return false ;
 
 	/// 버퍼 용량 부족인 경우는 끊어버림
-	if ( false == send_buffer_.Write((char*)pkt, pkt->size()) )
+	if ( false == send_buffer_.Write((char*)pkt, pkt->size) )
 	{
 		Disconnect() ;
 		return false ;
@@ -119,14 +121,14 @@ bool ClientSession::Send(PacketHeader* pkt)
 		Disconnect() ;
 		return false ;
 	}
-		
+
 	DWORD send_bytes = 0 ;
 	DWORD flags = 0 ;
 
 	WSABUF buf ;
 	buf.len = (ULONG)send_buffer_.GetContiguiousBytes() ;
 	buf.buf = (char*)send_buffer_.GetBufferStart() ;
-	
+
 	memset(&overlapped_send_, 0, sizeof(OverlappedIO)) ;
 	overlapped_send_.object_ = this ;
 
@@ -186,7 +188,7 @@ void ClientSession::UpdateDone()
 void CALLBACK RecvCompletion(DWORD dwError, DWORD cbTransferred, LPWSAOVERLAPPED lpOverlapped, DWORD dwFlags)
 {
 	ClientSession* from_client = static_cast<OverlappedIO*>(lpOverlapped)->object_ ;
-	
+
 	from_client->DecOverlappedRequest() ;
 
 	if ( !from_client->IsConnected() )

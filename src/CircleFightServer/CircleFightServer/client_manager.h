@@ -4,7 +4,7 @@
 #include <WinSock2.h>
 
 class ClientSession ;
-class PacketHeader ;
+struct PacketHeader ;
 
 class ClientManager
 {
