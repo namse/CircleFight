@@ -19,6 +19,13 @@ __declspec(thread) int LThreadType = -1 ;
 
 int _tmain(int argc, _TCHAR* argv[])
 {
+	/// Policy Server
+	STARTUPINFO si = {0,};
+	PROCESS_INFORMATION pi = {0,};
+	si.cb = sizeof(si);
+	wchar_t params[255] = L"sockpol.exe";
+	if( false == CreateProcess(NULL,params,NULL,NULL,false,0,NULL,NULL,&si,&pi) )
+		return -1;
 
 	LThreadType = THREAD_MAIN ;
 
@@ -64,6 +71,9 @@ int _tmain(int argc, _TCHAR* argv[])
 		return -1 ;
 
 
+
+
+
 	/// accept loop
 	while ( true )
 	{
@@ -84,7 +94,10 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	CloseHandle( hThread ) ;
 	CloseHandle( hEvent ) ;
-
+	PostThreadMessage( pi.dwThreadId, WM_CLOSE, NULL, NULL );
+	CloseHandle( pi.hProcess );
+	CloseHandle( pi.hThread );
+	
 	// 윈속 종료
 	WSACleanup() ;
 
