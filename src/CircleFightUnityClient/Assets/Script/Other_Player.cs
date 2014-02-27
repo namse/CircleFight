@@ -3,7 +3,7 @@ using System.Collections;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-public class Player : MonoBehaviour {
+public class Other_Player : MonoBehaviour {
 	[System.Serializable]
 	public struct Player_Info
 	{
@@ -21,7 +21,7 @@ public class Player : MonoBehaviour {
 	void Start ()
 	{
 		client.Init ();
-		Init (0, 0, 0, 0, 0, 0);
+		//Init (0, 0, 0, 0, 0, 0);
 	}
 	
 	// Update is called once per frame

@@ -8,37 +8,27 @@ using System.Net.Sockets;
 using packet_type;
 
 public class Network : MonoBehaviour {
+	// Packet Header
 	struct PacketHeader{
 		public short size;
 		public short type;
 	};
+	// Packet From
 	public const int	PKT_NONE = 0;
 	public const int 	PKT_CS_LOGIN = 1;
 	public const int	PKT_SC_LOGIN = 2;
 	public const int	PKT_SC_LOGIN_BROADCAST = 3;
+	// Packet To
 
+	// Socket
+	public bool socket_ready;
 	public TcpClient socket;
 	public NetworkStream stream;
 	public BinaryWriter writer;
 	public BinaryReader reader;
-	
-	public GameObject prefPlayer;
 
 	// Use this for initialization
-	void Start ()
-	{
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-		if (Input.GetMouseButtonDown (0))
-		{
-			//Instantiate (prefPlayer, Vector3.zero, Quaternion.identity);
-		}
-	}
-
-	public void Init()
+	void Awake ()
 	{
 		try
 		{
@@ -47,21 +37,72 @@ public class Network : MonoBehaviour {
 			writer = new BinaryWriter (stream);
 			reader = new BinaryReader (stream);
 
-			PacketHeader packet_header;
-			packet_header.type = PKT_CS_LOGIN;
-			LoginRequest login_request = new LoginRequest();
+			socket.NoDelay = true;
+			socket.ReceiveTimeout = 1;
+			
+			Debug.Log ("Socket Success");
+		}
+		catch (Exception e)
+		{
+			Debug.Log("Socket error : " + e);
+		}
+	}
+	
+	// Update is called once per frame
+	void Update ()
+	{
+		//if (Input.GetMouseButtonDown (0))
+		//{
+			//
+		//}
+	}
 
-			byte[] bt;
-			MemoryStream ms = new MemoryStream();
-			ProtoBuf.Serializer.Serialize(ms, login_request);
-			bt = ms.ToArray ();
-			packet_header.size = (short)bt.Length;
+	public void SendPacket(short type, global::ProtoBuf.IExtensible packet)
+	{
+		byte[] byte_array;
+		MemoryStream memory_stream = new MemoryStream ();
+		ProtoBuf.Serializer.Serialize (memory_stream, packet);
+		byte_array = memory_stream.ToArray ();
 
-			writer.Write(packet_header.size);
-			writer.Write(packet_header.type);
-			writer.Write(bt);
-			writer.Flush ();
+		writer.Write ((short)(byte_array.Length));
+		writer.Write ((short)(type));
+		writer.Write (byte_array);
+		writer.Flush ();
+	}
 
+	public void ReadPacket()
+	{
+		if (!socket_ready)
+		{
+			return;
+		}
+
+		try
+		{
+			short size, type;
+			byte[] bytes;
+			size = reader.ReadInt16 ();
+			type = reader.ReadInt16 ();
+			bytes = reader.ReadBytes (size);
+
+			if(bytes.Length != size)
+			{
+				// Packet Error : Lost Payload or Controlled
+			}
+			//////////////////////
+			// Read Byte Arrays //
+			//////////////////////
+		} catch(Exception e)
+		{
+			// Error
+			return;
+		}
+	}
+
+	public void Init()
+	{
+		try
+		{
 			Debug.Log ("소켓 연결");
 		}
 		catch (Exception e)

@@ -47,8 +47,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Script\Network.cs" />
-     <Compile Include="Assets\Script\Player.cs" />
+     <Compile Include="Assets\Script\Other_Player.cs" />
      <Compile Include="Assets\Script\Player_I.cs" />
+     <Compile Include="Assets\Script\PrefabManager.cs" />
      <Compile Include="Assets\Script\packet_type.cs" />
  <Reference Include="protobuf-net">
  <HintPath>Assets\Script\protobuf-net.dll</HintPath>

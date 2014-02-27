@@ -12,7 +12,7 @@ public class Player_I : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
-		Init (0, 0, 0, 0, 0, 0);
+		//Init (0, 0, 0, 0, 0, 0);
 	}
 	
 	// Update is called once per frame
