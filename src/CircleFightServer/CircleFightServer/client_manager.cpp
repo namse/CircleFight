@@ -16,7 +16,7 @@ ClientSession* ClientManager::CreateClient(SOCKET sock)
 
 
 
-void ClientManager::BroadcastPacket(ClientSession* from, PacketHeader* pkt)
+void ClientManager::BroadcastPacket(ClientSession* from, Packet* pkt)
 {
 	///FYI: C++ STL iterator 스타일의 루프
 	for (ClientList::const_iterator it=client_list_.begin() ; it!=client_list_.end() ; ++it)
@@ -26,7 +26,7 @@ void ClientManager::BroadcastPacket(ClientSession* from, PacketHeader* pkt)
 		if ( from == client )
 			continue ;
 		
-		client->Send(pkt) ;
+		client->Write(pkt) ;
 	}
 }
 

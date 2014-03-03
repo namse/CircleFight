@@ -77,16 +77,16 @@ void ClientSession::OnRead(size_t len)
 
 
 		/// 패킷 핸들링
-		switch ( packet_header.type )
+		switch ( packet_header.type_ )
 		{
 		case PKT_CS_LOGIN:
 			{
 				LoginRequest in_packet;
 				/// 패킷 완성이 되는가? 
-				if ( recv_buffer_.GetStoredSize() < (packet_header.size) )
+				if ( recv_buffer_.GetStoredSize() < (packet_header.size_) )
 					return ;
-				recv_buffer_.Read(packet_data, packet_header.size);
-				in_packet.ParseFromArray(packet_data, packet_header.size);
+				recv_buffer_.Read(packet_data, packet_header.size_);
+				in_packet.ParseFromArray(packet_data, packet_header.size_);
 			}
 			break ;
 
@@ -101,24 +101,16 @@ void ClientSession::OnRead(size_t len)
 	}
 }
 
-bool ClientSession::Send(PacketHeader* pkt)
+bool ClientSession::Send()
 {
 	if ( !IsConnected() )
 		return false ;
 
-	/// 버퍼 용량 부족인 경우는 끊어버림
-	if ( false == send_buffer_.Write((char*)pkt, pkt->size) )
-	{
-		Disconnect() ;
-		return false ;
-	}
 
 	/// 보낼 데이터가 있는지 검사
 	if ( send_buffer_.GetContiguiousBytes() == 0 )
 	{
 		/// 방금전에 write 했는데, 데이터가 없다면 뭔가 잘못된 것
-		assert(false) ;
-		Disconnect() ;
 		return false ;
 	}
 
@@ -156,10 +148,16 @@ void ClientSession::OnWriteComplete(size_t len)
 
 }
 
-bool ClientSession::Broadcast(PacketHeader* pkt)
+bool ClientSession::Broadcast(Packet* pkt)
 {
-	if ( !Send(pkt) )
+	if ( !Write(pkt) )
 		return false ;
+
+	return BroadcastWithoutMe(pkt);
+}
+
+bool ClientSession::BroadcastWithoutMe(Packet* pkt)
+{
 
 	if ( !IsConnected() )
 		return false ;
@@ -167,6 +165,16 @@ bool ClientSession::Broadcast(PacketHeader* pkt)
 	GClientManager->BroadcastPacket(this, pkt) ;
 
 	return true ;
+}
+
+bool ClientSession::Write(Packet* pkt)
+{
+	/// 버퍼 용량 부족인 경우는 끊어버림
+	if ( false == send_buffer_.Write((char*)pkt, pkt->packet_header_.size_) )
+	{
+		Disconnect() ;
+		return false ;
+	}
 }
 
 void ClientSession::OnTick()

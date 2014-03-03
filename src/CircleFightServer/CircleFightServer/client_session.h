@@ -38,8 +38,10 @@ public:
 	
 	bool	PostRecv() ;
 
-	bool	Send(PacketHeader* pkt) ;
-	bool	Broadcast(PacketHeader* pkt) ;
+	bool	Send() ;
+	bool	Broadcast(Packet* pkt) ;
+	bool	BroadcastWithoutMe(Packet* pkt);
+	bool	Write(Packet* pkt);
 
 	void	Disconnect() ;
 

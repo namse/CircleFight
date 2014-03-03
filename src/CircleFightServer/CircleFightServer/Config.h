@@ -7,11 +7,17 @@
 
 #define MAX_PKT_SIZE 1024
 
+
 struct PacketHeader{
-	short size;
-	short type;
+	short size_;
+	short type_;
 };
 
+struct Packet
+{
+	PacketHeader packet_header_;
+	char packet_data_ [MAX_PKT_SIZE];
+};
 const int	PKT_NONE = 0;
 const int 	PKT_CS_LOGIN = 1;
 const int	PKT_SC_LOGIN = 2;

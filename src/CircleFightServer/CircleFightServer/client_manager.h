@@ -4,7 +4,7 @@
 #include <WinSock2.h>
 
 class ClientSession ;
-struct PacketHeader ;
+struct Packet ;
 
 class ClientManager
 {
@@ -14,7 +14,7 @@ public:
 
 	ClientSession* CreateClient(SOCKET sock) ;
 	
-	void BroadcastPacket(ClientSession* from, PacketHeader* pkt) ;
+	void BroadcastPacket(ClientSession* from, Packet* pkt) ;
 
 	void OnPeriodWork() ;
 
