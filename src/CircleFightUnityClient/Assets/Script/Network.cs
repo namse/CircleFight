@@ -9,26 +9,28 @@ using packet_type;
 
 public class Network : MonoBehaviour {
 	// Packet Header
-	struct PacketHeader{
+	struct PacketHeader
+	{
 		public short size;
 		public short type;
 	};
 	// Packet From
-	public const int	PKT_NONE = 0;
-	public const int 	PKT_CS_LOGIN = 1;
-	public const int	PKT_SC_LOGIN = 2;
-	public const int	PKT_SC_LOGIN_BROADCAST = 3;
+	public const short	PKT_NONE = 0;
+	public const short 	PKT_CS_LOGIN = 1;
+	public const short	PKT_SC_LOGIN = 2;
+	public const short	PKT_SC_LOGIN_BROADCAST = 3;
+	public const short	PKT_MAX = 4;
 	// Packet To
 
 	// Socket
-	public bool socket_ready;
+	public bool socket_ready = false;
 	public TcpClient socket;
 	public NetworkStream stream;
 	public BinaryWriter writer;
 	public BinaryReader reader;
 
 	// Use this for initialization
-	void Awake ()
+	void Start ()
 	{
 		try
 		{
@@ -39,12 +41,13 @@ public class Network : MonoBehaviour {
 
 			socket.NoDelay = true;
 			socket.ReceiveTimeout = 1;
-			
-			Debug.Log ("Socket Success");
+
+			socket_ready = true;
+			Debug.Log ("Socket Connection Success");
 		}
 		catch (Exception e)
 		{
-			Debug.Log("Socket error : " + e);
+			Debug.Log("Socket Connection Error : " + e);
 		}
 	}
 	
@@ -59,10 +62,14 @@ public class Network : MonoBehaviour {
 
 	public void SendPacket(short type, global::ProtoBuf.IExtensible packet)
 	{
-		byte[] byte_array;
+		if (!socket_ready)
+		{
+			return;
+		}
+
 		MemoryStream memory_stream = new MemoryStream ();
 		ProtoBuf.Serializer.Serialize (memory_stream, packet);
-		byte_array = memory_stream.ToArray ();
+		byte[] byte_array = memory_stream.ToArray ();
 
 		writer.Write ((short)(byte_array.Length));
 		writer.Write ((short)(type));
@@ -89,25 +96,16 @@ public class Network : MonoBehaviour {
 			{
 				// Packet Error : Lost Payload or Controlled
 			}
-			//////////////////////
-			// Read Byte Arrays //
-			//////////////////////
+
+			if(0 <= type && type < PKT_MAX)
+			{
+				// Check Packet
+			}
+
+			// Push to MemoryStream
 		} catch(Exception e)
 		{
-			// Error
-			return;
-		}
-	}
-
-	public void Init()
-	{
-		try
-		{
-			Debug.Log ("소켓 연결");
-		}
-		catch (Exception e)
-		{
-			Debug.Log("Socket error : " + e);
+			Debug.Log ("Read to Socket Error : " + e);
 		}
 	}
 }

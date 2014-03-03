@@ -7,11 +7,16 @@ public class PrefabManager : MonoBehaviour {
 	// Use this for initialization
 	void Awake ()
 	{
-		Instantiate (prefPlayer, Vector3.zero, Quaternion.identity);
 	}
-	
+
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
 	
+	}
+
+	void InstantiatePlayer ()
+	{
+		Instantiate (prefPlayer, Vector3.zero, Quaternion.identity);
 	}
 }
