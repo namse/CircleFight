@@ -12,20 +12,38 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\PacketType\packet_type.pb.h" />
+    <ClInclude Include="bullet.h" />
     <ClInclude Include="circular_buffer.h" />
     <ClInclude Include="client_manager.h" />
     <ClInclude Include="client_session.h" />
     <ClInclude Include="config.h" />
+    <ClInclude Include="definition.h" />
+    <ClInclude Include="event.h" />
+    <ClInclude Include="event_parameter.h" />
+    <ClInclude Include="event_listener.h" />
+    <ClInclude Include="event_manager.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="object.h" />
+    <ClInclude Include="object_manager.h" />
+    <ClInclude Include="player.h" />
+    <ClInclude Include="skill.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\PacketType\packet_type.pb.cc" />
+    <ClCompile Include="bullet.cpp" />
     <ClCompile Include="circular_buffer.cpp" />
     <ClCompile Include="client_manager.cpp" />
     <ClCompile Include="client_session.cpp" />
+    <ClCompile Include="definition.cpp" />
+    <ClCompile Include="event_listener.cpp" />
+    <ClCompile Include="event_manager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="object.cpp" />
+    <ClCompile Include="object_manager.cpp" />
+    <ClCompile Include="player.cpp" />
+    <ClCompile Include="skill.cpp" />
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

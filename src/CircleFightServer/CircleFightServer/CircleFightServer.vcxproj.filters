@@ -28,6 +28,54 @@
     <Filter Include="Game">
       <UniqueIdentifier>{8d5e31d6-5f3a-472b-a3f9-193d5c3f6b4c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Object">
+      <UniqueIdentifier>{b6172ba5-559a-4aaa-ae51-4ac4c6768100}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Object\Object">
+      <UniqueIdentifier>{9e262edb-d136-4a58-8668-d48fb7c17777}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Object\ObjectManager">
+      <UniqueIdentifier>{5587d395-a88d-4065-8287-57d0c4b445ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Object\Object\Object">
+      <UniqueIdentifier>{787cd318-a622-4350-bf6b-87dc1895895d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Object\Object\Player">
+      <UniqueIdentifier>{00ca858a-5d35-4e85-b1e8-067709248845}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Object\Object\Bullet">
+      <UniqueIdentifier>{79092ef2-7fe0-45fe-b9a8-411b6da5df80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Skill">
+      <UniqueIdentifier>{2ac3f80f-26c8-4438-901d-4f5a56a653cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Skill\Skill">
+      <UniqueIdentifier>{7591de27-8411-4ca5-b478-2125f4db4ee0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Event">
+      <UniqueIdentifier>{ce20cd62-5671-4859-96d8-72420b775b60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Event\EventManager">
+      <UniqueIdentifier>{9fc40eee-39f6-47a1-9a73-7443400566e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Event\Event">
+      <UniqueIdentifier>{7b34c237-7582-4415-898c-c5a85301d8bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Definition">
+      <UniqueIdentifier>{8446b10a-b306-4922-9117-9b5776fe67c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Event\Event\Event">
+      <UniqueIdentifier>{2606df79-66c3-448e-ad36-c3164e3d6dfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Event\EventListener">
+      <UniqueIdentifier>{cab5f653-e857-4d7d-a616-afe06c369e36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Event\Event\EventParameter">
+      <UniqueIdentifier>{c9cfffc5-16fa-463e-9152-0571b442230f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PacketHandle">
+      <UniqueIdentifier>{57e98ecd-cda0-403e-8390-b11964a4b6f5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -54,6 +102,36 @@
     <ClInclude Include="..\..\PacketType\packet_type.pb.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="object_manager.h">
+      <Filter>Game\Object\ObjectManager</Filter>
+    </ClInclude>
+    <ClInclude Include="bullet.h">
+      <Filter>Game\Object\Object\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="object.h">
+      <Filter>Game\Object\Object\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>Game\Object\Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="skill.h">
+      <Filter>Game\Skill\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="event_manager.h">
+      <Filter>Game\Event\EventManager</Filter>
+    </ClInclude>
+    <ClInclude Include="event.h">
+      <Filter>Game\Event\Event\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="event_listener.h">
+      <Filter>Game\Event\EventListener</Filter>
+    </ClInclude>
+    <ClInclude Include="definition.h">
+      <Filter>Game\Definition</Filter>
+    </ClInclude>
+    <ClInclude Include="event_parameter.h">
+      <Filter>Game\Event\Event\EventParameter</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -73,6 +151,30 @@
     </ClCompile>
     <ClCompile Include="..\..\PacketType\packet_type.pb.cc">
       <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="object_manager.cpp">
+      <Filter>Game\Object\ObjectManager</Filter>
+    </ClCompile>
+    <ClCompile Include="bullet.cpp">
+      <Filter>Game\Object\Object\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="object.cpp">
+      <Filter>Game\Object\Object\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>Game\Object\Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="skill.cpp">
+      <Filter>Game\Skill\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="event_manager.cpp">
+      <Filter>Game\Event\EventManager</Filter>
+    </ClCompile>
+    <ClCompile Include="event_listener.cpp">
+      <Filter>Game\Event\EventListener</Filter>
+    </ClCompile>
+    <ClCompile Include="definition.cpp">
+      <Filter>Game\Definition</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

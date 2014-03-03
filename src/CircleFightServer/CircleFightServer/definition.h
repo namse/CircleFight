@@ -2,10 +2,12 @@
 
 
 typedef int ObjectID;
-class Radian;
-class Degree;
-class Point;
-class Radian
+struct Radian;
+struct Degree;
+struct Point;
+struct Key;
+typedef bool KeyState;
+struct Radian
 {
 public:
 	Radian(){
@@ -46,7 +48,7 @@ public:
 	float value_;
 };
 
-class Degree
+struct Degree
 {
 public:
 	Degree(){
@@ -87,7 +89,7 @@ public:
 
 };
 
-class Point{
+struct Point{
 public:
 	Point(){
 		x_ = 0;
@@ -145,4 +147,13 @@ public:
 
 	float x_, y_;
 
+};
+
+struct Key
+{
+	KeyState key_move_left_;
+	KeyState key_move_right_;
+	KeyState key_move_up_;
+	KeyState key_move_down_;
+	KeyState key_attack_;
 };
