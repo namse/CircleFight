@@ -10,15 +10,14 @@ public:
 	~ObjectManager(void);
 
 	void Update(float d_time);
-	ObjectID AddObject(Object* object);
+	void AddObject(Object* object);
 	Object* GetObject(ObjectID object_id);
-
-
-private:
+	
 	void RemoveObject(ObjectID object_id);
 	void RemoveObject(Object* object);
+private:
 
-
+	ObjectID GenerateObjectID();
 
 	std::map<ObjectID,Object*> objects_;
 };

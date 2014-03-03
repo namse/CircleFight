@@ -4,7 +4,7 @@ class Skill :
 	public Object
 {
 public:
-	Skill(void);
+	Skill();
 	virtual ~Skill(void);
 
 		

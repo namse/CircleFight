@@ -39,14 +39,14 @@ void EventManager::RemoveEventListener(ObjectID object_id)
 	}
 }
 
-void EventManager::notify(const EventHeader& event)
+void EventManager::Notify(EventHeader& event)
 {
 	typedef std::multimap<EventTypes, ObjectID>::iterator iterator;
 	std::pair<iterator, iterator> iterpair = event_listener_list.equal_range(event.event_type_);
 
 	iterator it = iterpair.first;
 	for (; it != iterpair.second; ++it) {
-		g_object_manager->GetObject(it->second)->notify(event);
+		g_object_manager->GetObject(it->second)->Notify(event);
 	}
 }
 

@@ -11,7 +11,7 @@ public:
 	void AddEventListener(EventTypes event_type, ObjectID object_id);
 	void RemoveEventListener(EventTypes event_type, ObjectID object_id);
 	void RemoveEventListener(ObjectID object_id);
-	void notify(const EventHeader& event);
+	void Notify(EventHeader& event);
 
 
 

@@ -4,7 +4,7 @@ class Bullet :
 	public Object
 {
 public:
-	Bullet(void);
+	Bullet();
 	virtual ~Bullet(void);
 
 	

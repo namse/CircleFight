@@ -9,14 +9,14 @@ class Object
 	: public EventListener
 {
 public:
-	Object(void);
+	Object();
 	virtual ~Object(void);
 
 	
 	void Update(float d_time);
-
+	
+	ObjectID object_id_;
 protected:
-	ObjectID object_id;
 
 	int hp_;
 	bool has_hp_;

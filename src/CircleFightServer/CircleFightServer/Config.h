@@ -7,6 +7,7 @@
 
 #define MAX_PKT_SIZE 1024
 
+#define MAX_OBJECT 1024
 
 struct PacketHeader{
 	short size_;
