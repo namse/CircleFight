@@ -21,5 +21,7 @@ public:
 
 private:
 	State state_;
+	Color color_;
+	Size size_;
 };
 

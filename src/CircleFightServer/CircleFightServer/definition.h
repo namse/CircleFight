@@ -157,3 +157,17 @@ struct Key
 	KeyState key_move_down_;
 	KeyState key_attack_;
 };
+enum Size
+{
+	KM,
+	M,
+	CM,
+	MM,
+	NM,
+};
+enum Color
+{
+	RED,
+	GREEN,
+	BLUE,
+};
