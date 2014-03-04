@@ -2,8 +2,14 @@ message LoginRequest{
 }
 
 message LoginResult{
-	required int32 player_id = 2;
+	required int32 player_id = 1;
 }
 message LoginBroadcastResult{
-	required int32 player_id = 2;
+	required int32 player_id = 1;
+}
+message MoveKeyPressRequest{
+	required bool move_key_w_press = 1;
+	required bool move_key_a_press = 2;
+	required bool move_key_s_press = 3;
+	required bool move_key_d_press = 4;
 }

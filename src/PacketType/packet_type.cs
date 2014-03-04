@@ -26,7 +26,7 @@ namespace packet_type
     public LoginResult() {}
     
     private int _player_id;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"player_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"player_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int player_id
     {
       get { return _player_id; }
@@ -43,11 +43,49 @@ namespace packet_type
     public LoginBroadcastResult() {}
     
     private int _player_id;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"player_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"player_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int player_id
     {
       get { return _player_id; }
       set { _player_id = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MoveKeyPressRequest")]
+  public partial class MoveKeyPressRequest : global::ProtoBuf.IExtensible
+  {
+    public MoveKeyPressRequest() {}
+    
+    private bool _move_key_w_press;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"move_key_w_press", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool move_key_w_press
+    {
+      get { return _move_key_w_press; }
+      set { _move_key_w_press = value; }
+    }
+    private bool _move_key_a_press;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"move_key_a_press", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool move_key_a_press
+    {
+      get { return _move_key_a_press; }
+      set { _move_key_a_press = value; }
+    }
+    private bool _move_key_s_press;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"move_key_s_press", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool move_key_s_press
+    {
+      get { return _move_key_s_press; }
+      set { _move_key_s_press = value; }
+    }
+    private bool _move_key_d_press;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"move_key_d_press", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool move_key_d_press
+    {
+      get { return _move_key_d_press; }
+      set { _move_key_d_press = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
