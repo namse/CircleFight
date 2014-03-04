@@ -13,7 +13,7 @@ public:
 	virtual ~Object(void);
 
 	
-	void Update(float d_time);
+	virtual void Update(float d_time)	{};
 	
 	ObjectID GetObjectID(){ return object_id_; }
 

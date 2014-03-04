@@ -3,6 +3,7 @@
 #include "packet_type.pb.h"
 #include "client_session.h"
 #include "client_manager.h"
+#include "object_manager.h"
 
 ClientManager* g_client_manager = nullptr ;
 
@@ -32,6 +33,8 @@ void ClientManager::BroadcastPacket(ClientSession* from, Packet* pkt)
 
 void ClientManager::OnPeriodWork()
 {
+	static DWORD previous_tick = 0;
+
 	/// 접속이 끊긴 세션들 주기적으로 정리 (1초 정도 마다 해주자)
 	DWORD current_tick = GetTickCount() ;
 	if ( current_tick - last_garbage_collect_clock_tick_ >= 1000 )
@@ -46,7 +49,10 @@ void ClientManager::OnPeriodWork()
 		ClientPeriodWork() ;
 		last_client_work_tick_ = current_tick ;
 	}
-		
+
+	g_object_manager->Update( current_tick - previous_tick );
+
+	previous_tick = current_tick;
 }
 
 void ClientManager::CollectGarbageSessions()

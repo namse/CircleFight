@@ -66,14 +66,14 @@ public class Network : MonoBehaviour {
 		//{
 			//
 		//}
-		if ( (Input.GetKeyDown (KeyCode.W)^ did_w_pressed_ == true)
-		    || (Input.GetKeyDown (KeyCode.A)^ did_a_pressed_ == true)
-		    || (Input.GetKeyDown (KeyCode.S)^ did_s_pressed_ == true)
-		    || (Input.GetKeyDown (KeyCode.D)^ did_d_pressed_ == true)){
-			did_w_pressed_ = Input.GetKeyDown(KeyCode.W);
-			did_a_pressed_ = Input.GetKeyDown(KeyCode.A);
-			did_s_pressed_ = Input.GetKeyDown(KeyCode.S);
-			did_d_pressed_ = Input.GetKeyDown(KeyCode.D);
+		if ( (Input.GetKey (KeyCode.W)^ did_w_pressed_ == true)
+		    || (Input.GetKey (KeyCode.A)^ did_a_pressed_ == true)
+		    || (Input.GetKey (KeyCode.S)^ did_s_pressed_ == true)
+		    || (Input.GetKey (KeyCode.D)^ did_d_pressed_ == true)){
+			did_w_pressed_ = Input.GetKey(KeyCode.W);
+			did_a_pressed_ = Input.GetKey(KeyCode.A);
+			did_s_pressed_ = Input.GetKey(KeyCode.S);
+			did_d_pressed_ = Input.GetKey(KeyCode.D);
 
 			MoveKeyPressRequest move_request = new MoveKeyPressRequest();
 			move_request.move_key_w_press = did_w_pressed_;

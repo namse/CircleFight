@@ -12,7 +12,10 @@ ObjectManager::~ObjectManager(void)
 
 void ObjectManager::Update(float d_time)
 {
-
+	for ( auto it = objects_.begin(); it != objects_.end(); it++)
+	{
+		it->second->Update(d_time);
+	}
 }
 void ObjectManager::AddObject(Object* object)
 {
@@ -22,8 +25,7 @@ void ObjectManager::AddObject(Object* object)
 }
 Object* ObjectManager::GetObject(ObjectID object_id)
 {
-	
-	return nullptr;
+	return objects_[object_id];
 }
 void ObjectManager::RemoveObject(ObjectID object_id)
 {
