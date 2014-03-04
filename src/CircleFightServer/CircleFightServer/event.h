@@ -30,6 +30,7 @@ struct MoveEvent
 		start_position_ = Point();
 		move_velocity_ = Point();
 	}
+	ObjectID object_move_;
 	Point start_position_;
 	Point move_velocity_;
 };

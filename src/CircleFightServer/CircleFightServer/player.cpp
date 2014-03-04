@@ -37,7 +37,7 @@ void Player::Notify(EventHeader& event)
 	if( event.event_type_ == EVENT_MOVE )
 	{
 		MoveEvent& move_event = (MoveEvent &)(event);
-		if( CouldTransState( MOVE ) == true )
+		if( move_event.object_move_ == object_id_ && CouldTransState( MOVE ) == true )
 		{
 			TransState( MOVE );
 			position_ = move_event.start_position_;
@@ -64,6 +64,7 @@ void Player::Notify(EventHeader& event)
 		move_event.event_sender_id_ = object_id_;
 		move_event.move_velocity_ = velocity;
 		move_event.start_position_ = position_;
+		move_event.object_move_ = object_id_;
 		g_event_manager->Notify( move_event );
 	}
 }
