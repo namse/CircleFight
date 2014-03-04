@@ -53,6 +53,7 @@ public:
 	void	DecOverlappedRequest()		{ --is_overlapped_requested_ ; }
 	bool	DoingOverlappedOperation() const { return is_overlapped_requested_ > 0 ; }
 
+
 private:
 	void	OnTick() ;
 

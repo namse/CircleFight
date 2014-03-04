@@ -2,6 +2,7 @@
 #include "client_session.h"
 #include "packet_type.pb.h"
 #include "client_manager.h"
+#include "packet_parse.h"
 
 bool ClientSession::OnConnect(SOCKADDR_IN* addr)
 {
@@ -67,38 +68,8 @@ void ClientSession::OnRead(size_t len)
 	recv_buffer_.Commit(len) ;
 
 	/// 패킷 파싱하고 처리
-	while ( true )
-	{
-		char packet_data[MAX_PKT_SIZE];
-		/// 패킷 헤더 크기 만큼 읽어와보기
-		PacketHeader packet_header = {0,};
-		if ( false == recv_buffer_.Peek((char*)&packet_header, sizeof(packet_header) ) )
-			return ;
-
-
-		/// 패킷 핸들링
-		switch ( packet_header.type_ )
-		{
-		case PKT_CS_LOGIN:
-			{
-				LoginRequest in_packet;
-				/// 패킷 완성이 되는가? 
-				if ( recv_buffer_.GetStoredSize() < (packet_header.size_) )
-					return ;
-				recv_buffer_.Read(packet_data, packet_header.size_);
-				in_packet.ParseFromArray(packet_data, packet_header.size_);
-			}
-			break ;
-
-		default:
-			{
-				/// 여기 들어오면 이상한 패킷 보낸거다.
-				Disconnect() ;
-				return ;
-			}
-			break ;
-		}
-	}
+	if( ParsePacket(this,recv_buffer_) == false)
+		Disconnect() ;
 }
 
 bool ClientSession::Send()
@@ -162,7 +133,7 @@ bool ClientSession::BroadcastWithoutMe(Packet* pkt)
 	if ( !IsConnected() )
 		return false ;
 
-	GClientManager->BroadcastPacket(this, pkt) ;
+	g_client_manager->BroadcastPacket(this, pkt) ;
 
 	return true ;
 }
@@ -176,6 +147,9 @@ bool ClientSession::Write(Packet* pkt)
 		return false ;
 	}
 }
+
+
+
 
 void ClientSession::OnTick()
 {

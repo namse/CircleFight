@@ -4,7 +4,7 @@
 #include "client_session.h"
 #include "client_manager.h"
 
-ClientManager* GClientManager = nullptr ;
+ClientManager* g_client_manager = nullptr ;
 
 ClientSession* ClientManager::CreateClient(SOCKET sock)
 {

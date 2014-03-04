@@ -30,4 +30,4 @@ private:
 	DWORD		last_client_work_tick_ ;
 } ;
 
-extern ClientManager* GClientManager ;
+extern ClientManager* g_client_manager ;
