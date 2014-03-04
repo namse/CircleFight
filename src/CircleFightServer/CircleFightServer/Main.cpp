@@ -7,7 +7,8 @@
 #include "Exception.h"
 #include "client_session.h"
 #include "client_manager.h"
-
+#include "object_manager.h"
+#include "event_manager.h"
 #pragma comment(lib,"ws2_32.lib")
 
 
@@ -31,6 +32,8 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	/// Manager Init
 	g_client_manager = new ClientManager ;
+	g_object_manager = new ObjectManager();
+	g_event_manager = new EventManager();
 
 	/// 윈속 초기화
 	WSADATA wsa ;
