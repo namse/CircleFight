@@ -5,6 +5,7 @@
 
 class ObjectManager
 {
+
 public:
 	ObjectManager(void);
 	~ObjectManager(void);

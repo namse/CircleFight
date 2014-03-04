@@ -38,7 +38,7 @@ ObjectID ObjectManager::GenerateObjectID()
 {
 	for(int i=0; i<MAX_OBJECT; i++)
 	{
-		if( objects_.find(i) == objects_.end() )
+		if( objects_.find( (ObjectID)i ) == objects_.end() )
 		{
 			return i;
 		}

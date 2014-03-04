@@ -91,11 +91,11 @@
     <Filter Include="Core\Packet\PacketParse">
       <UniqueIdentifier>{f1a19a58-e9e2-4945-b021-f1853fbe32d4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\Packet\PacketHandle\KeyInputHandler">
-      <UniqueIdentifier>{87db613a-438f-4021-ae52-f7db04ef001c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core\Packet\PacketHandle\LoginHandler">
       <UniqueIdentifier>{0738b0d3-eaea-4866-859d-836e95f590a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Packet\PacketHandle\MoveKeyChangeHandler">
+      <UniqueIdentifier>{87db613a-438f-4021-ae52-f7db04ef001c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -162,8 +162,8 @@
     <ClInclude Include="login_handler.h">
       <Filter>Core\Packet\PacketHandle\LoginHandler</Filter>
     </ClInclude>
-    <ClInclude Include="key_input_handler.h">
-      <Filter>Core\Packet\PacketHandle\KeyInputHandler</Filter>
+    <ClInclude Include="move_key_chnage_handler.h">
+      <Filter>Core\Packet\PacketHandle\MoveKeyChangeHandler</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -215,8 +215,8 @@
     <ClCompile Include="login_handler.cpp">
       <Filter>Core\Packet\PacketHandle\LoginHandler</Filter>
     </ClCompile>
-    <ClCompile Include="key_input_handler.cpp">
-      <Filter>Core\Packet\PacketHandle\KeyInputHandler</Filter>
+    <ClCompile Include="move_key_change_handler.cpp">
+      <Filter>Core\Packet\PacketHandle\MoveKeyChangeHandler</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

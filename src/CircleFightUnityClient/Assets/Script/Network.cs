@@ -19,7 +19,8 @@ public class Network : MonoBehaviour {
 	public const short 	PKT_CS_LOGIN = 1;
 	public const short	PKT_SC_LOGIN = 2;
 	public const short	PKT_SC_LOGIN_BROADCAST = 3;
-	public const short	PKT_MAX = 4;
+	public const short	PKT_CS_MOVE_KEY_CHNAGE = 4;
+	public const short	PKT_MAX = 5;
 	// Packet To
 
 	// Socket
@@ -29,6 +30,10 @@ public class Network : MonoBehaviour {
 	public BinaryWriter writer;
 	public BinaryReader reader;
 
+	public bool did_w_pressed_ = false;
+	public bool did_a_pressed_ = false;
+	public bool did_s_pressed_ = false;
+	public bool did_d_pressed_ = false;
 	// Use this for initialization
 	void Start ()
 	{
@@ -44,6 +49,9 @@ public class Network : MonoBehaviour {
 
 			socket_ready = true;
 			Debug.Log ("Socket Connection Success");
+
+			LoginRequest login_request = new LoginRequest();
+			SendPacket(PKT_CS_LOGIN, login_request);
 		}
 		catch (Exception e)
 		{
@@ -58,6 +66,22 @@ public class Network : MonoBehaviour {
 		//{
 			//
 		//}
+		if ( (Input.GetKeyDown (KeyCode.W)^ did_w_pressed_ == true)
+		    || (Input.GetKeyDown (KeyCode.A)^ did_a_pressed_ == true)
+		    || (Input.GetKeyDown (KeyCode.S)^ did_s_pressed_ == true)
+		    || (Input.GetKeyDown (KeyCode.D)^ did_d_pressed_ == true)){
+			did_w_pressed_ = Input.GetKeyDown(KeyCode.W);
+			did_a_pressed_ = Input.GetKeyDown(KeyCode.A);
+			did_s_pressed_ = Input.GetKeyDown(KeyCode.S);
+			did_d_pressed_ = Input.GetKeyDown(KeyCode.D);
+
+			MoveKeyPressRequest move_request = new MoveKeyPressRequest();
+			move_request.move_key_w_press = did_w_pressed_;
+			move_request.move_key_a_press = did_a_pressed_;
+			move_request.move_key_s_press = did_s_pressed_;
+			move_request.move_key_d_press = did_d_pressed_;
+			SendPacket(PKT_CS_MOVE_KEY_CHNAGE, move_request);
+		}
 	}
 
 	public void SendPacket(short type, global::ProtoBuf.IExtensible packet)

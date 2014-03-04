@@ -15,8 +15,13 @@ public:
 	
 	void Update(float d_time);
 	
-	ObjectID object_id_;
+	ObjectID GetObjectID(){ return object_id_; }
+
 protected:
+	
+
+
+	ObjectID object_id_;
 
 	int hp_;
 	bool has_hp_;
@@ -31,7 +36,12 @@ protected:
 
 	bool is_collidable;
 
-
+private:
+	
+	void SetObjectID( ObjectID object_id){ object_id_ = object_id; }
+	
+	friend class ObjectManager;
 };
+
 
 

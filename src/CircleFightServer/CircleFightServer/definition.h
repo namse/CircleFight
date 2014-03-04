@@ -148,13 +148,15 @@ public:
 	float x_, y_;
 
 };
-
-struct Key
-{
+struct MoveKey{
+	
 	KeyState key_move_left_;
 	KeyState key_move_right_;
 	KeyState key_move_up_;
 	KeyState key_move_down_;
+};
+struct AttackKey
+{
 	KeyState key_attack_;
 };
 enum Size

@@ -14,7 +14,7 @@ const short	PKT_NONE = 0;
 const short 	PKT_CS_LOGIN = 1;
 const short	PKT_SC_LOGIN = 2;
 const short	PKT_SC_LOGIN_BROADCAST = 3;
-
+const short	PKT_CS_MOVE_KEY_CHNAGE = 4;
 struct PacketHeader{
 	short size_;
 	short type_;

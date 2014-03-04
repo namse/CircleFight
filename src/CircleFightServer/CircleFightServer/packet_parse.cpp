@@ -2,7 +2,7 @@
 #include "packet_parse.h"
 
 #include "login_handler.h"
-#include "key_input_handler.h"
+#include "move_key_chnage_handler.h"
 
 bool ParsePacket(ClientSession* client_session_, CircularBuffer& recv_buffer )
 {
@@ -31,7 +31,13 @@ bool ParsePacket(ClientSession* client_session_, CircularBuffer& recv_buffer )
 				LoginRequestHandler(client_session_, in_packet);
 			}
 			break ;
-
+		case PKT_CS_MOVE_KEY_CHNAGE:
+			{
+				MoveKeyPressRequest in_packet;
+				in_packet.ParseFromArray(packet_data, packet_header.size_);
+				MoveKeyChangeHandler(client_session_, in_packet);
+			}
+			break;
 		default:
 			{
 				/// 여기 들어오면 이상한 패킷 보낸거다.

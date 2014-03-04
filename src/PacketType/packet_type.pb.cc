@@ -27,6 +27,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* LoginBroadcastResult_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   LoginBroadcastResult_reflection_ = NULL;
+const ::google::protobuf::Descriptor* MoveKeyPressRequest_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  MoveKeyPressRequest_reflection_ = NULL;
 
 }  // namespace
 
@@ -81,6 +84,24 @@ void protobuf_AssignDesc_packet_5ftype_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(LoginBroadcastResult));
+  MoveKeyPressRequest_descriptor_ = file->message_type(3);
+  static const int MoveKeyPressRequest_offsets_[4] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MoveKeyPressRequest, move_key_w_press_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MoveKeyPressRequest, move_key_a_press_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MoveKeyPressRequest, move_key_s_press_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MoveKeyPressRequest, move_key_d_press_),
+  };
+  MoveKeyPressRequest_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      MoveKeyPressRequest_descriptor_,
+      MoveKeyPressRequest::default_instance_,
+      MoveKeyPressRequest_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MoveKeyPressRequest, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MoveKeyPressRequest, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(MoveKeyPressRequest));
 }
 
 namespace {
@@ -99,6 +120,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
     LoginResult_descriptor_, &LoginResult::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     LoginBroadcastResult_descriptor_, &LoginBroadcastResult::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    MoveKeyPressRequest_descriptor_, &MoveKeyPressRequest::default_instance());
 }
 
 }  // namespace
@@ -110,6 +133,8 @@ void protobuf_ShutdownFile_packet_5ftype_2eproto() {
   delete LoginResult_reflection_;
   delete LoginBroadcastResult::default_instance_;
   delete LoginBroadcastResult_reflection_;
+  delete MoveKeyPressRequest::default_instance_;
+  delete MoveKeyPressRequest_reflection_;
 }
 
 void protobuf_AddDesc_packet_5ftype_2eproto() {
@@ -120,16 +145,21 @@ void protobuf_AddDesc_packet_5ftype_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\021packet_type.proto\"\016\n\014LoginRequest\" \n\013L"
-    "oginResult\022\021\n\tplayer_id\030\002 \002(\005\")\n\024LoginBr"
-    "oadcastResult\022\021\n\tplayer_id\030\002 \002(\005", 112);
+    "oginResult\022\021\n\tplayer_id\030\001 \002(\005\")\n\024LoginBr"
+    "oadcastResult\022\021\n\tplayer_id\030\001 \002(\005\"}\n\023Move"
+    "KeyPressRequest\022\030\n\020move_key_w_press\030\001 \002("
+    "\010\022\030\n\020move_key_a_press\030\002 \002(\010\022\030\n\020move_key_"
+    "s_press\030\003 \002(\010\022\030\n\020move_key_d_press\030\004 \002(\010", 239);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "packet_type.proto", &protobuf_RegisterTypes);
   LoginRequest::default_instance_ = new LoginRequest();
   LoginResult::default_instance_ = new LoginResult();
   LoginBroadcastResult::default_instance_ = new LoginBroadcastResult();
+  MoveKeyPressRequest::default_instance_ = new MoveKeyPressRequest();
   LoginRequest::default_instance_->InitAsDefaultInstance();
   LoginResult::default_instance_->InitAsDefaultInstance();
   LoginBroadcastResult::default_instance_->InitAsDefaultInstance();
+  MoveKeyPressRequest::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_packet_5ftype_2eproto);
 }
 
@@ -366,8 +396,8 @@ bool LoginResult::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required int32 player_id = 2;
-      case 2: {
+      // required int32 player_id = 1;
+      case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
@@ -399,9 +429,9 @@ bool LoginResult::MergePartialFromCodedStream(
 
 void LoginResult::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // required int32 player_id = 2;
+  // required int32 player_id = 1;
   if (has_player_id()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->player_id(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->player_id(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -412,9 +442,9 @@ void LoginResult::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* LoginResult::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // required int32 player_id = 2;
+  // required int32 player_id = 1;
   if (has_player_id()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->player_id(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->player_id(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -428,7 +458,7 @@ int LoginResult::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required int32 player_id = 2;
+    // required int32 player_id = 1;
     if (has_player_id()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
@@ -575,8 +605,8 @@ bool LoginBroadcastResult::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required int32 player_id = 2;
-      case 2: {
+      // required int32 player_id = 1;
+      case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
@@ -608,9 +638,9 @@ bool LoginBroadcastResult::MergePartialFromCodedStream(
 
 void LoginBroadcastResult::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // required int32 player_id = 2;
+  // required int32 player_id = 1;
   if (has_player_id()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->player_id(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->player_id(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -621,9 +651,9 @@ void LoginBroadcastResult::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* LoginBroadcastResult::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // required int32 player_id = 2;
+  // required int32 player_id = 1;
   if (has_player_id()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->player_id(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->player_id(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -637,7 +667,7 @@ int LoginBroadcastResult::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required int32 player_id = 2;
+    // required int32 player_id = 1;
     if (has_player_id()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
@@ -710,6 +740,327 @@ void LoginBroadcastResult::Swap(LoginBroadcastResult* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = LoginBroadcastResult_descriptor_;
   metadata.reflection = LoginBroadcastResult_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int MoveKeyPressRequest::kMoveKeyWPressFieldNumber;
+const int MoveKeyPressRequest::kMoveKeyAPressFieldNumber;
+const int MoveKeyPressRequest::kMoveKeySPressFieldNumber;
+const int MoveKeyPressRequest::kMoveKeyDPressFieldNumber;
+#endif  // !_MSC_VER
+
+MoveKeyPressRequest::MoveKeyPressRequest()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void MoveKeyPressRequest::InitAsDefaultInstance() {
+}
+
+MoveKeyPressRequest::MoveKeyPressRequest(const MoveKeyPressRequest& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void MoveKeyPressRequest::SharedCtor() {
+  _cached_size_ = 0;
+  move_key_w_press_ = false;
+  move_key_a_press_ = false;
+  move_key_s_press_ = false;
+  move_key_d_press_ = false;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+MoveKeyPressRequest::~MoveKeyPressRequest() {
+  SharedDtor();
+}
+
+void MoveKeyPressRequest::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void MoveKeyPressRequest::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* MoveKeyPressRequest::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return MoveKeyPressRequest_descriptor_;
+}
+
+const MoveKeyPressRequest& MoveKeyPressRequest::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_packet_5ftype_2eproto();
+  return *default_instance_;
+}
+
+MoveKeyPressRequest* MoveKeyPressRequest::default_instance_ = NULL;
+
+MoveKeyPressRequest* MoveKeyPressRequest::New() const {
+  return new MoveKeyPressRequest;
+}
+
+void MoveKeyPressRequest::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    move_key_w_press_ = false;
+    move_key_a_press_ = false;
+    move_key_s_press_ = false;
+    move_key_d_press_ = false;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool MoveKeyPressRequest::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required bool move_key_w_press = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &move_key_w_press_)));
+          set_has_move_key_w_press();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(16)) goto parse_move_key_a_press;
+        break;
+      }
+
+      // required bool move_key_a_press = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_move_key_a_press:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &move_key_a_press_)));
+          set_has_move_key_a_press();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(24)) goto parse_move_key_s_press;
+        break;
+      }
+
+      // required bool move_key_s_press = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_move_key_s_press:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &move_key_s_press_)));
+          set_has_move_key_s_press();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(32)) goto parse_move_key_d_press;
+        break;
+      }
+
+      // required bool move_key_d_press = 4;
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_move_key_d_press:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &move_key_d_press_)));
+          set_has_move_key_d_press();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void MoveKeyPressRequest::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // required bool move_key_w_press = 1;
+  if (has_move_key_w_press()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->move_key_w_press(), output);
+  }
+
+  // required bool move_key_a_press = 2;
+  if (has_move_key_a_press()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(2, this->move_key_a_press(), output);
+  }
+
+  // required bool move_key_s_press = 3;
+  if (has_move_key_s_press()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->move_key_s_press(), output);
+  }
+
+  // required bool move_key_d_press = 4;
+  if (has_move_key_d_press()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(4, this->move_key_d_press(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* MoveKeyPressRequest::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // required bool move_key_w_press = 1;
+  if (has_move_key_w_press()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->move_key_w_press(), target);
+  }
+
+  // required bool move_key_a_press = 2;
+  if (has_move_key_a_press()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(2, this->move_key_a_press(), target);
+  }
+
+  // required bool move_key_s_press = 3;
+  if (has_move_key_s_press()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->move_key_s_press(), target);
+  }
+
+  // required bool move_key_d_press = 4;
+  if (has_move_key_d_press()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(4, this->move_key_d_press(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int MoveKeyPressRequest::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // required bool move_key_w_press = 1;
+    if (has_move_key_w_press()) {
+      total_size += 1 + 1;
+    }
+
+    // required bool move_key_a_press = 2;
+    if (has_move_key_a_press()) {
+      total_size += 1 + 1;
+    }
+
+    // required bool move_key_s_press = 3;
+    if (has_move_key_s_press()) {
+      total_size += 1 + 1;
+    }
+
+    // required bool move_key_d_press = 4;
+    if (has_move_key_d_press()) {
+      total_size += 1 + 1;
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MoveKeyPressRequest::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const MoveKeyPressRequest* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const MoveKeyPressRequest*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void MoveKeyPressRequest::MergeFrom(const MoveKeyPressRequest& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_move_key_w_press()) {
+      set_move_key_w_press(from.move_key_w_press());
+    }
+    if (from.has_move_key_a_press()) {
+      set_move_key_a_press(from.move_key_a_press());
+    }
+    if (from.has_move_key_s_press()) {
+      set_move_key_s_press(from.move_key_s_press());
+    }
+    if (from.has_move_key_d_press()) {
+      set_move_key_d_press(from.move_key_d_press());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void MoveKeyPressRequest::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void MoveKeyPressRequest::CopyFrom(const MoveKeyPressRequest& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MoveKeyPressRequest::IsInitialized() const {
+  if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
+
+  return true;
+}
+
+void MoveKeyPressRequest::Swap(MoveKeyPressRequest* other) {
+  if (other != this) {
+    std::swap(move_key_w_press_, other->move_key_w_press_);
+    std::swap(move_key_a_press_, other->move_key_a_press_);
+    std::swap(move_key_s_press_, other->move_key_s_press_);
+    std::swap(move_key_d_press_, other->move_key_d_press_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata MoveKeyPressRequest::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = MoveKeyPressRequest_descriptor_;
+  metadata.reflection = MoveKeyPressRequest_reflection_;
   return metadata;
 }
 

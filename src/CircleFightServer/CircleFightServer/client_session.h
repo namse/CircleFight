@@ -53,19 +53,20 @@ public:
 	void	DecOverlappedRequest()		{ --is_overlapped_requested_ ; }
 	bool	DoingOverlappedOperation() const { return is_overlapped_requested_ > 0 ; }
 
-
+	short GetPlayerID(){ return player_id_; }
 private:
 	void	OnTick() ;
 
 	void	UpdateDone() ;
-
+	
+	void	SetPlayerID(short player_id)	{ player_id_ = player_id; }
 
 private:
 	bool			is_connected_ ;
 	bool			is_log_on_ ;
 	SOCKET			socket_ ;
 
-	int				player_id_ ;
+	short				player_id_ ;
 	SOCKADDR_IN		client_address_ ;
 
 	CircularBuffer	send_buffer_ ;
@@ -76,6 +77,7 @@ private:
 	int				is_overlapped_requested_ ;
 
 	friend class ClientManager ;
+	friend void LoginRequestHandler(ClientSession* client_session_, LoginRequest in_packet);
 } ;
 
 

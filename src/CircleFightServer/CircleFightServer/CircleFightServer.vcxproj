@@ -23,7 +23,7 @@
     <ClInclude Include="event_parameter.h" />
     <ClInclude Include="event_listener.h" />
     <ClInclude Include="event_manager.h" />
-    <ClInclude Include="key_input_handler.h" />
+    <ClInclude Include="move_key_chnage_handler.h" />
     <ClInclude Include="login_handler.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="object.h" />
@@ -43,7 +43,7 @@
     <ClCompile Include="definition.cpp" />
     <ClCompile Include="event_listener.cpp" />
     <ClCompile Include="event_manager.cpp" />
-    <ClCompile Include="key_input_handler.cpp" />
+    <ClCompile Include="move_key_change_handler.cpp" />
     <ClCompile Include="login_handler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="object.cpp" />

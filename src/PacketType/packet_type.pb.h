@@ -34,6 +34,7 @@ void protobuf_ShutdownFile_packet_5ftype_2eproto();
 class LoginRequest;
 class LoginResult;
 class LoginBroadcastResult;
+class MoveKeyPressRequest;
 
 // ===================================================================
 
@@ -163,10 +164,10 @@ class LoginResult : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required int32 player_id = 2;
+  // required int32 player_id = 1;
   inline bool has_player_id() const;
   inline void clear_player_id();
-  static const int kPlayerIdFieldNumber = 2;
+  static const int kPlayerIdFieldNumber = 1;
   inline ::google::protobuf::int32 player_id() const;
   inline void set_player_id(::google::protobuf::int32 value);
 
@@ -245,10 +246,10 @@ class LoginBroadcastResult : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required int32 player_id = 2;
+  // required int32 player_id = 1;
   inline bool has_player_id() const;
   inline void clear_player_id();
-  static const int kPlayerIdFieldNumber = 2;
+  static const int kPlayerIdFieldNumber = 1;
   inline ::google::protobuf::int32 player_id() const;
   inline void set_player_id(::google::protobuf::int32 value);
 
@@ -271,6 +272,118 @@ class LoginBroadcastResult : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static LoginBroadcastResult* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class MoveKeyPressRequest : public ::google::protobuf::Message {
+ public:
+  MoveKeyPressRequest();
+  virtual ~MoveKeyPressRequest();
+
+  MoveKeyPressRequest(const MoveKeyPressRequest& from);
+
+  inline MoveKeyPressRequest& operator=(const MoveKeyPressRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MoveKeyPressRequest& default_instance();
+
+  void Swap(MoveKeyPressRequest* other);
+
+  // implements Message ----------------------------------------------
+
+  MoveKeyPressRequest* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const MoveKeyPressRequest& from);
+  void MergeFrom(const MoveKeyPressRequest& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required bool move_key_w_press = 1;
+  inline bool has_move_key_w_press() const;
+  inline void clear_move_key_w_press();
+  static const int kMoveKeyWPressFieldNumber = 1;
+  inline bool move_key_w_press() const;
+  inline void set_move_key_w_press(bool value);
+
+  // required bool move_key_a_press = 2;
+  inline bool has_move_key_a_press() const;
+  inline void clear_move_key_a_press();
+  static const int kMoveKeyAPressFieldNumber = 2;
+  inline bool move_key_a_press() const;
+  inline void set_move_key_a_press(bool value);
+
+  // required bool move_key_s_press = 3;
+  inline bool has_move_key_s_press() const;
+  inline void clear_move_key_s_press();
+  static const int kMoveKeySPressFieldNumber = 3;
+  inline bool move_key_s_press() const;
+  inline void set_move_key_s_press(bool value);
+
+  // required bool move_key_d_press = 4;
+  inline bool has_move_key_d_press() const;
+  inline void clear_move_key_d_press();
+  static const int kMoveKeyDPressFieldNumber = 4;
+  inline bool move_key_d_press() const;
+  inline void set_move_key_d_press(bool value);
+
+  // @@protoc_insertion_point(class_scope:MoveKeyPressRequest)
+ private:
+  inline void set_has_move_key_w_press();
+  inline void clear_has_move_key_w_press();
+  inline void set_has_move_key_a_press();
+  inline void clear_has_move_key_a_press();
+  inline void set_has_move_key_s_press();
+  inline void clear_has_move_key_s_press();
+  inline void set_has_move_key_d_press();
+  inline void clear_has_move_key_d_press();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  bool move_key_w_press_;
+  bool move_key_a_press_;
+  bool move_key_s_press_;
+  bool move_key_d_press_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+
+  friend void  protobuf_AddDesc_packet_5ftype_2eproto();
+  friend void protobuf_AssignDesc_packet_5ftype_2eproto();
+  friend void protobuf_ShutdownFile_packet_5ftype_2eproto();
+
+  void InitAsDefaultInstance();
+  static MoveKeyPressRequest* default_instance_;
+};
 // ===================================================================
 
 
@@ -282,7 +395,7 @@ class LoginBroadcastResult : public ::google::protobuf::Message {
 
 // LoginResult
 
-// required int32 player_id = 2;
+// required int32 player_id = 1;
 inline bool LoginResult::has_player_id() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -308,7 +421,7 @@ inline void LoginResult::set_player_id(::google::protobuf::int32 value) {
 
 // LoginBroadcastResult
 
-// required int32 player_id = 2;
+// required int32 player_id = 1;
 inline bool LoginBroadcastResult::has_player_id() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -328,6 +441,98 @@ inline ::google::protobuf::int32 LoginBroadcastResult::player_id() const {
 inline void LoginBroadcastResult::set_player_id(::google::protobuf::int32 value) {
   set_has_player_id();
   player_id_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// MoveKeyPressRequest
+
+// required bool move_key_w_press = 1;
+inline bool MoveKeyPressRequest::has_move_key_w_press() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void MoveKeyPressRequest::set_has_move_key_w_press() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void MoveKeyPressRequest::clear_has_move_key_w_press() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void MoveKeyPressRequest::clear_move_key_w_press() {
+  move_key_w_press_ = false;
+  clear_has_move_key_w_press();
+}
+inline bool MoveKeyPressRequest::move_key_w_press() const {
+  return move_key_w_press_;
+}
+inline void MoveKeyPressRequest::set_move_key_w_press(bool value) {
+  set_has_move_key_w_press();
+  move_key_w_press_ = value;
+}
+
+// required bool move_key_a_press = 2;
+inline bool MoveKeyPressRequest::has_move_key_a_press() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void MoveKeyPressRequest::set_has_move_key_a_press() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void MoveKeyPressRequest::clear_has_move_key_a_press() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void MoveKeyPressRequest::clear_move_key_a_press() {
+  move_key_a_press_ = false;
+  clear_has_move_key_a_press();
+}
+inline bool MoveKeyPressRequest::move_key_a_press() const {
+  return move_key_a_press_;
+}
+inline void MoveKeyPressRequest::set_move_key_a_press(bool value) {
+  set_has_move_key_a_press();
+  move_key_a_press_ = value;
+}
+
+// required bool move_key_s_press = 3;
+inline bool MoveKeyPressRequest::has_move_key_s_press() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void MoveKeyPressRequest::set_has_move_key_s_press() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void MoveKeyPressRequest::clear_has_move_key_s_press() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void MoveKeyPressRequest::clear_move_key_s_press() {
+  move_key_s_press_ = false;
+  clear_has_move_key_s_press();
+}
+inline bool MoveKeyPressRequest::move_key_s_press() const {
+  return move_key_s_press_;
+}
+inline void MoveKeyPressRequest::set_move_key_s_press(bool value) {
+  set_has_move_key_s_press();
+  move_key_s_press_ = value;
+}
+
+// required bool move_key_d_press = 4;
+inline bool MoveKeyPressRequest::has_move_key_d_press() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void MoveKeyPressRequest::set_has_move_key_d_press() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void MoveKeyPressRequest::clear_has_move_key_d_press() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void MoveKeyPressRequest::clear_move_key_d_press() {
+  move_key_d_press_ = false;
+  clear_has_move_key_d_press();
+}
+inline bool MoveKeyPressRequest::move_key_d_press() const {
+  return move_key_d_press_;
+}
+inline void MoveKeyPressRequest::set_move_key_d_press(bool value) {
+  set_has_move_key_d_press();
+  move_key_d_press_ = value;
 }
 
 

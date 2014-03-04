@@ -28,8 +28,8 @@ struct MoveEvent
 	Point move_velocity_;
 };
 
-struct KeyChangeEvent
+struct MoveKeyChangeEvent
 	: public EventHeader
 {
-	Key keys_;	
+	MoveKey move_keys_;	
 };
