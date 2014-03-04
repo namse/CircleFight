@@ -1,4 +1,5 @@
 #pragma once
+#include "..\..\PacketType\packet_type.pb.h"
 
 
 /// DB 연결 스트링 
@@ -9,17 +10,40 @@
 
 #define MAX_OBJECT 1024
 
+const short	PKT_NONE = 0;
+const short 	PKT_CS_LOGIN = 1;
+const short	PKT_SC_LOGIN = 2;
+const short	PKT_SC_LOGIN_BROADCAST = 3;
+
 struct PacketHeader{
 	short size_;
 	short type_;
+	PacketHeader(short size, short type){
+		size_ = size;
+		type_ = type;
+	}
+	PacketHeader(short type){
+		size_ = 0;
+		type_ = type;
+	}
+	PacketHeader(){
+		size_ = 0;
+		type_ = 0;
+	}
 };
 
 struct Packet
 {
 	PacketHeader packet_header_;
 	char packet_data_ [MAX_PKT_SIZE];
+
+	Packet(){
+		packet_header_ = PacketHeader(PKT_NONE);
+		memset(packet_data_, 0, sizeof(packet_data_));
+	}
+
+	Packet(short packet_type, ::google::protobuf::Message* packet_content){
+		packet_header_ = PacketHeader(packet_content->ByteSize(), packet_type);
+		packet_content->SerializeToArray(packet_data_, packet_header_.size_);
+	}
 };
-const int	PKT_NONE = 0;
-const int 	PKT_CS_LOGIN = 1;
-const int	PKT_SC_LOGIN = 2;
-const int	PKT_SC_LOGIN_BROADCAST = 3;

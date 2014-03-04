@@ -76,6 +76,27 @@
     <Filter Include="PacketHandle">
       <UniqueIdentifier>{57e98ecd-cda0-403e-8390-b11964a4b6f5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Core\Util\EllipseCollisionTest">
+      <UniqueIdentifier>{95c1c4f5-4d3e-42a8-ad57-e4bd95b1d700}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Packet">
+      <UniqueIdentifier>{c32a6b68-7ae2-47ec-9039-6e2f6e4814b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Packet\PacketHandle">
+      <UniqueIdentifier>{0a0f4f8a-c9ff-4d57-8b3d-74524f0f0fa9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Packet\PacketType">
+      <UniqueIdentifier>{b9c3d381-84f3-4347-8613-fbdd56ed0491}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Packet\PacketParse">
+      <UniqueIdentifier>{f1a19a58-e9e2-4945-b021-f1853fbe32d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Packet\PacketHandle\KeyInputHandler">
+      <UniqueIdentifier>{87db613a-438f-4021-ae52-f7db04ef001c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Packet\PacketHandle\LoginHandler">
+      <UniqueIdentifier>{0738b0d3-eaea-4866-859d-836e95f590a5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -98,9 +119,6 @@
     </ClInclude>
     <ClInclude Include="config.h">
       <Filter>Core\Util</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\PacketType\packet_type.pb.h">
-      <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="object_manager.h">
       <Filter>Game\Object\ObjectManager</Filter>
@@ -132,6 +150,21 @@
     <ClInclude Include="event_parameter.h">
       <Filter>Game\Event\Event\EventParameter</Filter>
     </ClInclude>
+    <ClInclude Include="ellipse_collision_test.h">
+      <Filter>Core\Util\EllipseCollisionTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\PacketType\packet_type.pb.h">
+      <Filter>Core\Packet\PacketType</Filter>
+    </ClInclude>
+    <ClInclude Include="packet_parse.h">
+      <Filter>Core\Packet\PacketParse</Filter>
+    </ClInclude>
+    <ClInclude Include="login_handler.h">
+      <Filter>Core\Packet\PacketHandle\LoginHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="key_input_handler.h">
+      <Filter>Core\Packet\PacketHandle\KeyInputHandler</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -148,9 +181,6 @@
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Core\Main</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\PacketType\packet_type.pb.cc">
-      <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="object_manager.cpp">
       <Filter>Game\Object\ObjectManager</Filter>
@@ -175,6 +205,18 @@
     </ClCompile>
     <ClCompile Include="definition.cpp">
       <Filter>Game\Definition</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\PacketType\packet_type.pb.cc">
+      <Filter>Core\Packet\PacketType</Filter>
+    </ClCompile>
+    <ClCompile Include="packet_parse.cpp">
+      <Filter>Core\Packet\PacketParse</Filter>
+    </ClCompile>
+    <ClCompile Include="login_handler.cpp">
+      <Filter>Core\Packet\PacketHandle\LoginHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="key_input_handler.cpp">
+      <Filter>Core\Packet\PacketHandle\KeyInputHandler</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

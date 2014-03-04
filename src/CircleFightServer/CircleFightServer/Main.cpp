@@ -30,7 +30,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	LThreadType = THREAD_MAIN ;
 
 	/// Manager Init
-	GClientManager = new ClientManager ;
+	g_client_manager = new ClientManager ;
 
 	/// 윈속 초기화
 	WSADATA wsa ;
@@ -101,7 +101,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	// 윈속 종료
 	WSACleanup() ;
 
-	delete GClientManager ;
+	delete g_client_manager ;
 	return 0 ;
 }
 
@@ -133,7 +133,7 @@ unsigned int WINAPI ClientHandlingThread( LPVOID lpParam )
 	
 			/// 소켓 정보 구조체 할당과 초기화
 			
-			ClientSession* client = GClientManager->CreateClient(g_AcceptedSocket) ;
+			ClientSession* client = g_client_manager->CreateClient(g_AcceptedSocket) ;
 			
 			SOCKADDR_IN clientaddr ;
 			int addrlen = sizeof(clientaddr) ;
@@ -161,5 +161,5 @@ void CALLBACK TimerProc(LPVOID lpArg, DWORD dwTimerLowValue, DWORD dwTimerHighVa
 {
 	assert( LThreadType == THREAD_CLIENT ) ;
 
-	GClientManager->OnPeriodWork() ;
+	g_client_manager->OnPeriodWork() ;
 }
