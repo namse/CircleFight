@@ -121,10 +121,12 @@ void ClientSession::OnWriteComplete(size_t len)
 
 bool ClientSession::Broadcast(Packet* pkt)
 {
-	if ( !Write(pkt) )
+	if ( !IsConnected() )
 		return false ;
 
-	return BroadcastWithoutMe(pkt);
+	g_client_manager->BroadcastPacket(pkt);
+
+	return true;
 }
 
 bool ClientSession::BroadcastWithoutMe(Packet* pkt)

@@ -31,6 +31,17 @@ void ClientManager::BroadcastPacket(ClientSession* from, Packet* pkt)
 	}
 }
 
+void ClientManager::BroadcastPacket( Packet* pkt )
+{
+	///FYI: C++ STL iterator 스타일의 루프
+	for (ClientList::const_iterator it=client_list_.begin() ; it!=client_list_.end() ; ++it)
+	{
+		ClientSession* client = it->second ;
+		
+		client->Write(pkt) ;
+	}
+}
+
 void ClientManager::OnPeriodWork()
 {
 	static DWORD previous_tick = 0;

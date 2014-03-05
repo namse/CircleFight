@@ -15,6 +15,7 @@ public:
 	ClientSession* CreateClient(SOCKET sock) ;
 	
 	void BroadcastPacket(ClientSession* from, Packet* pkt) ;
+	void BroadcastPacket( Packet* pkt ) ;
 
 	void OnPeriodWork() ;
 
