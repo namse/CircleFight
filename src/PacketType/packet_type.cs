@@ -92,4 +92,45 @@ namespace packet_type
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"AttackKeyPressRequest")]
+  public partial class AttackKeyPressRequest : global::ProtoBuf.IExtensible
+  {
+    public AttackKeyPressRequest() {}
+    
+    private bool _attack_key_mouse_left_press;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"attack_key_mouse_left_press", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool attack_key_mouse_left_press
+    {
+      get { return _attack_key_mouse_left_press; }
+      set { _attack_key_mouse_left_press = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HPChangeResult")]
+  public partial class HPChangeResult : global::ProtoBuf.IExtensible
+  {
+    public HPChangeResult() {}
+    
+    private int _player_id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"player_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int player_id
+    {
+      get { return _player_id; }
+      set { _player_id = value; }
+    }
+    private int _plyaer_hp;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"plyaer_hp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int plyaer_hp
+    {
+      get { return _plyaer_hp; }
+      set { _plyaer_hp = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
 }

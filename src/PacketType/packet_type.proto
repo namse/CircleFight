@@ -13,3 +13,10 @@ message MoveKeyPressRequest{
 	required bool move_key_s_press = 3;
 	required bool move_key_d_press = 4;
 }
+message AttackKeyPressRequest{
+	required bool attack_key_mouse_left_press = 1;
+}
+message HPChangeResult{
+	required int32 player_id = 1;
+	required int32 plyaer_hp = 2;
+}
