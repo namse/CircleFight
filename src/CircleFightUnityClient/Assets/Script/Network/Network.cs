@@ -21,7 +21,10 @@ public class Network : MonoBehaviour {
 	public const short	PKT_SC_LOGIN = 2;
 	public const short	PKT_SC_LOGIN_BROADCAST = 3;
 	public const short	PKT_CS_MOVE_KEY_CHNAGE = 4;
-	public const short	PKT_MAX = 5;
+	public const short	PKT_SC_MOVE_START = 5;
+	public const short	PKT_SC_MOVE_STOP = 6;
+	public const short	PKT_SC_HP_CHANGE = 7;
+	public const short	PKT_MAX = 8;
 	// Packet To
 
 	// Socket
@@ -109,52 +112,55 @@ public class Network : MonoBehaviour {
 	{
 		while (true) {
 			yield return 0;
-			//if(stream.DataAvailable == true)
-			//{
-				try {
-						short size = 0;
-						short type = 0;
-						byte[] bytes;
-						size = reader.ReadInt16 ();
-						type = reader.ReadInt16 ();
-						Debug.Log ("Size : " + size + ", type : " + type);
-						bytes = reader.ReadBytes (size);
 
-						if (bytes.Length != size) {
-								// Packet Error : Lost Payload or Controlled
-						}
+			short size = 0;
+			short type = 0;
+			byte[] bytes;
+			size = reader.ReadInt16 ();
+			type = reader.ReadInt16 ();
+			Debug.Log ("Size : " + size + ", type : " + type);
+			bytes = reader.ReadBytes (size);
 
-						if (0 <= type && type < PKT_MAX) {
-								MemoryStream memory_stream = new MemoryStream ();
-								memory_stream.Write (bytes, 0, size);
-								BinaryReader binary_reader = new BinaryReader (memory_stream);
+			if (bytes.Length == size)
+			{
+				if (0 <= type && type < PKT_MAX)
+				{
+					MemoryStream memory_stream = new MemoryStream ();
+					memory_stream.Write (bytes, 0, size);
+					BinaryReader binary_reader = new BinaryReader (memory_stream);
 
-								Debug.Log ("Size : " + size + ", type : " + type);
-								switch (type) {
-								case PKT_NONE:
-										{
+					Debug.Log ("Size : " + size + ", type : " + type);
+					switch (type)
+					{
+					case PKT_NONE:
+					{
 
-										}
-										break;
-								case PKT_SC_LOGIN:
-										{
-												LoginResult login_result = new LoginResult ();
-												login_result = ProtoBuf.Serializer.Deserialize<LoginResult> (memory_stream);
-												LoginResultHandler.Handle (login_result);
-										}
-										break;
-								}
-								// Check Packet
-						}
-				
-						
-			
-						// Push to MemoryStream
-				} catch (Exception e) {
-				e.ToString();
-						//Debug.Log ("Read to Socket Error : " + e);
-				}
-			//}
+					} break;
+					case PKT_SC_LOGIN:
+					{
+						LoginResult login_result = new LoginResult ();
+						login_result = ProtoBuf.Serializer.Deserialize<LoginResult> (memory_stream);
+						LoginResultHandler.Handle (login_result);
+					} break;
+					case PKT_SC_LOGIN_BROADCAST:
+					{
+					} break;
+					case PKT_SC_MOVE_START:
+					{
+						MoveResult move_result = new MoveResult ();
+						move_result = ProtoBuf.Serializer.Deserialize<MoveResult> (memory_stream);
+						MoveResultHandler.Handle (move_result);
+					} break;
+					case PKT_SC_MOVE_STOP:
+					{
+						MoveStopResult move_stop_result = new MoveStopResult ();
+						move_stop_result = ProtoBuf.Serializer.Deserialize<MoveStopResult> (memory_stream);
+						MoveStopResultHandler.Handle (move_stop_result);
+					} break;
+					}
+						// Check Packet
+			}
+			}
 		}
 	}
 }

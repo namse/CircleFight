@@ -12,18 +12,22 @@ using packet_type;
 using UnityEngine;
 namespace Handler
 {
-	public class LoginResultHandler
+	public class MoveStopResultHandler
 	{
-		public LoginResultHandler ()
+		public MoveStopResultHandler ()
 		{
-
+			
 		}
-
-		public static void Handle(LoginResult login_result)
+		
+		public static void Handle(MoveStopResult move_stop_result)
 		{
-			Debug.Log ("login_result");
-			Debug.Log ( "player_id : " + login_result.player_id);
+			Debug.Log ("move_stop_result");
+			Debug.Log ( "player_id : " + move_stop_result.player_id);
+			Debug.Log ( "position_x : " + move_stop_result.position_x);
+			Debug.Log ( "position_y : " + move_stop_result.position_y);
 		}
 	}
 }
+
+
 

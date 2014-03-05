@@ -2,10 +2,13 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\Network\Handle\LoginResultHandler.cs">
     <Files>
-      <File FileName="..\PacketType\packet_type.cs" Line="17" Column="5" />
-      <File FileName="Assets\Script\Network\Network.cs" Line="147" Column="13" />
-      <File FileName="Assets\Script\Network\Handle\LoginResultHandler.cs" Line="24" Column="17" />
+      <File FileName="Assets\Script\GameManager\GameManager.cs" Line="12" Column="17" />
+      <File FileName="..\PacketType\packet_type.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Network\Network.cs" Line="122" Column="36" />
       <File FileName="Assets\Script\Network\packet_type.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Network\Handle\LoginResultHandler.cs" Line="24" Column="21" />
+      <File FileName="Assets\Script\Network\Handle\MoveResultHandler.cs" Line="24" Column="20" />
+      <File FileName="Assets\Script\Network\Handle\MoveStopResult.cs" Line="23" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
