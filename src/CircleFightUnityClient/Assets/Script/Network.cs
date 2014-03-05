@@ -104,39 +104,6 @@ public class Network : MonoBehaviour {
 		writer.Flush ();
 	}
 
-	public void ReadPacket()
-	{
-		if (!socket_ready)
-		{
-			return;
-		}
-
-		try
-		{
-			short size, type;
-			byte[] bytes;
-			size = reader.ReadInt16 ();
-			type = reader.ReadInt16 ();
-			bytes = reader.ReadBytes (size);
-
-			if(bytes.Length != size)
-			{
-				// Packet Error : Lost Payload or Controlled
-			}
-
-			if(0 <= type && type < PKT_MAX)
-			{
-				// Check Packet
-			}
-
-			// Push to MemoryStream
-		} catch(Exception e)
-		{
-			Debug.Log ("Read to Socket Error : " + e);
-		}
-	}
-
-
 	IEnumerator ReadPacket()
 	{
 		while (socket_ready)
