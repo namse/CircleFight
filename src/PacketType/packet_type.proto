@@ -28,7 +28,7 @@ message MoveResult{
 	required float velocity_y = 5;
 }
 message MoveStopResult{
-	required int32 plyaer_id = 1;
+	required int32 player_id = 1;
 	required float position_x = 2;
 	required float position_y = 3;
 }

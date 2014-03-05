@@ -183,12 +183,12 @@ namespace packet_type
   {
     public MoveStopResult() {}
     
-    private int _plyaer_id;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"plyaer_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int plyaer_id
+    private int _player_id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"player_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int player_id
     {
-      get { return _plyaer_id; }
-      set { _plyaer_id = value; }
+      get { return _player_id; }
+      set { _player_id = value; }
     }
     private float _position_x;
     [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"position_x", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
