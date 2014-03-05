@@ -133,4 +133,80 @@ namespace packet_type
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MoveResult")]
+  public partial class MoveResult : global::ProtoBuf.IExtensible
+  {
+    public MoveResult() {}
+    
+    private int _player_id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"player_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int player_id
+    {
+      get { return _player_id; }
+      set { _player_id = value; }
+    }
+    private float _position_x;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"position_x", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public float position_x
+    {
+      get { return _position_x; }
+      set { _position_x = value; }
+    }
+    private float _position_y;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"position_y", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public float position_y
+    {
+      get { return _position_y; }
+      set { _position_y = value; }
+    }
+    private float _velocity_x;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"velocity_x", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public float velocity_x
+    {
+      get { return _velocity_x; }
+      set { _velocity_x = value; }
+    }
+    private float _velocity_y;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"velocity_y", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public float velocity_y
+    {
+      get { return _velocity_y; }
+      set { _velocity_y = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MoveStopResult")]
+  public partial class MoveStopResult : global::ProtoBuf.IExtensible
+  {
+    public MoveStopResult() {}
+    
+    private int _plyaer_id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"plyaer_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int plyaer_id
+    {
+      get { return _plyaer_id; }
+      set { _plyaer_id = value; }
+    }
+    private float _position_x;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"position_x", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public float position_x
+    {
+      get { return _position_x; }
+      set { _position_x = value; }
+    }
+    private float _position_y;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"position_y", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public float position_y
+    {
+      get { return _position_y; }
+      set { _position_y = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
 }
