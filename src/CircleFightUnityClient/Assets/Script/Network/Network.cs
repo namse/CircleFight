@@ -6,6 +6,7 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using packet_type;
+using Handler;
 
 public class Network : MonoBehaviour {
 	// Packet Header
@@ -106,50 +107,54 @@ public class Network : MonoBehaviour {
 
 	IEnumerator ReadPacket()
 	{
-		while (socket_ready)
-		{
+		while (true) {
 			yield return 0;
+			//if(stream.DataAvailable == true)
+			//{
+				try {
+						short size = 0;
+						short type = 0;
+						byte[] bytes;
+						size = reader.ReadInt16 ();
+						type = reader.ReadInt16 ();
+						Debug.Log ("Size : " + size + ", type : " + type);
+						bytes = reader.ReadBytes (size);
+
+						if (bytes.Length != size) {
+								// Packet Error : Lost Payload or Controlled
+						}
+
+						if (0 <= type && type < PKT_MAX) {
+								MemoryStream memory_stream = new MemoryStream ();
+								memory_stream.Write (bytes, 0, size);
+								BinaryReader binary_reader = new BinaryReader (memory_stream);
+
+								Debug.Log ("Size : " + size + ", type : " + type);
+								switch (type) {
+								case PKT_NONE:
+										{
+
+										}
+										break;
+								case PKT_SC_LOGIN:
+										{
+												LoginResult login_result = new LoginResult ();
+												login_result = ProtoBuf.Serializer.Deserialize<LoginResult> (memory_stream);
+												LoginResultHandler.Handle (login_result);
+										}
+										break;
+								}
+								// Check Packet
+						}
+				
+						
 			
-			try
-			{
-				short size = 0;
-				short type = 0;
-				byte[] bytes;
-				size = reader.ReadInt16 ();
-				type = reader.ReadInt16 ();
-				bytes = reader.ReadBytes (size);
-				
-				if(bytes.Length != size)
-				{
-					// Packet Error : Lost Payload or Controlled
+						// Push to MemoryStream
+				} catch (Exception e) {
+				e.ToString();
+						//Debug.Log ("Read to Socket Error : " + e);
 				}
-				
-				if(0 <= type && type < PKT_MAX)
-				{
-					MemoryStream memory_stream = new MemoryStream();
-					memory_stream.Write(bytes, 0, size);
-					BinaryReader binary_reader = new BinaryReader(memory_stream);
-					
-					switch(type)
-					{
-					case PKT_NONE:
-					{
-						break;
-					}
-					case PKT_SC_LOGIN:
-					{
-						Debug.Log ("Size : " + size + ", type : " + type + ", player_id : " + binary_reader.ReadInt32());
-						break;
-					}
-					}
-					// Check Packet
-				}
-				
-				// Push to MemoryStream
-			} catch(Exception e)
-			{
-				Debug.Log ("Read to Socket Error : " + e);
-			}
+			//}
 		}
 	}
 }
