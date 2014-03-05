@@ -112,6 +112,12 @@ void Player::Notify(EventHeader& event)
 				hp_ = hp_change_event.hp_;
 
 				//send packet
+				HPChangeResult out_packet_content;
+				out_packet_content.set_player_id(object_id_);
+				out_packet_content.set_player_hp(hp_);
+
+				Packet out_packet = Packet(PKT_SC_HP_CHANGE, &out_packet_content);
+				g_client_manager->BroadcastPacket(&out_packet);
 			}
 		}break;
 
