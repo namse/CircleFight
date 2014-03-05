@@ -143,7 +143,7 @@ bool ClientSession::BroadcastWithoutMe(Packet* pkt)
 bool ClientSession::Write(Packet* pkt)
 {
 	/// 버퍼 용량 부족인 경우는 끊어버림
-	if ( false == send_buffer_.Write((char*)pkt, pkt->packet_header_.size_) )
+	if ( false == send_buffer_.Write((char*)pkt, pkt->packet_header_.size_ + sizeof(pkt->packet_header_)) )
 	{
 		Disconnect() ;
 		return false ;
