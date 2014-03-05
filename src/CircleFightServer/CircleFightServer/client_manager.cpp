@@ -54,16 +54,17 @@ void ClientManager::OnPeriodWork()
 		last_garbage_collect_clock_tick_ = current_tick ;
 	}
 
-	/// 접속된 클라이언트 세션별로 주기적으로 해줘야 하는 일 (주기는 알아서 정하면 됨 - 지금은 1초로 ㅎㅎ)
-	if ( current_tick - last_client_work_tick_ >= 1000 )
-	{
-		ClientPeriodWork() ;
-		last_client_work_tick_ = current_tick ;
-	}
+	/// 접속된 클라이언트 세션별로 주기적으로 해줘야 하는 일 (주기는 알아서 정하면 됨 - 지금은 0초로 ㅎㅎ)
+	//if ( current_tick - last_client_work_tick_ >= 0 )
+	//{
+	ClientPeriodWork() ;
+	//	last_client_work_tick_ = current_tick ;
+	//}
 
 	g_object_manager->Update( current_tick - previous_tick );
 
 	previous_tick = current_tick;
+
 }
 
 void ClientManager::CollectGarbageSessions()
