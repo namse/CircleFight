@@ -157,7 +157,7 @@ struct MoveKey{
 };
 struct AttackKey
 {
-	KeyState key_attack_;
+	KeyState key_attack_mouse_left;
 };
 enum Size
 {
