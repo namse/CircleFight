@@ -1,5 +1,7 @@
 #include "player.h"
 #include	"event_manager.h"
+#include "client_manager.h"
+#include "Config.h"
 
 Player::Player():state_(IDLE)
 {
@@ -52,6 +54,15 @@ void Player::Notify(EventHeader& event)
 				velocity_ = move_event.move_velocity_;
 
 				//send packet
+				MoveResult out_packet_content;
+				out_packet_content.set_player_id(object_id_);
+				out_packet_content.set_position_x(position_.x_);
+				out_packet_content.set_position_y(position_.y_);
+				out_packet_content.set_velocity_x(velocity_.x_);
+				out_packet_content.set_velocity_y(velocity_.y_);
+
+				Packet out_packet = Packet(PKT_SC_MOVE_START, &out_packet_content);
+				g_client_manager->BroadcastPacket(&out_packet);
 			}
 		}break;
 	case EVENT_MOVE_KEY_CHANGE:
@@ -158,8 +169,14 @@ void Player::Notify(EventHeader& event)
 				TransState( IDLE );
 				velocity_ = Point(0,0);
 
-				//TODO
 				//Send NowPosition To server
+				MoveStopResult out_packet_content;
+				out_packet_content.set_player_id(object_id_);
+				out_packet_content.set_position_x(position_.x_);
+				out_packet_content.set_position_y(position_.y_);
+
+				Packet out_packet = Packet(PKT_SC_MOVE_STOP, &out_packet_content);
+				g_client_manager->BroadcastPacket(&out_packet);
 
 			}
 		}break;
