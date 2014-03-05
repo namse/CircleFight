@@ -121,12 +121,12 @@ namespace packet_type
       get { return _player_id; }
       set { _player_id = value; }
     }
-    private int _plyaer_hp;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"plyaer_hp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int plyaer_hp
+    private int _player_hp;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"player_hp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int player_hp
     {
-      get { return _plyaer_hp; }
-      set { _plyaer_hp = value; }
+      get { return _player_hp; }
+      set { _player_hp = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

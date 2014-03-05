@@ -18,7 +18,7 @@ message AttackKeyPressRequest{
 }
 message HPChangeResult{
 	required int32 player_id = 1;
-	required int32 plyaer_hp = 2;
+	required int32 player_hp = 2;
 }
 message MoveResult{
 	required int32 player_id = 1;
