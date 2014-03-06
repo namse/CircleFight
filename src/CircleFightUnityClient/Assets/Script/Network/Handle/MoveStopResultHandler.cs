@@ -12,22 +12,22 @@ using packet_type;
 using UnityEngine;
 namespace Handler
 {
-	public class LoginResultHandler
+	public class MoveStopResultHandler
 	{
-		PrefabManager prefab_manager = null;
-
-		public LoginResultHandler ()
+		public MoveStopResultHandler ()
 		{
-			prefab_manager = GameObject.Find ("Prefab Manager").GetComponent<PrefabManager> ();
-		}
-
-		public void Handle(LoginResult login_result)
-		{
-			Debug.Log ("login_result");
-			Debug.Log ( "player_id : " + login_result.player_id);
 			
-			prefab_manager.InstantiatePlayer (login_result.player_id);
+		}
+		
+		public void Handle(MoveStopResult move_stop_result)
+		{
+			Debug.Log ("move_stop_result");
+			Debug.Log ( "player_id : " + move_stop_result.player_id);
+			Debug.Log ( "position_x : " + move_stop_result.position_x);
+			Debug.Log ( "position_y : " + move_stop_result.position_y);
 		}
 	}
 }
+
+
 

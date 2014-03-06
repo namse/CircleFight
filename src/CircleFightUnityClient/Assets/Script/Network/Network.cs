@@ -142,22 +142,29 @@ public class Network : MonoBehaviour {
 						{
 							LoginResult login_result = new LoginResult ();
 							login_result = ProtoBuf.Serializer.Deserialize<LoginResult> (memory_stream);
-							LoginResultHandler.Handle (login_result);
+							LoginResultHandler login_result_handler = new LoginResultHandler ();
+							login_result_handler.Handle (login_result);
 						} break;
 						case PKT_SC_LOGIN_BROADCAST:
 						{
+							LoginBroadcastResult login_broadcast_result = new LoginBroadcastResult ();
+							login_broadcast_result = ProtoBuf.Serializer.Deserialize<LoginBroadcastResult> (memory_stream);
+							LoginBroadcastResultHandler login_broadcast_result_handler = new LoginBroadcastResultHandler ();
+							login_broadcast_result_handler.Handle (login_broadcast_result);
 						} break;
 						case PKT_SC_MOVE_START:
 						{
 							MoveResult move_result = new MoveResult ();
 							move_result = ProtoBuf.Serializer.Deserialize<MoveResult> (memory_stream);
-							MoveResultHandler.Handle (move_result);
+							MoveResultHandler move_result_handler = new MoveResultHandler ();
+							move_result_handler.Handle (move_result);
 						} break;
 						case PKT_SC_MOVE_STOP:
 						{
 							MoveStopResult move_stop_result = new MoveStopResult ();
 							move_stop_result = ProtoBuf.Serializer.Deserialize<MoveStopResult> (memory_stream);
-							MoveStopResultHandler.Handle (move_stop_result);
+							MoveStopResultHandler move_stop_result_handler = new MoveStopResultHandler ();
+							move_stop_result_handler.Handle (move_stop_result);
 						} break;
 						}
 							// Check Packet

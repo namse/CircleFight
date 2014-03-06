@@ -19,7 +19,7 @@ namespace Handler
 			
 		}
 		
-		public static void Handle(MoveResult move_result)
+		public void Handle(MoveResult move_result)
 		{
 			Debug.Log ("move_result");
 			Debug.Log ( "player_id : " + move_result.player_id);

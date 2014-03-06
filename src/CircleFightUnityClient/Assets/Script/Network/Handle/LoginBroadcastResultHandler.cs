@@ -10,24 +10,24 @@
 using System;
 using packet_type;
 using UnityEngine;
+using System.Collections;
 namespace Handler
 {
-	public class LoginResultHandler
+	public class LoginBroadcastResultHandler
 	{
 		PrefabManager prefab_manager = null;
 
-		public LoginResultHandler ()
+		public LoginBroadcastResultHandler ()
 		{
 			prefab_manager = GameObject.Find ("Prefab Manager").GetComponent<PrefabManager> ();
 		}
-
-		public void Handle(LoginResult login_result)
+		
+		public void Handle(LoginBroadcastResult login_broadcast_result)
 		{
-			Debug.Log ("login_result");
-			Debug.Log ( "player_id : " + login_result.player_id);
-			
-			prefab_manager.InstantiatePlayer (login_result.player_id);
+			Debug.Log ("login_broadcast_result");
+			Debug.Log ( "player_id : " + login_broadcast_result.player_id);
+
+			prefab_manager.InstantiateOtherPlayer (login_broadcast_result.player_id);
 		}
 	}
 }
-
