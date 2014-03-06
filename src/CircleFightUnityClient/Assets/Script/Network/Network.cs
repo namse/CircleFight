@@ -113,53 +113,56 @@ public class Network : MonoBehaviour {
 		while (true) {
 			yield return 0;
 
-			short size = 0;
-			short type = 0;
-			byte[] bytes;
-			size = reader.ReadInt16 ();
-			type = reader.ReadInt16 ();
-			Debug.Log ("Size : " + size + ", type : " + type);
-			bytes = reader.ReadBytes (size);
-
-			if (bytes.Length == size)
+			if(stream.DataAvailable == true)
 			{
-				if (0 <= type && type < PKT_MAX)
+				short size = 0;
+				short type = 0;
+				byte[] bytes;
+				size = reader.ReadInt16 ();
+				type = reader.ReadInt16 ();
+				Debug.Log ("Size : " + size + ", type : " + type);
+				bytes = reader.ReadBytes (size);
+
+				if (bytes.Length == size)
 				{
-					MemoryStream memory_stream = new MemoryStream ();
-					memory_stream.Write (bytes, 0, size);
-					BinaryReader binary_reader = new BinaryReader (memory_stream);
+					if (0 <= type && type < PKT_MAX)
+					{
+						MemoryStream memory_stream = new MemoryStream ();
+						memory_stream.Write (bytes, 0, size);
+						BinaryReader binary_reader = new BinaryReader (memory_stream);
 
-					Debug.Log ("Size : " + size + ", type : " + type);
-					switch (type)
-					{
-					case PKT_NONE:
-					{
+						Debug.Log ("Size : " + size + ", type : " + type);
+						switch (type)
+						{
+						case PKT_NONE:
+						{
 
-					} break;
-					case PKT_SC_LOGIN:
-					{
-						LoginResult login_result = new LoginResult ();
-						login_result = ProtoBuf.Serializer.Deserialize<LoginResult> (memory_stream);
-						LoginResultHandler.Handle (login_result);
-					} break;
-					case PKT_SC_LOGIN_BROADCAST:
-					{
-					} break;
-					case PKT_SC_MOVE_START:
-					{
-						MoveResult move_result = new MoveResult ();
-						move_result = ProtoBuf.Serializer.Deserialize<MoveResult> (memory_stream);
-						MoveResultHandler.Handle (move_result);
-					} break;
-					case PKT_SC_MOVE_STOP:
-					{
-						MoveStopResult move_stop_result = new MoveStopResult ();
-						move_stop_result = ProtoBuf.Serializer.Deserialize<MoveStopResult> (memory_stream);
-						MoveStopResultHandler.Handle (move_stop_result);
-					} break;
+						} break;
+						case PKT_SC_LOGIN:
+						{
+							LoginResult login_result = new LoginResult ();
+							login_result = ProtoBuf.Serializer.Deserialize<LoginResult> (memory_stream);
+							LoginResultHandler.Handle (login_result);
+						} break;
+						case PKT_SC_LOGIN_BROADCAST:
+						{
+						} break;
+						case PKT_SC_MOVE_START:
+						{
+							MoveResult move_result = new MoveResult ();
+							move_result = ProtoBuf.Serializer.Deserialize<MoveResult> (memory_stream);
+							MoveResultHandler.Handle (move_result);
+						} break;
+						case PKT_SC_MOVE_STOP:
+						{
+							MoveStopResult move_stop_result = new MoveStopResult ();
+							move_stop_result = ProtoBuf.Serializer.Deserialize<MoveStopResult> (memory_stream);
+							MoveStopResultHandler.Handle (move_stop_result);
+						} break;
+						}
+							// Check Packet
 					}
-						// Check Packet
-			}
+				}
 			}
 		}
 	}
