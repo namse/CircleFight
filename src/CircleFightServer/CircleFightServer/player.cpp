@@ -30,8 +30,9 @@ void Player::Update(float d_time)
 		}break;
 	case MOVE:
 		{
-			position_ = position_ + velocity_ * 100 * d_time;
-			printf("%.1f, %.1f %d \n",position_.x_, position_.y_, state_);
+			position_.x_ = position_.x_ + velocity_.x_ * 0.001 * d_time;
+			position_.y_ = position_.y_ + velocity_.y_ * 0.001 * d_time;
+			printf("(%.1f, %.1f), (%.1f, %.1f) [%f] %d \n", position_.x_, position_.y_, velocity_.x_, velocity_.y_, d_time, state_);
 		}break;
 	default:
 		break;
@@ -61,6 +62,8 @@ void Player::Notify(EventHeader& event)
 				out_packet_content.set_velocity_x(velocity_.x_);
 				out_packet_content.set_velocity_y(velocity_.y_);
 
+				printf("[%d] <%.1f> <%.1f> <%.1f> <%.1f>\n", object_id_, position_.x_, position_.y_, velocity_.x_, velocity_.y_);
+
 				Packet out_packet = Packet(PKT_SC_MOVE_START, &out_packet_content);
 				g_client_manager->BroadcastPacket(&out_packet);
 			}
@@ -68,7 +71,7 @@ void Player::Notify(EventHeader& event)
 	case EVENT_MOVE_KEY_CHANGE:
 		{
 			MoveKeyChangeEvent& move_key_change_event = (MoveKeyChangeEvent &)(event);
-			if( move_key_change_event.object_id_chnaged_ == object_id_)
+			if( move_key_change_event.object_id_CHANGEd_ == object_id_)
 			{
 
 				Point velocity = Point();

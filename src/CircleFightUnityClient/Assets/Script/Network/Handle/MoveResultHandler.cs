@@ -14,19 +14,24 @@ namespace Handler
 {
 	public class MoveResultHandler
 	{
+		Player player = null;
+
 		public MoveResultHandler ()
 		{
-			
 		}
 		
 		public void Handle(MoveResult move_result)
 		{
-			Debug.Log ("move_result");
-			Debug.Log ( "player_id : " + move_result.player_id);
-			Debug.Log ( "position_x : " + move_result.position_x);
-			Debug.Log ( "position_y : " + move_result.position_y);
-			Debug.Log ( "velocity_x : " + move_result.velocity_x);
-			Debug.Log ( "velocity_y : " + move_result.velocity_y);
+			player = GameObject.Find (move_result.player_id.ToString ()).GetComponent<Player> ();
+			player.player_info_.SetPosition (move_result.position_x, move_result.position_y, player.transform);
+			player.player_info_.SetVelocity (move_result.velocity_x, move_result.velocity_y);
+
+			Debug.Log ("move_result" + 
+			           "[" + move_result.player_id + "]" +
+			           "[" + move_result.position_x + "]" +
+			           "[" + move_result.position_y + "]" +
+			           "[" + move_result.velocity_x + "]" +
+			           "[" + move_result.velocity_y + "]");
 		}
 	}
 }

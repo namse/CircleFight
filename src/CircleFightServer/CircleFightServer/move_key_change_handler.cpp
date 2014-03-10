@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "move_key_chnage_handler.h"
+#include "move_key_CHANGE_handler.h"
 #include "event_manager.h"
 
 void MoveKeyChangeHandler(ClientSession* client_session_, MoveKeyPressRequest in_packet)
@@ -10,8 +10,8 @@ void MoveKeyChangeHandler(ClientSession* client_session_, MoveKeyPressRequest in
 	move_key_event.move_keys_.key_move_down_ = in_packet.move_key_s_press();
 	move_key_event.move_keys_.key_move_right_ = in_packet.move_key_d_press();
 	
-	move_key_event.object_id_chnaged_ = client_session_->GetPlayerID();
-	printf("%d %d %d %d\n",move_key_event.move_keys_.key_move_up_,
+	move_key_event.object_id_CHANGEd_ = client_session_->GetPlayerID();
+	printf("u l d r : %d %d %d %d\n",move_key_event.move_keys_.key_move_up_,
 		move_key_event.move_keys_.key_move_left_,
 		move_key_event.move_keys_.key_move_down_,
 		move_key_event.move_keys_.key_move_right_);

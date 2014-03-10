@@ -6,19 +6,39 @@ message LoginResult{
 }
 message LoginBroadcastResult{
 	required int32 player_id = 1;
+	required float position_x = 2;
+	required float position_y = 3;
+	required float velocity_x = 4;
+	required float velocity_y = 5;
+	required float angle = 6;
+	required int32 color = 7;
+	required int32 size = 8;
+}
+message ColorChangeRequest{
+	required int32 color = 1;
+}
+message ResponeBroadcastResult{
+	required int32 player_id = 1;
+	required float position_x = 2;
+	required float position_y = 3;
+	required float velocity_x = 4;
+	required float velocity_y = 5;
+	required float angle = 6;
+	required int32 color = 7;
+	required int32 size = 8;
+}
+message AngleChangeRequest{
+	required float angle = 1;
+}
+message AngleChangeBroadcastResult{
+	required int32 player_id = 1;
+	required float angle = 2;
 }
 message MoveKeyPressRequest{
 	required bool move_key_w_press = 1;
 	required bool move_key_a_press = 2;
 	required bool move_key_s_press = 3;
 	required bool move_key_d_press = 4;
-}
-message AttackKeyPressRequest{
-	required bool attack_key_mouse_left_press = 1;
-}
-message HPChangeResult{
-	required int32 player_id = 1;
-	required int32 player_hp = 2;
 }
 message MoveResult{
 	required int32 player_id = 1;
@@ -31,4 +51,18 @@ message MoveStopResult{
 	required int32 player_id = 1;
 	required float position_x = 2;
 	required float position_y = 3;
+}
+message AttackKeyPressRequest{
+	required bool attack_key_mouse_left_press = 1;
+	required float angle = 2;
+}
+message AttackBroadcastResult{
+	required int32 attack_player_id = 1;
+	required float angle = 2;
+	required int32 kind_of_attack = 3;
+	required int32 damaged_player_count = 4;
+}
+message HPChangeResult{
+	required int32 player_id = 1;
+	required int32 player_hp = 2;
 }

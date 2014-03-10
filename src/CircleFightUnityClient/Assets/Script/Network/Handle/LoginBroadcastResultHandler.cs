@@ -27,7 +27,7 @@ namespace Handler
 			Debug.Log ("login_broadcast_result");
 			Debug.Log ( "player_id : " + login_broadcast_result.player_id);
 
-			prefab_manager.InstantiateOtherPlayer (login_broadcast_result.player_id);
+			prefab_manager.InstantiatePlayer (login_broadcast_result.player_id);
 		}
 	}
 }

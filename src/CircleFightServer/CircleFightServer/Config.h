@@ -11,13 +11,16 @@
 #define MAX_OBJECT 1024
 
 const short	PKT_NONE = 0;
-const short 	PKT_CS_LOGIN = 1;
+const short PKT_CS_LOGIN = 1;
 const short	PKT_SC_LOGIN = 2;
 const short	PKT_SC_LOGIN_BROADCAST = 3;
-const short	PKT_CS_MOVE_KEY_CHNAGE = 4;
-const short	PKT_SC_MOVE_START =5;
-const short	PKT_SC_MOVE_STOP =6;
-const short	PKT_SC_HP_CHANGE = 7;
+const short	PKT_CS_COLOR_CHANGE = 4;
+const short	PKT_CS_MOVE_KEY_CHANGE = 5;
+const short	PKT_SC_MOVE_START = 6;
+const short	PKT_SC_MOVE_STOP = 7;
+const short	PKT_SC_HP_CHANGE = 8;
+const short	PKT_CS_ATTACK_KEY_CHANGE = 9;
+const short	PKT_SC_ATTACK = 10;
 
 struct PacketHeader{
 	short size_;
@@ -39,7 +42,7 @@ struct PacketHeader{
 struct Packet
 {
 	PacketHeader packet_header_;
-	char packet_data_ [MAX_PKT_SIZE];
+	unsigned char packet_data_ [MAX_PKT_SIZE];
 
 	Packet(){
 		packet_header_ = PacketHeader(PKT_NONE);

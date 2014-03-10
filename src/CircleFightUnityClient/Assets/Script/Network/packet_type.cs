@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from: packet_type.proto
+// Generated from: Desktop/Github/CircleFight/trunk/tool/ProtoGen/packet_type.proto
 namespace packet_type
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"LoginRequest")]
@@ -49,6 +49,179 @@ namespace packet_type
       get { return _player_id; }
       set { _player_id = value; }
     }
+    private float _position_x;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"position_x", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public float position_x
+    {
+      get { return _position_x; }
+      set { _position_x = value; }
+    }
+    private float _position_y;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"position_y", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public float position_y
+    {
+      get { return _position_y; }
+      set { _position_y = value; }
+    }
+    private float _velocity_x;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"velocity_x", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public float velocity_x
+    {
+      get { return _velocity_x; }
+      set { _velocity_x = value; }
+    }
+    private float _velocity_y;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"velocity_y", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public float velocity_y
+    {
+      get { return _velocity_y; }
+      set { _velocity_y = value; }
+    }
+    private float _angle;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"angle", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public float angle
+    {
+      get { return _angle; }
+      set { _angle = value; }
+    }
+    private int _color;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"color", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int color
+    {
+      get { return _color; }
+      set { _color = value; }
+    }
+    private int _size;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"size", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int size
+    {
+      get { return _size; }
+      set { _size = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ColorChangeRequest")]
+  public partial class ColorChangeRequest : global::ProtoBuf.IExtensible
+  {
+    public ColorChangeRequest() {}
+    
+    private int _color;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"color", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int color
+    {
+      get { return _color; }
+      set { _color = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ResponeBroadcastResult")]
+  public partial class ResponeBroadcastResult : global::ProtoBuf.IExtensible
+  {
+    public ResponeBroadcastResult() {}
+    
+    private int _player_id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"player_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int player_id
+    {
+      get { return _player_id; }
+      set { _player_id = value; }
+    }
+    private float _position_x;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"position_x", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public float position_x
+    {
+      get { return _position_x; }
+      set { _position_x = value; }
+    }
+    private float _position_y;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"position_y", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public float position_y
+    {
+      get { return _position_y; }
+      set { _position_y = value; }
+    }
+    private float _velocity_x;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"velocity_x", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public float velocity_x
+    {
+      get { return _velocity_x; }
+      set { _velocity_x = value; }
+    }
+    private float _velocity_y;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"velocity_y", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public float velocity_y
+    {
+      get { return _velocity_y; }
+      set { _velocity_y = value; }
+    }
+    private float _angle;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"angle", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public float angle
+    {
+      get { return _angle; }
+      set { _angle = value; }
+    }
+    private int _color;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"color", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int color
+    {
+      get { return _color; }
+      set { _color = value; }
+    }
+    private int _size;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"size", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int size
+    {
+      get { return _size; }
+      set { _size = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"AngleChangeRequest")]
+  public partial class AngleChangeRequest : global::ProtoBuf.IExtensible
+  {
+    public AngleChangeRequest() {}
+    
+    private float _angle;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"angle", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public float angle
+    {
+      get { return _angle; }
+      set { _angle = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"AngleChangeBroadcastResult")]
+  public partial class AngleChangeBroadcastResult : global::ProtoBuf.IExtensible
+  {
+    public AngleChangeBroadcastResult() {}
+    
+    private int _player_id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"player_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int player_id
+    {
+      get { return _player_id; }
+      set { _player_id = value; }
+    }
+    private float _angle;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"angle", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public float angle
+    {
+      get { return _angle; }
+      set { _angle = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -86,47 +259,6 @@ namespace packet_type
     {
       get { return _move_key_d_press; }
       set { _move_key_d_press = value; }
-    }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"AttackKeyPressRequest")]
-  public partial class AttackKeyPressRequest : global::ProtoBuf.IExtensible
-  {
-    public AttackKeyPressRequest() {}
-    
-    private bool _attack_key_mouse_left_press;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"attack_key_mouse_left_press", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public bool attack_key_mouse_left_press
-    {
-      get { return _attack_key_mouse_left_press; }
-      set { _attack_key_mouse_left_press = value; }
-    }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HPChangeResult")]
-  public partial class HPChangeResult : global::ProtoBuf.IExtensible
-  {
-    public HPChangeResult() {}
-    
-    private int _player_id;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"player_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int player_id
-    {
-      get { return _player_id; }
-      set { _player_id = value; }
-    }
-    private int _player_hp;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"player_hp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int player_hp
-    {
-      get { return _player_hp; }
-      set { _player_hp = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -203,6 +335,92 @@ namespace packet_type
     {
       get { return _position_y; }
       set { _position_y = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"AttackKeyPressRequest")]
+  public partial class AttackKeyPressRequest : global::ProtoBuf.IExtensible
+  {
+    public AttackKeyPressRequest() {}
+    
+    private bool _attack_key_mouse_left_press;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"attack_key_mouse_left_press", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool attack_key_mouse_left_press
+    {
+      get { return _attack_key_mouse_left_press; }
+      set { _attack_key_mouse_left_press = value; }
+    }
+    private float _angle;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"angle", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public float angle
+    {
+      get { return _angle; }
+      set { _angle = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"AttackBroadcastResult")]
+  public partial class AttackBroadcastResult : global::ProtoBuf.IExtensible
+  {
+    public AttackBroadcastResult() {}
+    
+    private int _attack_player_id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"attack_player_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int attack_player_id
+    {
+      get { return _attack_player_id; }
+      set { _attack_player_id = value; }
+    }
+    private float _angle;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"angle", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public float angle
+    {
+      get { return _angle; }
+      set { _angle = value; }
+    }
+    private int _kind_of_attack;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"kind_of_attack", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int kind_of_attack
+    {
+      get { return _kind_of_attack; }
+      set { _kind_of_attack = value; }
+    }
+    private int _damaged_player_count;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"damaged_player_count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int damaged_player_count
+    {
+      get { return _damaged_player_count; }
+      set { _damaged_player_count = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HPChangeResult")]
+  public partial class HPChangeResult : global::ProtoBuf.IExtensible
+  {
+    public HPChangeResult() {}
+    
+    private int _player_id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"player_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int player_id
+    {
+      get { return _player_id; }
+      set { _player_id = value; }
+    }
+    private int _player_hp;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"player_hp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int player_hp
+    {
+      get { return _player_hp; }
+      set { _player_hp = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

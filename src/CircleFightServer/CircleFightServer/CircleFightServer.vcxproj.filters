@@ -162,7 +162,7 @@
     <ClInclude Include="login_handler.h">
       <Filter>Core\Packet\PacketHandle\LoginHandler</Filter>
     </ClInclude>
-    <ClInclude Include="move_key_chnage_handler.h">
+    <ClInclude Include="move_key_change_handler.h">
       <Filter>Core\Packet\PacketHandle\MoveKeyChangeHandler</Filter>
     </ClInclude>
   </ItemGroup>

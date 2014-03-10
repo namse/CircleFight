@@ -2,7 +2,7 @@
 #include "packet_parse.h"
 
 #include "login_handler.h"
-#include "move_key_chnage_handler.h"
+#include "move_key_CHANGE_handler.h"
 
 bool ParsePacket(ClientSession* client_session_, CircularBuffer& recv_buffer )
 {
@@ -31,7 +31,7 @@ bool ParsePacket(ClientSession* client_session_, CircularBuffer& recv_buffer )
 				LoginRequestHandler(client_session_, in_packet);
 			}
 			break ;
-		case PKT_CS_MOVE_KEY_CHNAGE:
+		case PKT_CS_MOVE_KEY_CHANGE:
 			{
 				MoveKeyPressRequest in_packet;
 				in_packet.ParseFromArray(packet_data, packet_header.size_);

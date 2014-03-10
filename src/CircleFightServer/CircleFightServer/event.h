@@ -46,7 +46,7 @@ struct MoveKeyChangeEvent
 		event_type_ = EVENT_MOVE_KEY_CHANGE;
 		memset(&move_keys_,0,sizeof(move_keys_));
 	}
-	ObjectID object_id_chnaged_;
+	ObjectID object_id_CHANGEd_;
 	MoveKey move_keys_;	
 };
 

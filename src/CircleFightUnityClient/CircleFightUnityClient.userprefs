@@ -1,20 +1,24 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\Network\Handle\LoginResultHandler.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\Player\Player.cs">
     <Files>
-      <File FileName="Assets\Script\Network\Network.cs" Line="157" Column="12" />
+      <File FileName="Assets\Script\Network\Network.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\PerfabManager\PrefabManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Network\Handle\MoveResultHandler.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Network\Handle\LoginResultHandler.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Network\Network.cs" Line="1" Column="1" />
       <File FileName="Assets\Script\GameManager\GameManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\Network\packet_type.cs" Line="136" Column="81" />
-      <File FileName="Assets\Script\Network\Handle\LoginResultHandler.cs" Line="29" Column="43" />
-      <File FileName="Assets\Script\Network\Handle\MoveResultHandler.cs" Line="17" Column="14" />
-      <File FileName="Assets\Script\Network\Handle\MoveStopResultHandler.cs" Line="22" Column="9" />
-      <File FileName="Assets\Script\Network\Handle\LoginBroadcastResultHandler.cs" Line="28" Column="67" />
-      <File FileName="Assets\Script\PerfabManager\PrefabManager.cs" Line="26" Column="25" />
-      <File FileName="Assets\Script\Player\Player.cs" Line="1" Column="19" />
+      <File FileName="Assets\Script\Network\packet_type.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Network\Handle\MoveStopResultHandler.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Network\Handle\LoginBroadcastResultHandler.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Player\Player.cs" Line="18" Column="80" />
+      <File FileName="Assets\Script\Player\Player_Info.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint hitAction="PrintExpression" traceExpression="{stream}" file="C:\Users\Woongid\Desktop\Github\CircleFight\trunk\src\CircleFightUnityClient\Assets\Script\Network\Network.cs" line="121" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

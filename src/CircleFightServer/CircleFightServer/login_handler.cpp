@@ -10,12 +10,14 @@ void LoginRequestHandler(ClientSession* client_session_, LoginRequest in_packet)
 
 	g_object_manager->AddObject(player);
 	
-	short id = (short)player->GetObjectID();
+	int id = (int)player->GetObjectID();
 
 	client_session_->SetPlayerID( id );
 	{
 		LoginResult out_packet_content;
 		out_packet_content.set_player_id(id); //test
+
+		printf("SIZE : %d\n", out_packet_content.ByteSize());
 
 		Packet out_packet = Packet(PKT_SC_LOGIN, &out_packet_content);
 		client_session_->Write( &out_packet );

@@ -43,7 +43,7 @@ public class Network : MonoBehaviour {
 	{
 		try
 		{
-			socket = new TcpClient ("127.0.0.1", 9001);
+			socket = new TcpClient ("127.0.0.1", 9001);//10.73.39.158", 9001);
 			stream = socket.GetStream ();
 			writer = new BinaryWriter (stream);
 			reader = new BinaryReader (stream);
@@ -87,6 +87,11 @@ public class Network : MonoBehaviour {
 			move_request.move_key_a_press = did_a_pressed_;
 			move_request.move_key_s_press = did_s_pressed_;
 			move_request.move_key_d_press = did_d_pressed_;
+
+			//MemoryStream memory_stream = new MemoryStream ();
+			//ProtoBuf.Serializer.Serialize<MoveKeyPressRequest> (memory_stream, move_request);
+//			move_request = ProtoBuf.Serializer.Deserialize<MoveKeyPressRequest> (memory_stream);
+
 			SendPacket(PKT_CS_MOVE_KEY_CHNAGE, move_request);
 		}
 	}
@@ -97,7 +102,7 @@ public class Network : MonoBehaviour {
 		{
 			return;
 		}
-
+		
 		MemoryStream memory_stream = new MemoryStream ();
 		ProtoBuf.Serializer.Serialize (memory_stream, packet);
 		byte[] byte_array = memory_stream.ToArray ();
@@ -120,7 +125,7 @@ public class Network : MonoBehaviour {
 				byte[] bytes;
 				size = reader.ReadInt16 ();
 				type = reader.ReadInt16 ();
-				Debug.Log ("Size : " + size + ", type : " + type);
+				Debug.Log ("size : " + size + ", type : " + type);
 				bytes = reader.ReadBytes (size);
 
 				if (bytes.Length == size)
@@ -129,9 +134,8 @@ public class Network : MonoBehaviour {
 					{
 						MemoryStream memory_stream = new MemoryStream ();
 						memory_stream.Write (bytes, 0, size);
-						BinaryReader binary_reader = new BinaryReader (memory_stream);
+						memory_stream.Position = 0;
 
-						Debug.Log ("Size : " + size + ", type : " + type);
 						switch (type)
 						{
 						case PKT_NONE:

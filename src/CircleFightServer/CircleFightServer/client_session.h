@@ -66,7 +66,7 @@ private:
 	bool			is_log_on_ ;
 	SOCKET			socket_ ;
 
-	short				player_id_ ;
+	int				player_id_ ;
 	SOCKADDR_IN		client_address_ ;
 
 	CircularBuffer	send_buffer_ ;

@@ -14,6 +14,8 @@ namespace Handler
 {
 	public class MoveStopResultHandler
 	{
+		Player player = null;
+
 		public MoveStopResultHandler ()
 		{
 			
@@ -21,7 +23,11 @@ namespace Handler
 		
 		public void Handle(MoveStopResult move_stop_result)
 		{
-			Debug.Log ("move_stop_result");
+			player = GameObject.Find (move_stop_result.player_id.ToString ()).GetComponent<Player> ();
+			player.player_info_.SetPosition (move_stop_result.position_x, move_stop_result.position_y, player.transform);
+			player.player_info_.SetVelocity (0, 0);
+
+			Debug.Log ( "move_stop_result");
 			Debug.Log ( "player_id : " + move_stop_result.player_id);
 			Debug.Log ( "position_x : " + move_stop_result.position_x);
 			Debug.Log ( "position_y : " + move_stop_result.position_y);

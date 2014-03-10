@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
+	public int myObjectID = -1;
+
 	public GameObject prefab_CircleFightResponeMenu;
 	int GameStatus = 0;
 

@@ -14,6 +14,7 @@ namespace Handler
 {
 	public class LoginResultHandler
 	{
+		GameManager game_manger = null;
 		PrefabManager prefab_manager = null;
 
 		public LoginResultHandler ()
@@ -23,10 +24,12 @@ namespace Handler
 
 		public void Handle(LoginResult login_result)
 		{
+			prefab_manager.InstantiatePlayer (login_result.player_id);
+			game_manger = GameObject.Find ("Game Manager").GetComponent<GameManager> ();
+			game_manger.myObjectID = login_result.player_id;
+
 			Debug.Log ("login_result");
 			Debug.Log ( "player_id : " + login_result.player_id);
-			
-			prefab_manager.InstantiatePlayer (login_result.player_id);
 		}
 	}
 }
